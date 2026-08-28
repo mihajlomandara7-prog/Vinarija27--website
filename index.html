@@ -21,12 +21,14 @@
 </div>
 
 <nav id="navbar">
-  <div class="nav-inner">
-    <a href="#home" class="logo">Vinarija<span>27</span></a>
-    <div class="nav-links">
+  <div class="nav-inner nav-split">
+    <div class="nav-links nav-left">
       <a href="#about">O nama</a>
       <a href="#offerings">Ponuda</a>
       <a href="#reviews">Utisci</a>
+    </div>
+    <a href="#home" class="logo">Vinarija<span>27</span></a>
+    <div class="nav-links nav-right">
       <a href="#location">Lokacija</a>
       <a href="#contact" class="nav-cta">Kontakt</a>
     </div>
@@ -46,24 +48,26 @@
 </div>
 
 <header id="home">
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-vignette"></div>
-  <div class="hero-content">
-    <p class="eyebrow">Ovsište bb &middot; Vinarija</p>
-    <h1>Vinarija <span>27</span></h1>
-    <p class="hero-tagline">Vrhunska vina, udobni apartmani i prostor za proslave koje se pamte.</p>
-    <div class="hero-rating">
-      <span class="stars" aria-hidden="true">★★★★★</span>
-      <span class="rating-text">5.0 &middot; 22 Google recenzija</span>
+  <div id="heroPinWrapper">
+    <div id="heroPinSticky">
+      <div class="hero-layer" id="heroLayer1" style="background-image:url('images/hero-1.jpg')"></div>
+      <div class="hero-layer" id="heroLayer2" style="background-image:url('images/hero-2.jpg')"></div>
+      <div class="hero-gradient"></div>
+
+      <div class="hero-text" id="heroText">
+        <h1 class="hero-title">[Naslov — red 1]<br>[Naslov — red 2]</h1>
+        <p class="hero-subtitle">[Podnaslov — red 1]<br>[Podnaslov — red 2]</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Rezervišite posetu</a>
+          <a href="#location" class="btn btn-ghost">Pronađite nas</a>
+        </div>
+      </div>
+
+      <div class="scroll-cue">
+        <span></span>
+        <p>Skrolujte</p>
+      </div>
     </div>
-    <div class="hero-actions">
-      <a href="#contact" class="btn btn-primary">Rezervišite posetu</a>
-      <a href="#location" class="btn btn-ghost">Pronađite nas</a>
-    </div>
-  </div>
-  <div class="scroll-cue">
-    <span></span>
-    <p>Skrolujte</p>
   </div>
 </header>
 

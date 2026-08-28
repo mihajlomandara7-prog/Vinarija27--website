@@ -50,194 +50,45 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 });
 
 /* =====================================================
-   HERO 3D SCENE — vineyard-at-dusk with a rotating
-   wine bottle, glass, and drifting grape clusters
+   HERO — pinned scroll image sequence
+   Layer 1 stays put while the page scrolls through it,
+   fading/zooming out as layer 2 rises in behind it.
 ===================================================== */
-(function heroScene() {
-  const canvas = document.getElementById('hero-canvas');
-  if (!canvas || typeof THREE === 'undefined') return;
+(function heroPin() {
+  const wrapper = document.getElementById('heroPinWrapper');
+  const layer1 = document.getElementById('heroLayer1');
+  const layer2 = document.getElementById('heroLayer2');
+  const text = document.getElementById('heroText');
+  const cue = document.querySelector('#home .scroll-cue');
+  if (!wrapper || !layer1 || !layer2) return;
 
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  const header = document.getElementById('home');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x1a0509, 0.05);
+  function update() {
+    const rect = wrapper.getBoundingClientRect();
+    const total = Math.max(wrapper.offsetHeight - window.innerHeight, 1);
+    const scrolled = Math.min(Math.max(-rect.top, 0), total);
+    const progress = scrolled / total;
 
-  const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
-  camera.position.set(0, 1.1, 9.8);
+    if (reduceMotion) return;
 
-  function resize() {
-    const w = header.clientWidth, h = header.clientHeight;
-    renderer.setSize(w, h);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
+    const textP = Math.min(progress / 0.28, 1);
+    text.style.opacity = String(1 - textP);
+    text.style.transform = `translateY(${(-textP * 50).toFixed(1)}px) scale(${(1 - textP * 0.04).toFixed(3)})`;
+    if (cue) cue.style.opacity = String(1 - Math.min(progress / 0.12, 1));
+
+    const l1p = Math.min(progress / 0.65, 1);
+    layer1.style.opacity = String(1 - l1p);
+    layer1.style.transform = `scale(${(1 + l1p * 0.16).toFixed(3)})`;
+
+    const l2p = Math.min(Math.max((progress - 0.2) / 0.7, 0), 1);
+    layer2.style.opacity = String(l2p);
+    layer2.style.transform = `scale(${(1.12 - l2p * 0.12).toFixed(3)})`;
   }
-  resize();
-  window.addEventListener('resize', resize);
 
-  // Lights
-  scene.add(new THREE.AmbientLight(0x8a5a3a, 0.55));
-  const key = new THREE.PointLight(0xd9b26a, 2.4, 30, 2);
-  key.position.set(3, 4, 4);
-  scene.add(key);
-  const rim = new THREE.PointLight(0xb32a45, 1.8, 30, 2);
-  rim.position.set(-4, 1, -3);
-  scene.add(rim);
-  const fill = new THREE.PointLight(0xf3e2c2, 0.6, 20, 2);
-  fill.position.set(0, -2, 4);
-  scene.add(fill);
-
-  const rootGroup = new THREE.Group();
-  scene.add(rootGroup);
-
-  // ---- Wine bottle ----
-  const bottleGroup = new THREE.Group();
-  const glassMat = new THREE.MeshPhysicalMaterial({
-    color: 0x1c3d1f,
-    roughness: 0.15,
-    metalness: 0,
-    transmission: 0.55,
-    transparent: true,
-    opacity: 0.92,
-    thickness: 0.6,
-    clearcoat: 0.6,
-  });
-
-  const bodyGeo = new THREE.CylinderGeometry(0.62, 0.62, 2.0, 32);
-  const body = new THREE.Mesh(bodyGeo, glassMat);
-  body.position.y = 0;
-  bottleGroup.add(body);
-
-  const shoulderGeo = new THREE.CylinderGeometry(0.24, 0.62, 0.55, 32);
-  const shoulder = new THREE.Mesh(shoulderGeo, glassMat);
-  shoulder.position.y = 1.27;
-  bottleGroup.add(shoulder);
-
-  const neckGeo = new THREE.CylinderGeometry(0.24, 0.24, 1.1, 32);
-  const neck = new THREE.Mesh(neckGeo, glassMat);
-  neck.position.y = 2.1;
-  bottleGroup.add(neck);
-
-  const capGeo = new THREE.CylinderGeometry(0.26, 0.26, 0.18, 32);
-  const capMat = new THREE.MeshStandardMaterial({ color: 0xd9b26a, roughness: 0.35, metalness: 0.6 });
-  const cap = new THREE.Mesh(capGeo, capMat);
-  cap.position.y = 2.74;
-  bottleGroup.add(cap);
-
-  bottleGroup.scale.setScalar(0.82);
-  bottleGroup.position.set(-3.05, -1.55, -1.4);
-  bottleGroup.rotation.y = 0.4;
-  rootGroup.add(bottleGroup);
-
-  // ---- Wine glass ----
-  const glassGroup = new THREE.Group();
-  const bowlPoints = [];
-  for (let i = 0; i <= 12; i++) {
-    const t = i / 12;
-    const r = Math.sin(t * Math.PI * 0.5) * 0.55 + 0.03;
-    bowlPoints.push(new THREE.Vector2(r, t * 1.1));
-  }
-  const bowlGeo = new THREE.LatheGeometry(bowlPoints, 32);
-  const bowl = new THREE.Mesh(bowlGeo, glassMat);
-  bowl.position.y = 0.9;
-  glassGroup.add(bowl);
-
-  const wineGeo = new THREE.CylinderGeometry(0.4, 0.05, 0.5, 32);
-  const wineMat = new THREE.MeshPhysicalMaterial({ color: 0x6b1626, roughness: 0.2, transmission: 0.3, transparent: true, opacity: 0.95 });
-  const wine = new THREE.Mesh(wineGeo, wineMat);
-  wine.position.y = 1.05;
-  glassGroup.add(wine);
-
-  const stemGeo = new THREE.CylinderGeometry(0.035, 0.035, 0.9, 16);
-  const stem = new THREE.Mesh(stemGeo, glassMat);
-  stem.position.y = 0.45;
-  glassGroup.add(stem);
-
-  const baseGeo = new THREE.CylinderGeometry(0.34, 0.4, 0.06, 32);
-  const base = new THREE.Mesh(baseGeo, glassMat);
-  base.position.y = 0.03;
-  glassGroup.add(base);
-
-  glassGroup.scale.setScalar(0.82);
-  glassGroup.position.set(3.1, -2.15, -1.1);
-  rootGroup.add(glassGroup);
-
-  // ---- Grape clusters (instanced) ----
-  const grapeGeo = new THREE.IcosahedronGeometry(0.11, 1);
-  const grapeMat = new THREE.MeshStandardMaterial({ color: 0x4a0f1c, roughness: 0.35, metalness: 0.1 });
-  const grapeCount = 60;
-  const grapes = new THREE.InstancedMesh(grapeGeo, grapeMat, grapeCount);
-  const dummy = new THREE.Object3D();
-  const grapeData = [];
-  for (let i = 0; i < grapeCount; i++) {
-    const angle = Math.random() * Math.PI * 2;
-    const radius = 3.4 + Math.random() * 2.6;
-    const height = (Math.random() - 0.5) * 3.2;
-    const speed = 0.15 + Math.random() * 0.25;
-    grapeData.push({ angle, radius, height, speed, phase: Math.random() * Math.PI * 2 });
-    dummy.position.set(Math.cos(angle) * radius, height, Math.sin(angle) * radius - 2);
-    dummy.scale.setScalar(0.6 + Math.random() * 0.8);
-    dummy.updateMatrix();
-    grapes.setMatrixAt(i, dummy.matrix);
-  }
-  scene.add(grapes);
-
-  // ---- Ground disc (subtle reflection) ----
-  const groundGeo = new THREE.CircleGeometry(9, 64);
-  const groundMat = new THREE.MeshStandardMaterial({ color: 0x120306, roughness: 0.85, metalness: 0.1 });
-  const ground = new THREE.Mesh(groundGeo, groundMat);
-  ground.rotation.x = -Math.PI / 2;
-  ground.position.y = -1.9;
-  scene.add(ground);
-
-  // ---- Mouse parallax ----
-  let mouseX = 0, mouseY = 0;
-  window.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-  });
-
-  const clock = new THREE.Clock();
-  let scrollFactor = 0;
-  window.addEventListener('scroll', () => {
-    scrollFactor = Math.min(window.scrollY / window.innerHeight, 1);
-  });
-
-  function animate() {
-    const t = clock.getElapsedTime();
-
-    bottleGroup.rotation.y += 0.0032;
-    glassGroup.rotation.y -= 0.0026;
-    bottleGroup.position.y = -1.55 + Math.sin(t * 0.6) * 0.06;
-    glassGroup.position.y = -2.15 + Math.sin(t * 0.7 + 1.2) * 0.05;
-
-    for (let i = 0; i < grapeCount; i++) {
-      const d = grapeData[i];
-      const a = d.angle + t * d.speed * 0.1;
-      dummy.position.set(
-        Math.cos(a) * d.radius,
-        d.height + Math.sin(t * 0.5 + d.phase) * 0.15,
-        Math.sin(a) * d.radius - 2
-      );
-      dummy.rotation.set(t * 0.2 + i, t * 0.15, 0);
-      dummy.scale.setScalar(0.6 + (i % 5) * 0.16);
-      dummy.updateMatrix();
-      grapes.setMatrixAt(i, dummy.matrix);
-    }
-    grapes.instanceMatrix.needsUpdate = true;
-
-    rootGroup.rotation.y += (mouseX * 0.15 - rootGroup.rotation.y) * 0.03;
-    camera.position.y = 1.1 + mouseY * -0.15 - scrollFactor * 0.6;
-    camera.position.z = 8.5 + scrollFactor * 2.2;
-    camera.lookAt(0, 0.3, 0);
-
-    key.position.x = 3 + Math.sin(t * 0.3) * 1.2;
-
-    renderer.render(scene, camera);
-    requestAnimationFrame(animate);
-  }
-  animate();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
 })();
 
 /* =====================================================
