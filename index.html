@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinarija 27 — Vinarija, Apartmani &amp; Proslave</title>
+<meta name="description" content="Vinarija 27 — srpska porodična vinarija: vrhunska vina, udobni apartmani i prelep prostor za privatne proslave. Ovsište bb, 34000.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍷</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-glass">
+    <div class="loader-liquid"></div>
+  </div>
+  <p>Vinarija 27</p>
+</div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="logo">Vinarija<span>27</span></a>
+    <div class="nav-links">
+      <a href="#about">O nama</a>
+      <a href="#offerings">Ponuda</a>
+      <a href="#reviews">Utisci</a>
+      <a href="#location">Lokacija</a>
+      <a href="#contact" class="nav-cta">Kontakt</a>
+    </div>
+    <button id="navToggle" aria-label="Meni">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div id="mobileMenu">
+  <a href="#home">Početna</a>
+  <a href="#about">O nama</a>
+  <a href="#offerings">Ponuda</a>
+  <a href="#reviews">Utisci</a>
+  <a href="#location">Lokacija</a>
+  <a href="#contact">Kontakt</a>
+</div>
+
+<header id="home">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <p class="eyebrow">Ovsište bb &middot; Vinarija</p>
+    <h1>Vinarija <span>27</span></h1>
+    <p class="hero-tagline">Vrhunska vina, udobni apartmani i prostor za proslave koje se pamte.</p>
+    <div class="hero-rating">
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <span class="rating-text">5.0 &middot; 22 Google recenzija</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Rezervišite posetu</a>
+      <a href="#location" class="btn btn-ghost">Pronađite nas</a>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <span></span>
+    <p>Skrolujte</p>
+  </div>
+</header>
+
+<main>
+
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-copy">
+        <p class="section-label">O vinariji</p>
+        <h2>Priča ispisana u vinogradu</h2>
+        <p class="lead">Vinarija 27 je porodična srpska vinarija koja neguje vinogradarsku tradiciju i nudi vrhunska vina, udobne apartmane za odmor i prelep prostor za privatne proslave — sve na jednom mestu, okruženo vinogradima.</p>
+        <div class="about-stats">
+          <div class="stat-card" data-tilt>
+            <span class="stat-number">5.0</span>
+            <span class="stat-label">prosečna ocena</span>
+          </div>
+          <div class="stat-card" data-tilt>
+            <span class="stat-number">22</span>
+            <span class="stat-label">Google recenzija</span>
+          </div>
+          <div class="stat-card" data-tilt>
+            <span class="stat-number">27</span>
+            <span class="stat-label">godina posvećenosti</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="bottle-frame" data-tilt>
+          <canvas id="bottle-canvas"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="offerings">
+    <div class="container">
+      <p class="section-label center">Naša ponuda</p>
+      <h2 class="center">Vino. Odmor. Proslava.</h2>
+      <div class="cards-grid">
+
+        <article class="offer-card" data-tilt>
+          <div class="offer-icon">
+            <svg viewBox="0 0 64 64" fill="none"><path d="M24 4h16v14c0 4-3 6-3 10v4h6v28H21V32h6v-4c0-4-3-6-3-10V4z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M21 44h22" stroke="currentColor" stroke-width="2.5"/></svg>
+          </div>
+          <h3>Vrhunska vina</h3>
+          <p>Pažljivo negovana vina od grožđa iz sopstvenih vinograda, sa karakterom koji odražava naš teroir.</p>
+        </article>
+
+        <article class="offer-card" data-tilt>
+          <div class="offer-icon">
+            <svg viewBox="0 0 64 64" fill="none"><path d="M8 54V26l24-16 24 16v28" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M24 54V36h16v18" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Udobni apartmani</h3>
+          <p>Mirni smeštaj okružen vinogradima — savršeno mesto za beg od svakodnevice.</p>
+        </article>
+
+        <article class="offer-card" data-tilt>
+          <div class="offer-icon">
+            <svg viewBox="0 0 64 64" fill="none"><path d="M32 6l6 12 13 2-9.5 9 2 13L32 36l-11.5 6 2-13-9.5-9 13-2z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M14 58h36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Prostor za proslave</h3>
+          <p>Prelep ambijent za privatna slavlja, venčanja i okupljanja koja ostaju u sećanju.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="container">
+      <p class="section-label center">Utisci gostiju</p>
+      <h2 class="center">Šta kažu naši gosti</h2>
+      <div class="review-badge">
+        <span class="review-score">5.0</span>
+        <div>
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p>22 Google recenzija</p>
+        </div>
+      </div>
+      <div class="reviews-grid">
+        <blockquote class="review-card" data-tilt>
+          <p>&ldquo;Predivan ambijent, izuzetno gostoprimstvo i vina koja pamtite dugo nakon posete.&rdquo;</p>
+          <footer>Google recenzija</footer>
+        </blockquote>
+        <blockquote class="review-card" data-tilt>
+          <p>&ldquo;Apartmani su besprekorni, a proslava koju smo organizovali ovde bila je nezaboravna.&rdquo;</p>
+          <footer>Google recenzija</footer>
+        </blockquote>
+        <blockquote class="review-card" data-tilt>
+          <p>&ldquo;Porodična atmosfera i vrhunski kvalitet — vinarija koju svakako treba posetiti.&rdquo;</p>
+          <footer>Google recenzija</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="location">
+    <div class="container location-grid">
+      <div class="location-info">
+        <p class="section-label">Posetite nas</p>
+        <h2>Pronađite Vinariju 27</h2>
+        <ul class="info-list">
+          <li>
+            <span class="info-icon">📍</span>
+            <div>
+              <strong>Adresa</strong>
+              <p>Ovsište bb, 34000</p>
+            </div>
+          </li>
+          <li>
+            <span class="info-icon">📞</span>
+            <div>
+              <strong>Telefon</strong>
+              <p><a href="tel:+381637336236">063 733 6236</a></p>
+            </div>
+          </li>
+          <li>
+            <span class="info-icon">🕔</span>
+            <div>
+              <strong>Radno vreme</strong>
+              <p>Danas otvoreno &middot; zatvara se u 17:00</p>
+            </div>
+          </li>
+        </ul>
+        <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Vinarija+27+Ovsi%C5%A1te+bb+34000" target="_blank" rel="noopener">Otvorite u Google Mapama</a>
+      </div>
+      <div class="location-map">
+        <iframe
+          title="Mapa — Vinarija 27"
+          src="https://www.google.com/maps?q=Ovsi%C5%A1te+bb%2C+34000&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact-inner">
+      <p class="section-label center">Kontaktirajte nas</p>
+      <h2 class="center">Rezervišite svoju posetu</h2>
+      <p class="center lead">Pozovite nas za degustacije, rezervaciju apartmana ili organizaciju vaše proslave.</p>
+      <div class="contact-actions">
+        <a href="tel:+381637336236" class="btn btn-primary">📞 063 733 6236</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="btn btn-ghost">Instagram</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="logo">Vinarija<span>27</span></div>
+    <p>Ovsište bb, 34000 &middot; 063 733 6236</p>
+    <p class="footer-note">&copy; <span id="year"></span> Vinarija 27. Sva prava zadržana.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
