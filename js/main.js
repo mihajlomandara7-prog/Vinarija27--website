@@ -93,17 +93,16 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 })();
 
 /* =====================================================
-   STATEMENT sections — a full-bleed photo keeps scrolling
-   pinned in place, then shrinks to a half-width panel
-   docked against the left edge as the dark green panel
-   and the heading/button take over the right half. Reused
-   for both statement sections (vineyard, then the toast).
+   STATEMENT — the hero's photo keeps scrolling straight
+   into this pinned section, then shrinks to a half-width
+   panel docked against the left edge as the dark green
+   panel and the heading/button take over the right half.
 ===================================================== */
-function initStatementPin(wrapperId, stickyId, boxId, textId) {
-  const wrapper = document.getElementById(wrapperId);
-  const sticky = document.getElementById(stickyId);
-  const box = document.getElementById(boxId);
-  const text = document.getElementById(textId);
+(function statementPin() {
+  const wrapper = document.getElementById('statementPinWrapper');
+  const sticky = document.getElementById('statementPinSticky');
+  const box = document.getElementById('statementBox');
+  const text = document.getElementById('statementText');
   if (!wrapper || !sticky || !box || !text) return;
 
   const easeOutCubic = (p) => 1 - Math.pow(1 - p, 3);
@@ -137,10 +136,7 @@ function initStatementPin(wrapperId, stickyId, boxId, textId) {
   window.addEventListener('scroll', update, { passive: true });
   window.addEventListener('resize', update);
   update();
-}
-
-initStatementPin('statementPinWrapper', 'statementPinSticky', 'statementBox', 'statementText');
-initStatementPin('statement2PinWrapper', 'statement2PinSticky', 'statement2Box', 'statement2Text');
+})();
 
 /* =====================================================
    Small bottle canvas next to the About section
