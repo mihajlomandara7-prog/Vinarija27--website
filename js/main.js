@@ -21,9 +21,8 @@ mobileMenu.querySelectorAll('a').forEach(a =>
 
 /* ---------------- Scroll reveal ---------------- */
 document.querySelectorAll(
-  '#about, #offerings .offer-card, #reviews .review-card, #location, #contact, .stat-card, .discover-inner, #vineyard-full .fullphoto'
+  '#about, #offerings .offer-card, #reviews .review-card, #location, #contact, .stat-card'
 ).forEach(el => el.classList.add('reveal'));
-document.querySelectorAll('#split').forEach(el => el.classList.add('reveal-scale'));
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -34,7 +33,7 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15 });
 
-document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver.observe(el));
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 /* ---------------- 3D tilt on cards ---------------- */
 document.querySelectorAll('[data-tilt]').forEach(card => {
@@ -49,91 +48,6 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
     card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateY(0)';
   });
 });
-
-/* =====================================================
-   HERO — the estate photo stays pinned in place while the
-   page scrolls through it, smoothly fading and scaling out
-   so the dark green "discover" section reads as rising up
-   over it rather than a plain scroll-away.
-===================================================== */
-(function heroPin() {
-  const wrapper = document.getElementById('heroPinWrapper');
-  const layer1 = document.getElementById('heroLayer1');
-  const text = document.getElementById('heroText');
-  const cue = document.querySelector('#home .scroll-cue');
-  if (!wrapper || !layer1) return;
-
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const easeInCubic = (p) => p * p * p;
-
-  function update() {
-    const rect = wrapper.getBoundingClientRect();
-    const total = Math.max(wrapper.offsetHeight - window.innerHeight, 1);
-    const scrolled = Math.min(Math.max(-rect.top, 0), total);
-    const progress = scrolled / total;
-
-    if (reduceMotion) return;
-
-    const textP = Math.min(progress / 0.28, 1);
-    text.style.opacity = String(1 - textP);
-    text.style.transform = `translateY(${(-textP * 50).toFixed(1)}px) scale(${(1 - textP * 0.04).toFixed(3)})`;
-    if (cue) cue.style.opacity = String(1 - Math.min(progress / 0.12, 1));
-
-    const l1p = easeInCubic(progress);
-    layer1.style.opacity = String(1 - l1p);
-    layer1.style.transform = `scale(${(1 + l1p * 0.18).toFixed(3)})`;
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-})();
-
-/* =====================================================
-   STATEMENT — the hero's photo keeps scrolling straight
-   into this pinned section, then shrinks to a half-width
-   panel docked against the left edge as the dark green
-   panel and the heading/button take over the right half.
-===================================================== */
-(function statementPin() {
-  const wrapper = document.getElementById('statementPinWrapper');
-  const sticky = document.getElementById('statementPinSticky');
-  const box = document.getElementById('statementBox');
-  const text = document.getElementById('statementText');
-  if (!wrapper || !sticky || !box || !text) return;
-
-  const easeOutCubic = (p) => 1 - Math.pow(1 - p, 3);
-
-  function update() {
-    const rect = wrapper.getBoundingClientRect();
-    const total = Math.max(wrapper.offsetHeight - window.innerHeight, 1);
-    const raw = Math.min(Math.max(-rect.top, 0), total) / total;
-    const progress = easeOutCubic(raw);
-
-    const cw = sticky.clientWidth;
-    const widthFraction = cw < 640 ? 0.4 : 0.5;
-    const finalW = cw * widthFraction;
-
-    const w = cw + (finalW - cw) * progress;
-
-    box.style.width = `${w.toFixed(1)}px`;
-    box.style.height = '100%';
-    box.style.top = '0';
-    box.style.left = '0';
-    box.style.borderRadius = '0';
-
-    text.style.left = `${w.toFixed(1)}px`;
-    text.style.width = `${(cw - w).toFixed(1)}px`;
-
-    const textP = Math.min(Math.max((raw - 0.35) / 0.55, 0), 1);
-    text.style.opacity = String(textP);
-    text.style.transform = `translateY(${((1 - textP) * 24).toFixed(1)}px)`;
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-})();
 
 /* =====================================================
    Small bottle canvas next to the About section
