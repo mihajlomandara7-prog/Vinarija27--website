@@ -234,18 +234,30 @@ a.nav-drop:hover { opacity: 0.65; }
   font-size: 30px;
 }
 
-/* ---------- Hero (plain full-screen section, normal scroll) ---------- */
-header#home {
+/* ---------- Hero (scroll-pinned image sequence) ---------- */
+header#home { position: relative; }
+
+#heroPinWrapper {
   position: relative;
+  height: 200vh;
+}
+#heroPinSticky {
+  position: sticky;
+  top: 0;
   height: 100svh;
   min-height: 640px;
   overflow: hidden;
+  background: var(--forest-950);
 }
-.hero-photo {
+.hero-layer {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
+  will-change: opacity, transform;
+}
+#heroLayer1 {
+  z-index: 1;
   background-color: #2b241f; /* fallback tone until images/hero-1.jpg is added */
 }
 .hero-gradient {
@@ -269,6 +281,7 @@ header#home {
   justify-content: center;
   text-align: center;
   padding: 0 20px;
+  will-change: opacity, transform;
 }
 .hero-title {
   font-size: clamp(40px, 7.5vw, 88px);
@@ -377,6 +390,58 @@ header#home {
   padding: 120px 24px;
 }
 
+/* ---------- Full-bleed vineyard photo ---------- */
+#vineyard-full { padding: 0; }
+.fullphoto {
+  width: 100%;
+  height: 100svh;
+  min-height: 480px;
+  background-size: cover;
+  background-position: center;
+  background-color: #1c2a1f;
+}
+
+/* ---------- Statement (dark green, shrinking photo) ---------- */
+#statement { position: relative; padding: 0; }
+#statementPinWrapper { position: relative; height: 200vh; }
+#statementPinSticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  background: var(--forest-950);
+}
+.statement-bg { position: absolute; inset: 0; background: var(--forest-950); z-index: 0; }
+.statement-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 30px 0 70px -25px rgba(0,0,0,0.55);
+  z-index: 1;
+  will-change: width, height, top, left, border-radius;
+}
+.statement-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px;
+  opacity: 0;
+  will-change: opacity, transform, width, left;
+}
 .statement-heading {
   font-size: clamp(30px, 5vw, 52px);
   font-weight: 600;
@@ -653,6 +718,13 @@ footer {
   transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
 }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 1s var(--ease), transform 1s var(--ease);
+}
+.reveal-scale.in-view { opacity: 1; transform: scale(1); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {
