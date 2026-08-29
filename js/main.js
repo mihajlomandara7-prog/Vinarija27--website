@@ -21,7 +21,7 @@ mobileMenu.querySelectorAll('a').forEach(a =>
 
 /* ---------------- Scroll reveal ---------------- */
 document.querySelectorAll(
-  '#about, #offerings .offer-card, #reviews .review-card, #location, #contact, .stat-card, .discover-inner, #vineyard-full .fullphoto'
+  '#about, #offerings .offer-card, #reviews .review-card, #location, #contact, .stat-card'
 ).forEach(el => el.classList.add('reveal'));
 document.querySelectorAll('#split').forEach(el => el.classList.add('reveal-scale'));
 
@@ -51,20 +51,19 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 });
 
 /* =====================================================
-   HERO — the estate photo stays pinned in place while the
-   page scrolls through it, smoothly fading and scaling out
-   so the dark green "discover" section reads as rising up
-   over it rather than a plain scroll-away.
+   HERO — pinned scroll image sequence
+   Layer 1 stays put while the page scrolls through it,
+   fading/zooming out as layer 2 rises in behind it.
 ===================================================== */
 (function heroPin() {
   const wrapper = document.getElementById('heroPinWrapper');
   const layer1 = document.getElementById('heroLayer1');
+  const layer2 = document.getElementById('heroLayer2');
   const text = document.getElementById('heroText');
   const cue = document.querySelector('#home .scroll-cue');
-  if (!wrapper || !layer1) return;
+  if (!wrapper || !layer1 || !layer2) return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const easeInCubic = (p) => p * p * p;
 
   function update() {
     const rect = wrapper.getBoundingClientRect();
@@ -79,9 +78,13 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
     text.style.transform = `translateY(${(-textP * 50).toFixed(1)}px) scale(${(1 - textP * 0.04).toFixed(3)})`;
     if (cue) cue.style.opacity = String(1 - Math.min(progress / 0.12, 1));
 
-    const l1p = easeInCubic(progress);
+    const l1p = Math.min(progress / 0.65, 1);
     layer1.style.opacity = String(1 - l1p);
-    layer1.style.transform = `scale(${(1 + l1p * 0.18).toFixed(3)})`;
+    layer1.style.transform = `scale(${(1 + l1p * 0.16).toFixed(3)})`;
+
+    const l2p = Math.min(Math.max((progress - 0.2) / 0.7, 0), 1);
+    layer2.style.opacity = String(l2p);
+    layer2.style.transform = `scale(${(1.12 - l2p * 0.12).toFixed(3)})`;
   }
 
   window.addEventListener('scroll', update, { passive: true });

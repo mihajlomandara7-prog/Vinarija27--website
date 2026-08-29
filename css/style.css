@@ -239,7 +239,7 @@ header#home { position: relative; }
 
 #heroPinWrapper {
   position: relative;
-  height: 200vh;
+  height: 240vh;
 }
 #heroPinSticky {
   position: sticky;
@@ -247,7 +247,7 @@ header#home { position: relative; }
   height: 100svh;
   min-height: 640px;
   overflow: hidden;
-  background: var(--forest-950);
+  background: var(--wine-950);
 }
 .hero-layer {
   position: absolute;
@@ -259,6 +259,11 @@ header#home { position: relative; }
 #heroLayer1 {
   z-index: 1;
   background-color: #2b241f; /* fallback tone until images/hero-1.jpg is added */
+}
+#heroLayer2 {
+  z-index: 0;
+  opacity: 0;
+  background-color: #101b1c; /* fallback tone until images/hero-2.jpg is added */
 }
 .hero-gradient {
   position: absolute;
@@ -371,34 +376,6 @@ header#home { position: relative; }
   letter-spacing: 0.25em;
   text-transform: uppercase;
   opacity: 0.75;
-}
-
-/* ---------- Discover (plain dark green statement) ---------- */
-#discover {
-  padding: 0;
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--forest-950);
-  text-align: center;
-}
-.discover-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 120px 24px;
-}
-
-/* ---------- Full-bleed vineyard photo ---------- */
-#vineyard-full { padding: 0; }
-.fullphoto {
-  width: 100%;
-  height: 100svh;
-  min-height: 480px;
-  background-size: cover;
-  background-position: center;
-  background-color: #1c2a1f;
 }
 
 /* ---------- Statement (dark green, shrinking photo) ---------- */
