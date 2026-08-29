@@ -23,6 +23,7 @@ mobileMenu.querySelectorAll('a').forEach(a =>
 document.querySelectorAll(
   '#about, #offerings .offer-card, #reviews .review-card, #location, #contact, .stat-card'
 ).forEach(el => el.classList.add('reveal'));
+document.querySelectorAll('#split').forEach(el => el.classList.add('reveal-scale'));
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -33,7 +34,7 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15 });
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver.observe(el));
 
 /* ---------------- 3D tilt on cards ---------------- */
 document.querySelectorAll('[data-tilt]').forEach(card => {
@@ -84,6 +85,54 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
     const l2p = Math.min(Math.max((progress - 0.2) / 0.7, 0), 1);
     layer2.style.opacity = String(l2p);
     layer2.style.transform = `scale(${(1.12 - l2p * 0.12).toFixed(3)})`;
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+/* =====================================================
+   STATEMENT — the hero's vineyard photo keeps scrolling
+   straight into this pinned section, then shrinks into a
+   corner thumbnail as the dark green panel takes over.
+===================================================== */
+(function statementPin() {
+  const wrapper = document.getElementById('statementPinWrapper');
+  const sticky = document.getElementById('statementPinSticky');
+  const box = document.getElementById('statementBox');
+  const text = document.getElementById('statementText');
+  if (!wrapper || !sticky || !box || !text) return;
+
+  const easeOutCubic = (p) => 1 - Math.pow(1 - p, 3);
+
+  function update() {
+    const rect = wrapper.getBoundingClientRect();
+    const total = Math.max(wrapper.offsetHeight - window.innerHeight, 1);
+    const raw = Math.min(Math.max(-rect.top, 0), total) / total;
+    const progress = easeOutCubic(raw);
+
+    const cw = sticky.clientWidth;
+    const ch = sticky.clientHeight;
+    const margin = Math.max(24, cw * 0.04);
+    const finalW = Math.min(260, cw * 0.4);
+    const finalH = finalW * 0.72;
+
+    const w = cw + (finalW - cw) * progress;
+    const h = ch + (finalH - ch) * progress;
+    const top = (ch - finalH - margin) * progress;
+    const left = margin * progress;
+    const radius = 22 * progress;
+
+    box.style.width = `${w.toFixed(1)}px`;
+    box.style.height = `${h.toFixed(1)}px`;
+    box.style.top = `${top.toFixed(1)}px`;
+    box.style.left = `${left.toFixed(1)}px`;
+    box.style.borderRadius = `${radius.toFixed(1)}px`;
+
+    const textP = Math.min(Math.max((raw - 0.35) / 0.55, 0), 1);
+    text.style.opacity = String(textP);
+    text.style.transform = `translateY(${((1 - textP) * 24).toFixed(1)}px)`;
   }
 
   window.addEventListener('scroll', update, { passive: true });

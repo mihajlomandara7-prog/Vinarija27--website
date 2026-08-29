@@ -1,12 +1,11 @@
-# Slike za hero sekciju
+# Slike za sajt
 
-Da bi novi "scroll-pinning" hero radio sa pravim fotografijama, dodajte ovde tačno ova dva fajla:
+Dodajte ovde fajlove sa tačno ovim imenima — kod ih automatski prepoznaje, ništa drugo ne treba menjati:
 
-- `hero-1.jpg` — prva (pinovana) fotografija: fasada Vinarije 27
-- `hero-2.jpg` — druga fotografija koja se pojavljuje pri skrolovanju: bazen/terasa
+- `hero-1.jpg` — hero, prva (pinovana) fotografija: fasada Vinarije 27 ✅ dodato
+- `hero-2.jpg` — hero, druga fotografija koja se pojavljuje pri skrolovanju: vinograd iz vazduha ✅ dodato
+- `split.jpg` — fotografija za sekciju sa razdvojenim tekstom (desna kolona, puna visina). Dok ovaj fajl ne postoji, prikazuje se `hero-1.jpg` kao privremena zamena.
 
 Preporučena širina: 1920px+, format JPG, umereno komprimovano (do ~400KB po slici) radi brzog učitavanja.
 
 Opciono: `logo.png` (providna pozadina) ako želite pravi logo umesto tekstualnog "Vinarija27" u navigaciji.
-
-Nakon što dodate fajlove sa ovim tačnim imenima, ništa drugo ne treba menjati u kodu — hero sekcija ih automatski koristi.
