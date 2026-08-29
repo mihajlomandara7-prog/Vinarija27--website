@@ -379,9 +379,9 @@ header#home { position: relative; }
 }
 
 /* ---------- Statement (dark green, shrinking photo) ---------- */
-#statement { position: relative; padding: 0; }
-#statementPinWrapper { position: relative; height: 200vh; }
-#statementPinSticky {
+#statement, #statement2 { position: relative; padding: 0; }
+#statementPinWrapper, #statement2PinWrapper { position: relative; height: 200vh; }
+#statementPinSticky, #statement2PinSticky {
   position: sticky;
   top: 0;
   height: 100svh;
