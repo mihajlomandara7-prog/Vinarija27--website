@@ -23,28 +23,38 @@
 <nav id="navbar">
   <div class="nav-inner nav-split">
     <div class="nav-links nav-left">
-      <a href="#about">O nama</a>
-      <a href="#offerings">Ponuda</a>
-      <a href="#reviews">Utisci</a>
+      <span class="nav-lang">SR <i>▾</i></span>
+      <button class="nav-icon-btn" aria-label="Pretraga">
+        <svg viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6.2" stroke="currentColor" stroke-width="1.6"/><path d="M17 17l-3.6-3.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <span class="nav-divider"></span>
+      <span class="nav-drop">E-Shop <i>▾</i></span>
+      <a href="#contact" class="nav-drop">Book A Tasting <i>▾</i></a>
     </div>
-    <a href="#home" class="logo">Vinarija<span>27</span></a>
-    <div class="nav-links nav-right">
-      <a href="#location">Lokacija</a>
-      <a href="#contact" class="nav-cta">Kontakt</a>
+    <a href="#home" class="logo-block">
+      <span class="logo">Vinarija<span>27</span></span>
+      <span class="logo-tagline">Ovsište &middot; Srbija</span>
+    </a>
+    <div class="nav-right-group">
+      <div class="nav-links nav-right">
+        <a href="#offerings">Vina</a>
+        <a href="#reviews">Utisci</a>
+        <a href="#location">Lokacija</a>
+      </div>
+      <button id="navToggle" aria-label="Meni">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <button id="navToggle" aria-label="Meni">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </nav>
 
 <div id="mobileMenu">
   <a href="#home">Početna</a>
   <a href="#about">O nama</a>
-  <a href="#offerings">Ponuda</a>
+  <a href="#offerings">Vina i ponuda</a>
   <a href="#reviews">Utisci</a>
   <a href="#location">Lokacija</a>
-  <a href="#contact">Kontakt</a>
+  <a href="#contact">Book a Tasting</a>
 </div>
 
 <header id="home">
@@ -77,7 +87,7 @@
       <div class="statement-bg"></div>
       <div class="statement-box" id="statementBox" style="background-image:url('images/hero-2.jpg')"></div>
       <div class="statement-text" id="statementText">
-        <h2 class="statement-heading">DISCOVER<br>[placeholder text]</h2>
+        <h2 class="statement-heading">DISCOVER<br>&ldquo;[placeholder tekst]&rdquo;</h2>
         <a href="#about" class="btn-rect">ABOUT US</a>
       </div>
     </div>
@@ -86,7 +96,7 @@
 
 <section id="split">
   <div class="split-copy">
-    <h2 class="split-heading">[placeholder heading]</h2>
+    <h2 class="split-heading">[Naslov — red 1]<br>[Naslov — red 2]<br>[Naslov — red 3]</h2>
   </div>
   <div class="split-photo"></div>
 </section>
