@@ -380,7 +380,7 @@ header#home { position: relative; }
 
 /* ---------- Discover band (compact, static) ---------- */
 #discover-band {
-  padding: 90px 24px;
+  padding: 66px 24px;
   background: var(--forest-950);
   text-align: center;
 }
