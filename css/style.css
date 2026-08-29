@@ -381,7 +381,7 @@ header#home { position: relative; }
 /* ---------- Discover band (compact, static) ---------- */
 #discover-band {
   padding: 66px 24px;
-  background: var(--cream);
+  background: var(--forest-950);
   text-align: center;
 }
 .discover-band-inner {
@@ -389,9 +389,6 @@ header#home { position: relative; }
   flex-direction: column;
   align-items: center;
 }
-#discover-band .statement-heading { color: var(--forest-800); }
-#discover-band .btn-rect { background: var(--forest-800); color: var(--cream); }
-#discover-band .btn-rect:hover { background: var(--forest-950); }
 
 /* ---------- Statement (dark green, shrinking photo) ---------- */
 #statement { position: relative; padding: 0; }
