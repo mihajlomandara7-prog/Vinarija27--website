@@ -435,7 +435,7 @@ header#home { position: relative; }
   font-size: clamp(30px, 5vw, 52px);
   font-weight: 600;
   line-height: 1.22;
-  color: var(--sage-100);
+  color: var(--cream);
   letter-spacing: 0.03em;
   text-wrap: balance;
 }
@@ -470,7 +470,7 @@ header#home { position: relative; }
   font-size: clamp(38px, 5.6vw, 76px);
   font-weight: 600;
   line-height: 1.14;
-  color: var(--forest-900);
+  color: var(--forest-950);
   text-wrap: balance;
 }
 .split-photo {
