@@ -93,9 +93,10 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 })();
 
 /* =====================================================
-   STATEMENT — the hero's vineyard photo keeps scrolling
-   straight into this pinned section, then shrinks into a
-   corner thumbnail as the dark green panel takes over.
+   STATEMENT — the hero's photo keeps scrolling straight
+   into this pinned section, then shrinks to a half-width
+   panel docked against the left edge as the dark green
+   panel and the heading/button take over the right half.
 ===================================================== */
 (function statementPin() {
   const wrapper = document.getElementById('statementPinWrapper');
@@ -114,21 +115,19 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 
     const cw = sticky.clientWidth;
     const ch = sticky.clientHeight;
-    const margin = Math.max(24, cw * 0.04);
-    const finalW = Math.min(260, cw * 0.4);
-    const finalH = finalW * 0.72;
+    const widthFraction = cw < 640 ? 0.4 : 0.5;
+    const finalW = cw * widthFraction;
 
     const w = cw + (finalW - cw) * progress;
-    const h = ch + (finalH - ch) * progress;
-    const top = (ch - finalH - margin) * progress;
-    const left = margin * progress;
-    const radius = 22 * progress;
 
     box.style.width = `${w.toFixed(1)}px`;
-    box.style.height = `${h.toFixed(1)}px`;
-    box.style.top = `${top.toFixed(1)}px`;
-    box.style.left = `${left.toFixed(1)}px`;
-    box.style.borderRadius = `${radius.toFixed(1)}px`;
+    box.style.height = '100%';
+    box.style.top = '0';
+    box.style.left = '0';
+    box.style.borderRadius = '0';
+
+    text.style.left = `${w.toFixed(1)}px`;
+    text.style.width = `${(cw - w).toFixed(1)}px`;
 
     const textP = Math.min(Math.max((raw - 0.35) / 0.55, 0), 1);
     text.style.opacity = String(textP);
