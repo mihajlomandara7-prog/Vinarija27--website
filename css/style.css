@@ -415,6 +415,37 @@ header#home { position: relative; }
   z-index: 1;
   will-change: width, height, top, left, border-radius;
 }
+.statement-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-color: #16302a;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.statement-slide.active { opacity: 1; }
+.statement-slider-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 10px;
+}
+.slider-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.15);
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.slider-dot:hover { transform: scale(1.15); }
+.slider-dot.active { background: var(--gold-200); border-color: var(--gold-200); }
 .statement-text {
   position: absolute;
   top: 0;

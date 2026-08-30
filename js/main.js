@@ -138,6 +138,24 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
   update();
 })();
 
+/* ---------------- Statement image slider (pool / warehouse) ---------------- */
+(function statementSlider() {
+  const box = document.getElementById('statementBox');
+  const dotsWrap = document.getElementById('statementSliderDots');
+  if (!box || !dotsWrap) return;
+
+  const slides = box.querySelectorAll('.statement-slide');
+  const dots = dotsWrap.querySelectorAll('.slider-dot');
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const index = Number(dot.dataset.index);
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+      dots.forEach((d) => d.classList.toggle('active', d === dot));
+    });
+  });
+})();
+
 /* =====================================================
    Small bottle canvas next to the About section
 ===================================================== */
