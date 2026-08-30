@@ -142,17 +142,54 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 (function statementSlider() {
   const box = document.getElementById('statementBox');
   const dotsWrap = document.getElementById('statementSliderDots');
+  const prevBtn = document.getElementById('statementPrev');
+  const nextBtn = document.getElementById('statementNext');
   if (!box || !dotsWrap) return;
 
   const slides = box.querySelectorAll('.statement-slide');
   const dots = dotsWrap.querySelectorAll('.slider-dot');
+  let current = 0;
+
+  function goTo(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
 
   dots.forEach((dot) => {
-    dot.addEventListener('click', () => {
-      const index = Number(dot.dataset.index);
-      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-      dots.forEach((d) => d.classList.toggle('active', d === dot));
-    });
+    dot.addEventListener('click', () => goTo(Number(dot.dataset.index)));
+  });
+  if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  // Drag / swipe support (mouse + touch, via Pointer Events)
+  let startX = 0;
+  let dragging = false;
+  const dragThreshold = 40;
+
+  box.addEventListener('pointerdown', (e) => {
+    if (e.target.closest('.slider-arrow, .slider-dot')) return;
+    dragging = true;
+    startX = e.clientX;
+    box.classList.add('dragging');
+    box.setPointerCapture(e.pointerId);
+  });
+  box.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    e.preventDefault();
+  });
+  box.addEventListener('pointerup', (e) => {
+    if (!dragging) return;
+    dragging = false;
+    box.classList.remove('dragging');
+    const delta = e.clientX - startX;
+    if (Math.abs(delta) > dragThreshold) {
+      goTo(delta < 0 ? current + 1 : current - 1);
+    }
+  });
+  box.addEventListener('pointercancel', () => {
+    dragging = false;
+    box.classList.remove('dragging');
   });
 })();
 

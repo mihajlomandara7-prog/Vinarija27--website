@@ -414,7 +414,10 @@ header#home { position: relative; }
   box-shadow: 30px 0 70px -25px rgba(0,0,0,0.55);
   z-index: 1;
   will-change: width, height, top, left, border-radius;
+  cursor: grab;
+  touch-action: pan-y;
 }
+.statement-box.dragging { cursor: grabbing; }
 .statement-slide {
   position: absolute;
   inset: 0;
@@ -446,6 +449,33 @@ header#home { position: relative; }
 }
 .slider-dot:hover { transform: scale(1.15); }
 .slider-dot.active { background: var(--gold-200); border-color: var(--gold-200); }
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.5);
+  background: rgba(12, 33, 24, 0.35);
+  backdrop-filter: blur(2px);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.slider-arrow svg { width: 20px; height: 20px; }
+.slider-arrow:hover {
+  background: var(--gold-200);
+  color: var(--forest-950);
+  border-color: var(--gold-200);
+}
+.slider-arrow-prev { left: 18px; }
+.slider-arrow-next { right: 18px; }
+.slider-arrow:active { transform: translateY(-50%) scale(0.92); }
 .statement-text {
   position: absolute;
   top: 0;
