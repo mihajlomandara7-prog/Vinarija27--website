@@ -520,7 +520,7 @@ header#home { position: relative; }
 /* ---------- Wine Estates (accordion panels) ---------- */
 #estates {
   background: var(--forest-950);
-  padding: 130px 0;
+  padding: 130px 0 40px;
 }
 .estates-heading {
   font-family: 'Cormorant Garamond', serif;
@@ -531,7 +531,7 @@ header#home { position: relative; }
   font-weight: 600;
   letter-spacing: 0.01em;
   line-height: 1;
-  margin: 0 0 40px;
+  margin: 0 0 16px;
   padding: 0 8px;
 }
 .estates-panels {
@@ -848,13 +848,15 @@ footer {
   .cards-grid, .reviews-grid { grid-template-columns: 1fr; }
   .about-stats { gap: 12px; }
   section { padding: 90px 0; }
+  #estates { padding-bottom: 30px; }
   .estates-panels { height: 380px; gap: 14px; padding: 0 14px; }
-  .estates-heading { margin-bottom: 40px; }
+  .estates-heading { margin-bottom: 16px; }
 }
 @media (max-width: 480px) {
   .about-stats { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; width: 100%; }
   .btn { text-align: center; }
+  #estates { padding-bottom: 24px; }
   .estates-panels { height: 300px; gap: 8px; padding: 0 8px; }
   .estate-panel-title { font-size: 18px; letter-spacing: 0.08em; }
   .estate-panel .btn-rect { padding: 12px 28px; margin-top: 14px; }
