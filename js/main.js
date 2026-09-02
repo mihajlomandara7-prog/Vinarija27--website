@@ -236,6 +236,25 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
   }
 })();
 
+/* ---------------- Wine showcase bottle slider ---------------- */
+(function showcaseSlider() {
+  const slides = document.querySelectorAll('.showcase-slide');
+  const dotsWrap = document.getElementById('showcaseDots');
+  if (!slides.length || !dotsWrap) return;
+
+  const dots = dotsWrap.querySelectorAll('.slider-dot');
+
+  function goTo(index) {
+    const current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => goTo(Number(dot.dataset.index)));
+  });
+})();
+
 /* =====================================================
    Small bottle canvas next to the About section
 ===================================================== */
