@@ -8,8 +8,13 @@ window.addEventListener('load', () => {
 
 /* ---------------- Navbar ---------------- */
 const navbar = document.getElementById('navbar');
+const heroWrapperForNav = document.getElementById('heroPinWrapper');
+function navScrolledThreshold() {
+  if (!heroWrapperForNav) return 40;
+  return Math.max(heroWrapperForNav.offsetHeight - window.innerHeight, 40);
+}
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 40);
+  navbar.classList.toggle('scrolled', window.scrollY > navScrolledThreshold());
 });
 
 const navToggle = document.getElementById('navToggle');
