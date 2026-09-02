@@ -23,7 +23,7 @@ mobileMenu.querySelectorAll('a').forEach(a =>
 document.querySelectorAll(
   '#about, #offerings .offer-card, #reviews .review-card, #location, #contact, .stat-card'
 ).forEach(el => el.classList.add('reveal'));
-document.querySelectorAll('#split').forEach(el => el.classList.add('reveal-scale'));
+document.getElementById('estatesHeading')?.classList.add('reveal-drop');
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -34,7 +34,7 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15 });
 
-document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver.observe(el));
+document.querySelectorAll('.reveal, .reveal-scale, .reveal-drop').forEach(el => revealObserver.observe(el));
 
 /* ---------------- 3D tilt on cards ---------------- */
 document.querySelectorAll('[data-tilt]').forEach(card => {
@@ -191,6 +191,49 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
     dragging = false;
     box.classList.remove('dragging');
   });
+})();
+
+/* =====================================================
+   WINE ESTATES — accordion image panels.
+   Hovering (mouse) or tapping (touch) a panel expands it
+   while the other two shrink; a click outside collapses
+   back to the equal-width default.
+===================================================== */
+(function estatesAccordion() {
+  const panels = document.querySelectorAll('.estate-panel');
+  const container = document.getElementById('estatesPanels');
+  if (!panels.length || !container) return;
+
+  function setActive(panel) {
+    panels.forEach((p) => {
+      p.classList.toggle('active', p === panel);
+      p.classList.toggle('shrink', p !== panel);
+    });
+  }
+  function reset() {
+    panels.forEach((p) => p.classList.remove('active', 'shrink'));
+  }
+
+  const hoverCapable = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (hoverCapable) {
+    panels.forEach((panel) => {
+      panel.addEventListener('pointerenter', () => setActive(panel));
+    });
+    container.addEventListener('pointerleave', reset);
+  } else {
+    panels.forEach((panel) => {
+      panel.addEventListener('click', (e) => {
+        if (!panel.classList.contains('active')) {
+          e.preventDefault();
+          setActive(panel);
+        }
+      });
+    });
+    document.addEventListener('click', (e) => {
+      if (!container.contains(e.target)) reset();
+    });
+  }
 })();
 
 /* =====================================================

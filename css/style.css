@@ -517,32 +517,78 @@ header#home { position: relative; }
 }
 .btn-rect:hover { transform: translateY(-3px); background: #fff; }
 
-/* ---------- Split (text + photo) ---------- */
-#split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
-  padding: 0;
-}
-.split-copy {
+/* ---------- Wine Estates (accordion panels) ---------- */
+#estates {
   background: var(--forest-950);
-  display: flex;
-  align-items: center;
-  padding: 90px clamp(32px, 6vw, 100px);
+  padding: 130px 0;
 }
-.split-heading {
-  font-size: clamp(38px, 5.6vw, 76px);
+.estates-heading {
+  font-family: 'Cormorant Garamond', serif;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--sage-100);
+  font-size: clamp(48px, 9vw, 132px);
   font-weight: 600;
-  line-height: 1.14;
-  color: var(--gold-200);
-  text-wrap: balance;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  margin: 0 0 70px;
+  padding: 0 24px;
 }
-.split-photo {
-  background-image: url('../images/split.jpg'), url('../images/hero-1.jpg');
+.estates-panels {
+  display: flex;
+  width: 100%;
+  height: 640px;
+  overflow: hidden;
+}
+.estate-panel {
+  position: relative;
+  flex: 1 1 0%;
+  min-width: 0;
   background-size: cover;
   background-position: center;
-  min-height: 420px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: flex 0.7s var(--ease);
 }
+.estate-panel.active { flex: 2.3 1 0%; }
+.estate-panel.shrink { flex: 0.55 1 0%; }
+.estate-panel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6, 16, 11, 0.8), rgba(6, 16, 11, 0.15) 45%, rgba(6, 16, 11, 0.5));
+}
+.estate-panel-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+}
+.estate-panel.active .estate-panel-content,
+.estate-panel:hover .estate-panel-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+.estate-panel-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.estate-panel .btn-rect {
+  background: transparent;
+  color: var(--cream);
+  border: 1.5px solid var(--cream);
+}
+.estate-panel .btn-rect:hover { background: var(--cream); color: var(--forest-950); }
 
 /* ---------- Sections ---------- */
 section { padding: 130px 0; position: relative; }
@@ -779,6 +825,13 @@ footer {
 }
 .reveal-scale.in-view { opacity: 1; transform: scale(1); }
 
+.reveal-drop {
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: opacity 1s var(--ease), transform 1s var(--ease);
+}
+.reveal-drop.in-view { opacity: 1; transform: translateY(0); }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {
   .nav-split .nav-links { display: none; }
@@ -789,12 +842,14 @@ footer {
   .cards-grid, .reviews-grid { grid-template-columns: 1fr; }
   .about-stats { gap: 12px; }
   section { padding: 90px 0; }
-  #split { grid-template-columns: 1fr; }
-  .split-photo { min-height: 320px; order: -1; }
-  .split-copy { padding: 60px 32px; }
+  .estates-panels { height: 460px; }
+  .estates-heading { margin-bottom: 40px; }
 }
 @media (max-width: 480px) {
   .about-stats { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; width: 100%; }
   .btn { text-align: center; }
+  .estates-panels { height: 380px; }
+  .estate-panel-title { font-size: 18px; letter-spacing: 0.08em; }
+  .estate-panel .btn-rect { padding: 12px 28px; margin-top: 14px; }
 }
