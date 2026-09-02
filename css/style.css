@@ -547,14 +547,22 @@ header#home { position: relative; }
   position: relative;
   flex: 1 1 0%;
   min-width: 0;
-  background-size: cover;
-  background-position: center;
   cursor: pointer;
   overflow: hidden;
   transition: flex 0.7s var(--ease);
 }
 .estate-panel.active { flex: 2.3 1 0%; }
 .estate-panel.shrink { flex: 0.55 1 0%; }
+.estate-panel-image {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 70vw;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transform: translateX(-50%);
+}
 .estate-panel-overlay {
   position: absolute;
   inset: 0;
