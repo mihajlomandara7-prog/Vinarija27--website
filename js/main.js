@@ -138,7 +138,7 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
   update();
 })();
 
-/* ---------------- Statement image slider (pool / warehouse) ---------------- */
+/* ---------------- Statement image slider (pool / garden) ---------------- */
 (function statementSlider() {
   const box = document.getElementById('statementBox');
   const dotsWrap = document.getElementById('statementSliderDots');

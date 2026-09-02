@@ -5,6 +5,9 @@ Dodajte ovde fajlove sa tačno ovim imenima — kod ih automatski prepoznaje, ni
 - `hero-1.jpg` — hero, prva (pinovana) fotografija: fasada Vinarije 27 ✅ dodato
 - `hero-2.jpg` — hero, druga fotografija koja se pojavljuje pri skrolovanju: vinograd iz vazduha ✅ dodato
 - `split.jpg` — fotografija za sekciju sa razdvojenim tekstom (desna kolona, puna visina). Dok ovaj fajl ne postoji, prikazuje se `hero-1.jpg` kao privremena zamena.
+- `pool.jpg` — prvi slajd u karuselu (statement sekcija, "DISCOVER naš svet vina"): bazen ✅ dodato
+- `garden-1.jpg` — drugi slajd u istom karuselu: dvorište/bašta sa vinogradom u pozadini
+- `garden-2.jpg` — treći slajd u istom karuselu: dvorište sa zgradama imanja u pozadini
 
 Preporučena širina: 1920px+, format JPG, umereno komprimovano (do ~400KB po slici) radi brzog učitavanja.
 
