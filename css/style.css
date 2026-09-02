@@ -520,7 +520,7 @@ header#home { position: relative; }
 /* ---------- Wine Estates (accordion panels) ---------- */
 #estates {
   background: var(--forest-950);
-  padding: 90px 0 40px;
+  padding: 60px 0 40px;
 }
 .estates-heading {
   font-family: 'Cormorant Garamond', serif;
