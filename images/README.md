@@ -10,11 +10,11 @@ Dodajte ovde fajlove sa tačno ovim imenima — kod ih automatski prepoznaje, ni
 - `estate-2.jpg` — "Wine Estates" sekcija, drugi panel ("Apartmani"): terasa/lounge iz ptičje perspektive ✅ dodato
 - `estate-3.jpg` — "Wine Estates" sekcija, treći panel ("Proslave"): flaša penušavca i čaše na stolu ✅ dodato
 - `showcase-1-left.jpg`, `showcase-1-center.jpg`, `showcase-1-right.jpg` — "Ljubav prema vinarstvu" sekcija (roze pozadina), prvi slajd karusela: tri flaše vina (leva, srednja/veća, desna). Dok ovi fajlovi ne postoje, prikazuje se jednostavan crtež flaše kao privremena zamena.
-- `showcase-2-left.jpg` — isti karusel, drugi slajd, leva flaša: Šumante
-- `showcase-2-center.jpg` — isti karusel, drugi slajd, srednja (veća) flaša: Merlot
-- `showcase-2-right.jpg` — isti karusel, drugi slajd, desna flaša: (još jedno vino po izboru)
+- `showcase-2-left.png` — isti karusel, drugi slajd, leva flaša: Šumante ✅ dodato (izrezana flaša, providna pozadina)
+- `showcase-2-center.png` — isti karusel, drugi slajd, srednja (veća) flaša: Merlot ✅ dodato (izrezana flaša, providna pozadina)
+- `showcase-2-right.png` — isti karusel, drugi slajd, desna flaša: Chardonnay ✅ dodato (izrezana flaša, providna pozadina)
 
-Za flaše je najbolje da fotografija bude izolovana flaša na jednobojnoj/providnoj pozadini (product shot), radi čistog izgleda u sekciji.
+Za flaše je najbolje da fotografija bude izolovana flaša na jednobojnoj/providnoj pozadini (product shot), radi čistog izgleda u sekciji. Slajd 2 koristi PNG format (sa providnošću) jer su flaše ručno izrezane iz poslatih fotografija.
 
 Preporučena širina: 1920px+, format JPG, umereno komprimovano (do ~400KB po slici) radi brzog učitavanja.
 
