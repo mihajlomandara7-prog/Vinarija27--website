@@ -527,13 +527,12 @@ header#home { position: relative; }
   text-transform: uppercase;
   text-align: center;
   color: var(--sage-100);
-  font-size: clamp(40px, 11vw, 160px);
+  font-size: clamp(48px, 9vw, 132px);
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   line-height: 1;
-  white-space: nowrap;
-  margin: 0 0 50px;
-  padding: 0 10px;
+  margin: 0 0 70px;
+  padding: 0 24px;
 }
 .estates-panels {
   display: flex;
@@ -557,7 +556,7 @@ header#home { position: relative; }
   position: absolute;
   top: 0;
   left: 50%;
-  width: 70vw;
+  width: 32vw;
   height: 100%;
   background-size: cover;
   background-position: center;
