@@ -551,8 +551,8 @@ header#home { position: relative; }
 .estates-heading-svg text {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
-  font-size: 175px;
-  fill: var(--sage-100);
+  font-size: 156px;
+  fill: #d6ddcc;
 }
 .estates-panels {
   display: flex;
