@@ -640,9 +640,11 @@ h2 {
 #offerings .lead, #reviews .lead, #contact .lead { margin-left: auto; margin-right: auto; }
 
 /* ---------- Wine Showcase (empty, pending new content) ---------- */
-#wine-showcase {
-  background: var(--forest-950);
-  padding: 100px 0 80px;
+#wine-showcase { padding: 0; }
+.showcase-static-image {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* About */
