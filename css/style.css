@@ -654,7 +654,8 @@ h2 {
 .bottle-row {
   display: flex;
   align-items: center;
-  min-height: 620px;
+  min-height: 310px;
+  padding: 24px 0;
   background: #fff;
   overflow: hidden;
 }
@@ -673,7 +674,7 @@ h2 {
 .bottle-img {
   display: block;
   width: 100%;
-  max-width: 620px;
+  max-width: 500px;
   height: auto;
   will-change: transform;
 }
@@ -715,12 +716,12 @@ h2 {
     flex-direction: column;
     text-align: center;
     min-height: auto;
-    padding: 56px 24px;
+    padding: 32px 24px;
   }
   .bottle-visual, .bottle-row-right .bottle-visual {
     justify-content: center;
     padding: 0;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
   }
   .bottle-img { max-width: 420px; }
   .bottle-copy { padding: 0; max-width: 480px; margin: 0 auto; }
