@@ -242,57 +242,6 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 })();
 
 /* =====================================================
-   WINE SHOWCASE — subtle scroll parallax on the flat image,
-   plus a slide-switching scaffold for the "OTKRIJ VIŠE" button
-   (a second slide can be dropped in later; goTo() safely no-ops
-   until it exists).
-===================================================== */
-(function showcaseParallax() {
-  const section = document.getElementById('wine-showcase');
-  const image = document.querySelector('#wine-showcase .showcase-static-image');
-  if (!section || !image) return;
-
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduceMotion) return;
-
-  const maxOffset = 12; // px — kept small and subtle on purpose
-
-  function update() {
-    const rect = section.getBoundingClientRect();
-    const vh = window.innerHeight;
-    if (rect.bottom < 0 || rect.top > vh) return;
-
-    const center = rect.top + rect.height / 2;
-    const progress = Math.min(Math.max((vh / 2 - center) / (vh / 2 + rect.height / 2), -1), 1);
-    image.style.transform = `translateY(${(progress * maxOffset).toFixed(1)}px)`;
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-})();
-
-(function showcaseSlides() {
-  const wrap = document.getElementById('showcaseSlides');
-  const cta = document.getElementById('showcaseCta');
-  if (!wrap) return;
-
-  const slides = wrap.querySelectorAll('.showcase-slide');
-  let current = 0;
-
-  function goTo(index) {
-    if (index < 0 || index >= slides.length || index === current) return;
-    slides[current].classList.remove('active');
-    slides[index].classList.add('active');
-    current = index;
-  }
-
-  if (cta) {
-    cta.addEventListener('click', () => goTo(current + 1));
-  }
-})();
-
-/* =====================================================
    Small bottle canvas next to the About section
 ===================================================== */
 (function aboutBottle() {

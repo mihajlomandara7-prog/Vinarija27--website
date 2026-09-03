@@ -9,8 +9,6 @@ Dodajte ovde fajlove sa tačno ovim imenima — kod ih automatski prepoznaje, ni
 - `estate-1.jpg` — "Wine Estates" sekcija, prvi panel ("Vinogradi"): društvo za stolom u vinogradu ✅ dodato
 - `estate-2.jpg` — "Wine Estates" sekcija, drugi panel ("Apartmani"): terasa/lounge iz ptičje perspektive ✅ dodato
 - `estate-3.jpg` — "Wine Estates" sekcija, treći panel ("Proslave"): flaša penušavca i čaše na stolu ✅ dodato
-- `wine-showcase-static.jpg` — sekcija odmah ispod "Wine Estates": statična slika ("Ljubav prema vinarstvu", roze pozadina sa flašama), prikazana cela preko pune širine, bez teksta/dugmadi preko nje ✅ dodato
-
 Preporučena širina: 1920px+, format JPG, umereno komprimovano (do ~400KB po slici) radi brzog učitavanja.
 
 Opciono: `logo.png` (providna pozadina) ako želite pravi logo umesto tekstualnog "Vinarija27" u navigaciji.
