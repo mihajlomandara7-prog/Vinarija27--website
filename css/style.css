@@ -517,7 +517,14 @@ header#home { position: relative; }
   letter-spacing: 0.03em;
   text-wrap: balance;
 }
-#statement .statement-heading { color: var(--forest-800); }
+#statement .statement-heading {
+  color: var(--forest-800);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(44px, 7vw, 96px);
+  line-height: 0.98;
+  letter-spacing: 0;
+}
 #statement .btn-rect { background: var(--forest-800); color: var(--cream); }
 #statement .btn-rect:hover { background: var(--forest-950); }
 .btn-rect {
