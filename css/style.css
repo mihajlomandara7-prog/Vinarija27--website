@@ -544,11 +544,11 @@ header#home { position: relative; }
   text-transform: uppercase;
   text-align: center;
   color: var(--sage-100);
-  font-size: clamp(60px, 13.5vw, 195px);
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  line-height: 1;
-  margin: 0 0 16px;
+  font-size: clamp(70px, 16.5vw, 245px);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  line-height: 0.92;
+  margin: 0 0 8px;
   padding: 0 8px;
 }
 .estates-panels {
