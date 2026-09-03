@@ -521,7 +521,7 @@ header#home { position: relative; }
   color: var(--forest-800);
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
-  font-size: clamp(44px, 7vw, 96px);
+  font-size: clamp(32px, 9vw, 170px);
   line-height: 0.98;
   letter-spacing: 0;
 }
