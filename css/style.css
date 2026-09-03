@@ -540,16 +540,19 @@ header#home { position: relative; }
   padding: 24px 0 40px;
 }
 .estates-heading {
-  font-family: 'Cormorant Garamond', serif;
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--sage-100);
-  font-size: clamp(70px, 16.5vw, 245px);
-  font-weight: 500;
-  letter-spacing: -0.005em;
-  line-height: 0.92;
   margin: 0 0 8px;
-  padding: 0 8px;
+  padding: 0;
+}
+.estates-heading-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.estates-heading-svg text {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 175px;
+  fill: var(--sage-100);
 }
 .estates-panels {
   display: flex;
