@@ -728,6 +728,77 @@ h2 {
   .bottle-desc { margin-left: auto; margin-right: auto; }
 }
 
+/* ---------- Food Experience ---------- */
+#food-experience { background: var(--cream); }
+.food-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: clamp(48px, 7.5vw, 120px);
+  color: var(--forest-950);
+  letter-spacing: 0.01em;
+  line-height: 1;
+  margin: 0 0 28px;
+}
+.food-divider {
+  border: none;
+  border-top: 1px solid var(--forest-950);
+  opacity: 0.25;
+  margin: 0 0 64px;
+}
+.food-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 0.9fr;
+  grid-template-rows: auto auto;
+  gap: 28px;
+}
+.food-photo { overflow: hidden; border-radius: 4px; }
+.food-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.food-photo-left { grid-column: 1; grid-row: 1 / 3; min-height: 560px; }
+.food-photo-right { grid-column: 3; grid-row: 1; min-height: 260px; }
+.food-photo-below { grid-column: 2; grid-row: 2; min-height: 220px; }
+.food-photo-placeholder { background: linear-gradient(135deg, var(--sage-100), var(--cream)); }
+.food-copy {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 8px;
+}
+#food-experience .section-label { color: var(--ink-soft); }
+.food-subheading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 2.6vw, 36px);
+  font-weight: 600;
+  color: var(--forest-950);
+  line-height: 1.25;
+  margin: 8px 0 18px;
+}
+#food-experience .lead { max-width: 460px; }
+#food-experience .btn-rect { background: var(--forest-800); color: var(--cream); }
+#food-experience .btn-rect:hover { background: var(--forest-950); }
+@media (max-width: 900px) {
+  .food-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .food-photo-left, .food-copy, .food-photo-right, .food-photo-below {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .food-photo-left { min-height: 320px; }
+  .food-photo-right { min-height: 240px; }
+  .food-photo-below { display: none; }
+  .food-copy { padding: 0; text-align: center; }
+  #food-experience .lead { margin-left: auto; margin-right: auto; }
+}
+
 /* About */
 #about { background: var(--cream); }
 .about-grid {
