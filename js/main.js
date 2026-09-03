@@ -242,6 +242,44 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 })();
 
 /* =====================================================
+   WINE SHOWCASE — alternating bottle rows that slide in
+   horizontally from the edge they belong to as the row
+   scrolls into view, and slide back out the same way when
+   scrolling back up (continuous, scroll-position-linked,
+   not a one-shot reveal).
+===================================================== */
+(function bottleRowsSlide() {
+  const rows = document.querySelectorAll('.bottle-row');
+  if (!rows.length) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
+
+  const items = Array.from(rows).map((row) => ({
+    img: row.querySelector('.bottle-img'),
+    row,
+    side: row.dataset.side === 'right' ? 1 : -1,
+  })).filter((item) => item.img);
+
+  function update() {
+    const vh = window.innerHeight;
+    const start = vh * 0.92;
+    const end = vh * 0.4;
+    items.forEach(({ img, row, side }) => {
+      const rect = row.getBoundingClientRect();
+      const raw = (start - rect.top) / (start - end);
+      const progress = Math.min(Math.max(raw, 0), 1);
+      const offset = (1 - progress) * 130;
+      img.style.transform = `translateX(${(side * offset).toFixed(1)}%)`;
+    });
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+/* =====================================================
    Small bottle canvas next to the About section
 ===================================================== */
 (function aboutBottle() {

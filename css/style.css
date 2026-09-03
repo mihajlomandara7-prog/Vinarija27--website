@@ -649,10 +649,82 @@ h2 {
 }
 #offerings .lead, #reviews .lead, #contact .lead { margin-left: auto; margin-right: auto; }
 
-/* ---------- Wine Showcase (empty, pending new content) ---------- */
-#wine-showcase {
-  background: var(--forest-950);
-  padding: 100px 0 80px;
+/* ---------- Wine Showcase (alternating bottle rows) ---------- */
+#wine-showcase { overflow: hidden; }
+.bottle-row {
+  display: flex;
+  align-items: center;
+  min-height: 620px;
+  background: #fff;
+  overflow: hidden;
+}
+.bottle-row-right {
+  flex-direction: row-reverse;
+  background: #f1efea;
+}
+.bottle-visual {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 20px;
+}
+.bottle-row-right .bottle-visual { justify-content: flex-end; }
+.bottle-img {
+  display: block;
+  width: 100%;
+  max-width: 620px;
+  height: auto;
+  will-change: transform;
+}
+.bottle-copy {
+  flex: 1 1 50%;
+  padding: 0 60px;
+}
+.bottle-name {
+  font-size: clamp(32px, 3.4vw, 48px);
+  font-weight: 600;
+  color: var(--forest-950);
+  letter-spacing: 0.02em;
+  margin-bottom: 18px;
+}
+.bottle-desc {
+  font-size: 15px;
+  line-height: 1.85;
+  font-weight: 300;
+  color: var(--ink-soft);
+  max-width: 420px;
+}
+.btn-outline-gold {
+  display: inline-block;
+  margin-top: 26px;
+  padding: 14px 38px;
+  background: #fff;
+  color: var(--forest-950);
+  border: 1.5px solid var(--gold-400);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.btn-outline-gold:hover { background: var(--gold-200); border-color: var(--gold-400); }
+@media (max-width: 900px) {
+  .bottle-row, .bottle-row-right {
+    flex-direction: column;
+    text-align: center;
+    min-height: auto;
+    padding: 56px 24px;
+  }
+  .bottle-visual, .bottle-row-right .bottle-visual {
+    justify-content: center;
+    padding: 0;
+    margin-bottom: 32px;
+  }
+  .bottle-img { max-width: 420px; }
+  .bottle-copy { padding: 0; max-width: 480px; margin: 0 auto; }
+  .bottle-desc { margin-left: auto; margin-right: auto; }
 }
 
 /* About */
