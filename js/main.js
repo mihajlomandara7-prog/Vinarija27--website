@@ -26,7 +26,7 @@ mobileMenu.querySelectorAll('a').forEach(a =>
 
 /* ---------------- Scroll reveal ---------------- */
 document.querySelectorAll(
-  '#about, #offerings .offer-card, #reviews .review-card, #location, #contact, .stat-card'
+  '#about, #offerings .offer-card, #location, #contact, .stat-card'
 ).forEach(el => el.classList.add('reveal'));
 document.getElementById('estatesHeading')?.classList.add('reveal-drop');
 
