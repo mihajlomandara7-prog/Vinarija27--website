@@ -767,7 +767,6 @@ h2 {
 .food-photo-left { grid-column: 1; grid-row: 1 / 3; min-height: 560px; }
 .food-photo-right { grid-column: 3; grid-row: 1; min-height: 260px; }
 .food-photo-below { grid-column: 2; grid-row: 2; min-height: 220px; }
-.food-photo-placeholder { background: linear-gradient(135deg, var(--sage-100), var(--cream)); }
 .food-copy {
   grid-column: 2;
   grid-row: 1;
