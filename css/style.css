@@ -743,7 +743,7 @@ h2 {
 }
 .food-heading-svg text {
   font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
+  font-weight: 500;
   fill: var(--forest-950);
 }
 .food-divider {
