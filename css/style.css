@@ -735,16 +735,15 @@ h2 {
   margin: 0 auto;
   padding: 0 40px;
 }
-.food-heading { margin: 0 0 28px; }
-.food-heading-svg {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.food-heading-svg text {
+.food-heading {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
-  fill: var(--forest-950);
+  text-transform: uppercase;
+  font-size: clamp(30px, calc((100vw - 80px) / 8.3), 192px);
+  color: var(--forest-950);
+  letter-spacing: 0.01em;
+  line-height: 1;
+  margin: 0 0 28px;
 }
 .food-divider {
   border: none;
