@@ -730,6 +730,11 @@ h2 {
 
 /* ---------- Food Experience ---------- */
 #food-experience { background: var(--cream); }
+.food-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
 .food-heading {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
