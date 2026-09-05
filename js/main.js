@@ -114,8 +114,9 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 
   function update() {
     const rect = wrapper.getBoundingClientRect();
-    const total = Math.max(wrapper.offsetHeight - window.innerHeight, 1);
-    const raw = Math.min(Math.max(-rect.top, 0), total) / total;
+    const leadIn = window.innerHeight * 0.1;
+    const total = Math.max(wrapper.offsetHeight - window.innerHeight, 1) + leadIn;
+    const raw = Math.min(Math.max(leadIn - rect.top, 0), total) / total;
     const progress = easeOutCubic(raw);
 
     const cw = sticky.clientWidth;
