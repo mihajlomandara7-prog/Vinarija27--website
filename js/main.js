@@ -99,25 +99,24 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 
 /* =====================================================
    STATEMENT — the hero's photo keeps scrolling straight
-   into this pinned section. As soon as the user has scrolled
-   about a third of the way into the green "DISCOVER STAR BENE"
-   band above it (well before reaching its ABOUT US button), a
-   CSS transition eases the photo into a half-width panel
-   docked against the left edge as the dark green panel and
-   the heading/button take over the right half — a slow,
-   soft ease-in-out glide, not a value scrubbed 1:1 with scroll.
+   into this pinned section. The instant the photo itself has
+   entered the viewport by just ~7% of a viewport height (the
+   photo barely peeking up from the bottom edge), a CSS
+   transition eases it into a half-width panel docked against
+   the left edge as the dark green panel and the heading/button
+   take over the right half — a slow, soft ease-in-out glide,
+   not a value scrubbed 1:1 with scroll.
 ===================================================== */
 (function statementPin() {
-  const band = document.getElementById('discover-band');
+  const wrapper = document.getElementById('statementPinWrapper');
   const box = document.getElementById('statementBox');
   const text = document.getElementById('statementText');
-  if (!band || !box || !text) return;
+  if (!wrapper || !box || !text) return;
 
   function update() {
-    const rect = band.getBoundingClientRect();
-    const enteredPastTop = Math.max(-rect.top, 0);
-    const bandProgress = enteredPastTop / band.offsetHeight;
-    const shouldSplit = bandProgress >= 0.35;
+    const rect = wrapper.getBoundingClientRect();
+    const enteredFraction = (window.innerHeight - rect.top) / window.innerHeight;
+    const shouldSplit = enteredFraction >= 0.075;
     box.classList.toggle('is-split', shouldSplit);
     text.classList.toggle('is-split', shouldSplit);
   }
