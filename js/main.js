@@ -99,44 +99,25 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 
 /* =====================================================
    STATEMENT — the hero's photo keeps scrolling straight
-   into this pinned section, then shrinks to a half-width
-   panel docked against the left edge as the dark green
-   panel and the heading/button take over the right half.
+   into this pinned section. As soon as the green band above
+   it scrolls up to roughly the middle/lower third of the
+   viewport, a CSS transition snaps the photo to a half-width
+   panel docked against the left edge as the dark green panel
+   and the heading/button take over the right half — a quick
+   triggered snap, not a value scrubbed 1:1 with scroll.
 ===================================================== */
 (function statementPin() {
   const wrapper = document.getElementById('statementPinWrapper');
-  const sticky = document.getElementById('statementPinSticky');
   const box = document.getElementById('statementBox');
   const text = document.getElementById('statementText');
-  if (!wrapper || !sticky || !box || !text) return;
-
-  const easeOutCubic = (p) => 1 - Math.pow(1 - p, 3);
+  if (!wrapper || !box || !text) return;
 
   function update() {
     const rect = wrapper.getBoundingClientRect();
-    const leadIn = window.innerHeight * 0.1;
-    const total = Math.max(wrapper.offsetHeight - window.innerHeight, 1) + leadIn;
-    const raw = Math.min(Math.max(leadIn - rect.top, 0), total) / total;
-    const progress = easeOutCubic(raw);
-
-    const cw = sticky.clientWidth;
-    const widthFraction = cw < 640 ? 0.4 : 0.5;
-    const finalW = cw * widthFraction;
-
-    const w = cw + (finalW - cw) * progress;
-
-    box.style.width = `${w.toFixed(1)}px`;
-    box.style.height = '100%';
-    box.style.top = '0';
-    box.style.left = '0';
-    box.style.borderRadius = '0';
-
-    text.style.left = `${w.toFixed(1)}px`;
-    text.style.width = `${(cw - w).toFixed(1)}px`;
-
-    const textP = Math.min(Math.max((raw - 0.35) / 0.55, 0), 1);
-    text.style.opacity = String(textP);
-    text.style.transform = `translateY(${((1 - textP) * 24).toFixed(1)}px)`;
+    const triggerAt = window.innerHeight * 0.6;
+    const shouldSplit = rect.top <= triggerAt;
+    box.classList.toggle('is-split', shouldSplit);
+    text.classList.toggle('is-split', shouldSplit);
   }
 
   window.addEventListener('scroll', update, { passive: true });

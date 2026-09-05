@@ -430,10 +430,11 @@ header#home { position: relative; }
   background-position: center;
   box-shadow: 30px 0 70px -25px rgba(0,0,0,0.55);
   z-index: 1;
-  will-change: width, height, top, left, border-radius;
+  transition: width 0.5s var(--ease);
   cursor: grab;
   touch-action: pan-y;
 }
+.statement-box.is-split { width: 50%; }
 .statement-box.dragging { cursor: grabbing; }
 .statement-slide {
   position: absolute;
@@ -496,8 +497,8 @@ header#home { position: relative; }
 .statement-text {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 100%;
+  width: 0;
   height: 100%;
   z-index: 2;
   display: flex;
@@ -507,7 +508,23 @@ header#home { position: relative; }
   text-align: center;
   padding: 0 24px;
   opacity: 0;
-  will-change: opacity, transform, width, left;
+  transform: translateY(24px);
+  pointer-events: none;
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease), left 0.5s var(--ease), width 0.5s var(--ease);
+}
+.statement-text.is-split {
+  left: 50%;
+  width: 50%;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+@media (max-width: 640px) {
+  .statement-box.is-split { width: 40%; }
+  .statement-text.is-split { left: 40%; width: 60%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .statement-box, .statement-text { transition: none; }
 }
 .statement-heading {
   font-size: clamp(30px, 5vw, 52px);
