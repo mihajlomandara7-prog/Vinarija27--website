@@ -13,7 +13,6 @@ Dodajte ovde fajlove sa tačno ovim imenima — kod ih automatski prepoznaje, ni
 - `food-terrace.jpg` — "Food Experience" sekcija, velika leva slika: sto sa tanjirima na terasi ✅ dodato
 - `food-plate.jpg` — "Food Experience" sekcija, mala kvadratna slika desno: krupni kadar hrane/mezetluka ✅ dodato
 - `food-spread.jpg` — "Food Experience" sekcija, treća slika (ispod centralne kolone): flaše vina i jela na stolu ✅ dodato
-- `reviews-bottle.jpg` — "Reviews" sekcija, velika slika desno: flaša na grožđu ✅ dodato
 
 Preporučena širina: 1920px+, format JPG, umereno komprimovano (do ~400KB po slici) radi brzog učitavanja.
 
