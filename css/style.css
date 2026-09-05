@@ -24,14 +24,14 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Inter', sans-serif;
   background: var(--cream);
   color: var(--ink);
   overflow-x: hidden;
 }
 
-h1, h2, h3, .logo, .section-label {
-  font-family: 'Bodoni Moda', serif;
+h1, h2, h3, .logo, .stat-number, .review-score {
+  font-family: 'Cormorant Garamond', serif;
 }
 
 img { max-width: 100%; display: block; }
@@ -83,7 +83,7 @@ a { text-decoration: none; color: inherit; }
 }
 #loader p {
   color: var(--gold-200);
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'Cormorant Garamond', serif;
   letter-spacing: 0.3em;
   font-size: 14px;
   text-transform: uppercase;
@@ -247,7 +247,7 @@ a.nav-drop:hover { opacity: 0.65; }
 #mobileMenu.open { transform: translateY(0); }
 #mobileMenu a {
   color: var(--sage-100);
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 30px;
 }
 
@@ -519,7 +519,7 @@ header#home { position: relative; }
 }
 #statement .statement-heading {
   color: var(--forest-800);
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
   font-size: clamp(32px, 9vw, 170px);
   line-height: 0.98;
@@ -556,7 +556,7 @@ header#home { position: relative; }
   height: auto;
 }
 .estates-heading-svg text {
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
   font-size: 156px;
   fill: #d6ddcc;
@@ -609,7 +609,7 @@ header#home { position: relative; }
   transform: translateY(0);
 }
 .estate-panel-title {
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: clamp(22px, 2.4vw, 32px);
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -736,11 +736,11 @@ h2 {
   padding: 0 40px;
 }
 .food-heading {
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
   text-transform: uppercase;
   white-space: nowrap;
-  font-size: clamp(24px, calc((100vw - 80px) / 10.33), 147px);
+  font-size: clamp(25px, calc((100vw - 80px) / 9.72), 156px);
   color: var(--forest-950);
   letter-spacing: 0.01em;
   line-height: 1;
@@ -784,7 +784,7 @@ h2 {
 }
 #food-experience .section-label { color: var(--ink-soft); }
 .food-subheading {
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: clamp(26px, 2.6vw, 36px);
   font-weight: 600;
   color: var(--forest-950);
@@ -810,51 +810,61 @@ h2 {
   #food-experience .lead { margin-left: auto; margin-right: auto; }
 }
 
-/* Reviews (compact, supporting section) */
-#about { background: var(--cream); padding: 90px 0; }
-.mini-reviews-title {
-  font-size: clamp(22px, 2.6vw, 30px);
-  margin-bottom: 40px;
+/* About */
+#about { background: var(--cream); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 70px;
+  align-items: center;
 }
-.mini-reviews-grid {
+.about-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 920px;
-  margin: 0 auto;
+  gap: 18px;
+  margin-top: 44px;
 }
-.mini-review-card {
+.stat-card {
   background: #fff;
   border: 1px solid rgba(107, 22, 38, 0.1);
   border-radius: var(--radius);
-  padding: 24px 22px;
+  padding: 26px 14px;
   text-align: center;
   box-shadow: 0 20px 40px -30px rgba(74, 15, 28, 0.4);
   transform-style: preserve-3d;
   transition: transform 0.15s ease, box-shadow 0.3s ease;
 }
-.mini-review-card:hover { box-shadow: 0 26px 50px -25px rgba(74, 15, 28, 0.5); }
-.mini-review-stars {
+.stat-card:hover { box-shadow: 0 26px 50px -25px rgba(74, 15, 28, 0.5); }
+.stat-number {
+  display: block;
+  font-size: 40px;
+  font-weight: 700;
   color: var(--wine-600);
-  font-size: 14px;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
+  line-height: 1;
 }
-.mini-review-name {
-  font-family: 'Bodoni Moda', serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: var(--wine-600);
-  margin-bottom: 8px;
-}
-.mini-review-text {
-  font-size: 15px;
-  line-height: 1.5;
+.stat-label {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
   color: var(--ink-soft);
-  font-style: italic;
+  text-transform: uppercase;
 }
+
+.about-visual { display: flex; justify-content: center; }
+.bottle-frame {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 3/4;
+  border-radius: 28px;
+  background: linear-gradient(160deg, var(--wine-900), var(--wine-950) 60%, #0d0203);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 40px 80px -30px rgba(43, 10, 18, 0.55);
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease;
+}
+#bottle-canvas { width: 100%; height: 100%; display: block; }
 
 /* Offerings */
 #offerings { background: linear-gradient(180deg, #fff, var(--cream)); }
@@ -881,7 +891,7 @@ h2 {
   margin-bottom: 22px;
 }
 .offer-card h3 {
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 26px;
   color: var(--wine-900);
   margin-bottom: 12px;
@@ -970,16 +980,17 @@ footer {
   .nav-split .nav-links { display: none; }
 }
 @media (max-width: 900px) {
-  .location-grid { grid-template-columns: 1fr; }
+  .about-grid, .location-grid { grid-template-columns: 1fr; }
+  .about-visual { order: -1; }
   .cards-grid { grid-template-columns: 1fr; }
-  .mini-reviews-grid { gap: 12px; }
+  .about-stats { gap: 12px; }
   section { padding: 90px 0; }
   #estates { padding: 16px 0 30px; }
   .estates-panels { height: 380px; gap: 14px; padding: 0 14px; }
   .estates-heading { margin-bottom: 16px; }
 }
 @media (max-width: 480px) {
-  .mini-reviews-grid { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; width: 100%; }
   .btn { text-align: center; }
   #estates { padding: 12px 0 24px; }

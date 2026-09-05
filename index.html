@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍷</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -208,24 +208,29 @@
 <main>
 
   <section id="about">
-    <div class="container">
-      <p class="section-label center">Reviews</p>
-      <h2 class="center mini-reviews-title">What Our Guests Say</h2>
-      <div class="mini-reviews-grid">
-        <div class="mini-review-card" data-tilt>
-          <div class="mini-review-stars" aria-hidden="true">★★★★★</div>
-          <p class="mini-review-name">Marko S.</p>
-          <p class="mini-review-text">"Beautiful place, top-quality wine."</p>
+    <div class="container about-grid">
+      <div class="about-copy">
+        <p class="section-label">O vinariji</p>
+        <h2>Priča ispisana u vinogradu</h2>
+        <p class="lead">Vinarija 27 je porodična srpska vinarija koja neguje vinogradarsku tradiciju i nudi vrhunska vina, udobne apartmane za odmor i prelep prostor za privatne proslave — sve na jednom mestu, okruženo vinogradima.</p>
+        <div class="about-stats">
+          <div class="stat-card" data-tilt>
+            <span class="stat-number">5.0</span>
+            <span class="stat-label">prosečna ocena</span>
+          </div>
+          <div class="stat-card" data-tilt>
+            <span class="stat-number">22</span>
+            <span class="stat-label">Google recenzija</span>
+          </div>
+          <div class="stat-card" data-tilt>
+            <span class="stat-number">27</span>
+            <span class="stat-label">godina posvećenosti</span>
+          </div>
         </div>
-        <div class="mini-review-card" data-tilt>
-          <div class="mini-review-stars" aria-hidden="true">★★★★★</div>
-          <p class="mini-review-name">Jelena N.</p>
-          <p class="mini-review-text">"Peaceful stay surrounded by vineyards. We're coming back."</p>
-        </div>
-        <div class="mini-review-card" data-tilt>
-          <div class="mini-review-stars" aria-hidden="true">★★★★☆</div>
-          <p class="mini-review-name">Nikola T.</p>
-          <p class="mini-review-text">"Shumante Rosé blew us away. Highly recommend."</p>
+      </div>
+      <div class="about-visual">
+        <div class="bottle-frame" data-tilt>
+          <canvas id="bottle-canvas"></canvas>
         </div>
       </div>
     </div>
@@ -328,6 +333,7 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
