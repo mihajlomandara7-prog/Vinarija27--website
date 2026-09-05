@@ -647,7 +647,7 @@ h2 {
   font-weight: 300;
   max-width: 620px;
 }
-#offerings .lead, #reviews .lead, #contact .lead { margin-left: auto; margin-right: auto; }
+#offerings .lead, #contact .lead { margin-left: auto; margin-right: auto; }
 
 /* ---------- Wine Showcase (alternating bottle rows) ---------- */
 #wine-showcase { overflow: hidden; padding: 0; }
