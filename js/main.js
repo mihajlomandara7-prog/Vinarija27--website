@@ -41,6 +41,45 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal, .reveal-scale, .reveal-drop').forEach(el => revealObserver.observe(el));
 
+/* ---------------- Bottom-to-top heading/CTA reveal ---------------- */
+document.querySelectorAll(
+  '#discover-band .statement-heading, ' +
+  '#offerings .section-label, #offerings h2, ' +
+  '#food-experience .food-heading, #food-experience .section-label, #food-experience .food-subheading, ' +
+  '#location .section-label, #location h2, ' +
+  '#contact .section-label, #contact h2'
+).forEach(el => el.classList.add('reveal-up'));
+
+document.querySelectorAll(
+  '#discover-band .btn-rect, #food-experience .food-copy .btn-rect, #contact .contact-actions'
+).forEach(el => el.classList.add('reveal-up', 'reveal-up-delay'));
+
+// Not IntersectionObserver: clip-path on the observed element itself
+// makes Chromium report intersectionRatio stuck at 0, so visibility is
+// computed manually here instead.
+let revealUpPending = Array.from(document.querySelectorAll('.reveal-up'));
+function checkRevealUp() {
+  if (!revealUpPending.length) return;
+  revealUpPending = revealUpPending.filter((el) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.height <= 0) return true;
+    const visible = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+    const ratio = Math.max(visible, 0) / rect.height;
+    if (ratio >= 0.25) {
+      el.classList.add('in-view');
+      return false;
+    }
+    return true;
+  });
+  if (!revealUpPending.length) {
+    window.removeEventListener('scroll', checkRevealUp);
+    window.removeEventListener('resize', checkRevealUp);
+  }
+}
+window.addEventListener('scroll', checkRevealUp, { passive: true });
+window.addEventListener('resize', checkRevealUp);
+checkRevealUp();
+
 /* ---------------- 3D tilt on cards ---------------- */
 document.querySelectorAll('[data-tilt]').forEach(card => {
   const strength = 10;

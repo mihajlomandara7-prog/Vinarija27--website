@@ -992,6 +992,19 @@ footer {
 }
 .reveal-drop.in-view { opacity: 1; transform: translateY(0); }
 
+/* Bottom-to-top clip reveal: content grows upward from a fixed
+   bottom edge, as if emerging out of the ground, rather than a
+   plain fade/translate. */
+.reveal-up {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 0.75s var(--ease);
+}
+.reveal-up.in-view { clip-path: inset(0% 0 0 0); }
+.reveal-up-delay { transition-delay: 0.12s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up { transition: none; clip-path: inset(0 0 0 0); }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {
   .nav-split .nav-links { display: none; }
