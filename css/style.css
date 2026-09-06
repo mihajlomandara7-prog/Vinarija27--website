@@ -672,12 +672,12 @@ h2 {
   align-items: center;
   min-height: 310px;
   padding: 24px 0;
-  background: #fff;
+  background: #f1efea;
   overflow: hidden;
 }
 .bottle-row-right {
   flex-direction: row-reverse;
-  background: #f1efea;
+  background: #fff;
 }
 .bottle-visual {
   flex: 1 1 50%;
