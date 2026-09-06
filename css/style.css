@@ -407,12 +407,11 @@ header#home { position: relative; }
   align-items: center;
 }
 
-/* ---------- Statement (dark green, shrinking photo) ---------- */
+/* ---------- Statement (dark green, split photo/text) ---------- */
 #statement { position: relative; padding: 0; }
-#statementPinWrapper { position: relative; height: 130vh; }
+#statementPinWrapper { position: relative; }
 #statementPinSticky {
-  position: sticky;
-  top: 0;
+  position: relative;
   height: 100svh;
   min-height: 560px;
   overflow: hidden;
@@ -423,18 +422,16 @@ header#home { position: relative; }
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 50%;
   height: 100%;
   border-radius: 0;
   background-size: cover;
   background-position: center;
   box-shadow: 30px 0 70px -25px rgba(0,0,0,0.55);
   z-index: 1;
-  transition: width 1s cubic-bezier(0.65, 0, 0.35, 1);
   cursor: grab;
   touch-action: pan-y;
 }
-.statement-box.is-split { width: 50%; }
 .statement-box.dragging { cursor: grabbing; }
 .statement-slide {
   position: absolute;
@@ -497,8 +494,8 @@ header#home { position: relative; }
 .statement-text {
   position: absolute;
   top: 0;
-  left: 100%;
-  width: 0;
+  left: 50%;
+  width: 50%;
   height: 100%;
   z-index: 2;
   display: flex;
@@ -507,24 +504,10 @@ header#home { position: relative; }
   justify-content: center;
   text-align: center;
   padding: 0 24px;
-  opacity: 0;
-  transform: translateY(24px);
-  pointer-events: none;
-  transition: opacity 1s cubic-bezier(0.65, 0, 0.35, 1), transform 1s cubic-bezier(0.65, 0, 0.35, 1), left 1s cubic-bezier(0.65, 0, 0.35, 1), width 1s cubic-bezier(0.65, 0, 0.35, 1);
-}
-.statement-text.is-split {
-  left: 50%;
-  width: 50%;
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
 }
 @media (max-width: 640px) {
-  .statement-box.is-split { width: 40%; }
-  .statement-text.is-split { left: 40%; width: 60%; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .statement-box, .statement-text { transition: none; }
+  .statement-box { width: 40%; }
+  .statement-text { left: 40%; width: 60%; }
 }
 .statement-heading {
   font-size: clamp(30px, 5vw, 52px);
@@ -984,16 +967,6 @@ footer {
   transition: opacity 1s var(--ease), transform 1s var(--ease);
 }
 .reveal-scale.in-view { opacity: 1; transform: scale(1); }
-
-.reveal-drop {
-  opacity: 0;
-  transform: translateY(-45px);
-  transition: opacity 0.8s cubic-bezier(0.33, 1, 0.68, 1), transform 0.8s cubic-bezier(0.33, 1, 0.68, 1);
-}
-.reveal-drop.in-view { opacity: 1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) {
-  .reveal-drop { transition: none; }
-}
 
 /* Bottom-to-top clip reveal: content grows upward from a fixed
    bottom edge, as if emerging out of the ground, rather than a

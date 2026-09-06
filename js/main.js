@@ -40,21 +40,6 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver.observe(el));
 
-/* ---------------- Drop-from-above reveal for big section titles ---------------- */
-document.getElementById('estatesHeading')?.classList.add('reveal-drop');
-document.querySelector('#food-experience .food-heading')?.classList.add('reveal-drop');
-
-const revealDropObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in-view');
-      revealDropObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.25 });
-
-document.querySelectorAll('.reveal-drop').forEach(el => revealDropObserver.observe(el));
-
 /* ---------------- Bottom-to-top heading/CTA reveal ---------------- */
 document.querySelectorAll(
   '#discover-band .statement-heading, ' +
@@ -146,35 +131,6 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
     const l2p = Math.min(Math.max((progress - 0.2) / 0.7, 0), 1);
     layer2.style.opacity = String(l2p);
     layer2.style.transform = `scale(${(1.12 - l2p * 0.12).toFixed(3)})`;
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-})();
-
-/* =====================================================
-   STATEMENT — the hero's photo keeps scrolling straight
-   into this pinned section. The instant the photo itself has
-   entered the viewport by just ~7% of a viewport height (the
-   photo barely peeking up from the bottom edge), a CSS
-   transition eases it into a half-width panel docked against
-   the left edge as the dark green panel and the heading/button
-   take over the right half — a slow, soft ease-in-out glide,
-   not a value scrubbed 1:1 with scroll.
-===================================================== */
-(function statementPin() {
-  const wrapper = document.getElementById('statementPinWrapper');
-  const box = document.getElementById('statementBox');
-  const text = document.getElementById('statementText');
-  if (!wrapper || !box || !text) return;
-
-  function update() {
-    const rect = wrapper.getBoundingClientRect();
-    const enteredFraction = (window.innerHeight - rect.top) / window.innerHeight;
-    const shouldSplit = enteredFraction >= 0.075;
-    box.classList.toggle('is-split', shouldSplit);
-    text.classList.toggle('is-split', shouldSplit);
   }
 
   window.addEventListener('scroll', update, { passive: true });
