@@ -63,6 +63,7 @@ document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver
 /* ---------------- Bottom-to-top heading/CTA reveal ---------------- */
 document.querySelectorAll(
   '#discover-band .statement-heading, ' +
+  '#estatesHeading, ' +
   '#offerings .section-label, #offerings h2, ' +
   '#food-experience .section-label, #food-experience .food-subheading, ' +
   '#location .section-label, #location h2, ' +
