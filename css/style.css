@@ -987,10 +987,13 @@ footer {
 
 .reveal-drop {
   opacity: 0;
-  transform: translateY(-50px);
-  transition: opacity 1s var(--ease), transform 1s var(--ease);
+  transform: translateY(-45px);
+  transition: opacity 0.8s cubic-bezier(0.33, 1, 0.68, 1), transform 0.8s cubic-bezier(0.33, 1, 0.68, 1);
 }
 .reveal-drop.in-view { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal-drop { transition: none; }
+}
 
 /* Bottom-to-top clip reveal: content grows upward from a fixed
    bottom edge, as if emerging out of the ground, rather than a

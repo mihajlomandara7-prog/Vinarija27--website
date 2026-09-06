@@ -28,7 +28,6 @@ mobileMenu.querySelectorAll('a').forEach(a =>
 document.querySelectorAll(
   '#about, #offerings .offer-card, #location, #contact, .stat-card'
 ).forEach(el => el.classList.add('reveal'));
-document.getElementById('estatesHeading')?.classList.add('reveal-drop');
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -39,13 +38,28 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15 });
 
-document.querySelectorAll('.reveal, .reveal-scale, .reveal-drop').forEach(el => revealObserver.observe(el));
+document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver.observe(el));
+
+/* ---------------- Drop-from-above reveal for big section titles ---------------- */
+document.getElementById('estatesHeading')?.classList.add('reveal-drop');
+document.querySelector('#food-experience .food-heading')?.classList.add('reveal-drop');
+
+const revealDropObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      revealDropObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.25 });
+
+document.querySelectorAll('.reveal-drop').forEach(el => revealDropObserver.observe(el));
 
 /* ---------------- Bottom-to-top heading/CTA reveal ---------------- */
 document.querySelectorAll(
   '#discover-band .statement-heading, ' +
   '#offerings .section-label, #offerings h2, ' +
-  '#food-experience .food-heading, #food-experience .section-label, #food-experience .food-subheading, ' +
+  '#food-experience .section-label, #food-experience .food-subheading, ' +
   '#location .section-label, #location h2, ' +
   '#contact .section-label, #contact h2'
 ).forEach(el => el.classList.add('reveal-up'));
