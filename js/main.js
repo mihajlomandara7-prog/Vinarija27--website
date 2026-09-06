@@ -59,7 +59,7 @@ document.querySelectorAll(
   '#discover-band .statement-heading, ' +
   '#estatesHeading, ' +
   '#offerings .section-label, #offerings h2, ' +
-  '#food-experience .section-label, #food-experience .food-subheading, ' +
+  '#food-experience .food-heading, #food-experience .section-label, #food-experience .food-subheading, ' +
   '#location .section-label, #location h2, ' +
   '#contact .section-label, #contact h2'
 ).forEach(el => el.classList.add('reveal-up'));
