@@ -9,7 +9,7 @@ Dodajte ovde fajlove sa tačno ovim imenima — kod ih automatski prepoznaje, ni
 - `estate-1.jpg` — "Wine Estates" sekcija, prvi panel ("Vinogradi"): društvo za stolom u vinogradu ✅ dodato
 - `estate-2.jpg` — "Wine Estates" sekcija, drugi panel ("Apartmani"): terasa/lounge iz ptičje perspektive ✅ dodato
 - `estate-3.jpg` — "Wine Estates" sekcija, treći panel ("Proslave"): flaša penušavca i čaše na stolu ✅ dodato
-- `bottle-merlot.png`, `bottle-chardonnay.png`, `bottle-shumante.png` — sekcija sa naizmeničnim redovima flaša (odmah ispod "Wine Estates"): flaše izdvojene na providnoj pozadini, rotirane da leže vodoravno ✅ dodato
+- `bottle-merlot.png`, `bottle-chardonnay.png`, `bottle-shumante.png`, `bottle-shumante-rose.png` — sekcija sa naizmeničnim redovima flaša (odmah ispod "Wine Estates"): flaše izdvojene na providnoj pozadini, rotirane da leže vodoravno ✅ dodato
 - `food-terrace.jpg` — "Food Experience" sekcija, velika leva slika: sto sa tanjirima na terasi ✅ dodato
 - `food-plate.jpg` — "Food Experience" sekcija, mala kvadratna slika desno: krupni kadar hrane/mezetluka ✅ dodato
 - `food-spread.jpg` — "Food Experience" sekcija, treća slika (ispod centralne kolone): flaše vina i jela na stolu ✅ dodato
