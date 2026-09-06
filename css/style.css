@@ -997,7 +997,7 @@ footer {
    plain fade/translate. */
 .reveal-up {
   clip-path: inset(100% 0 0 0);
-  transition: clip-path 0.75s var(--ease);
+  transition: clip-path 0.75s cubic-bezier(0.33, 1, 0.68, 1);
 }
 .reveal-up.in-view { clip-path: inset(0% 0 0 0); }
 .reveal-up-delay { transition-delay: 0.12s; }

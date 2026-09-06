@@ -56,16 +56,19 @@ document.querySelectorAll(
 
 // Not IntersectionObserver: clip-path on the observed element itself
 // makes Chromium report intersectionRatio stuck at 0, so visibility is
-// computed manually here instead.
+// computed manually here instead. A short section (like the discover
+// band) can be smaller than the viewport, so a visibility-ratio
+// threshold (e.g. 25%) is satisfied within the first few px of the
+// section peeking in — firing (and finishing) the reveal well before
+// the user has actually scrolled to it. Trigger on position instead:
+// once the element's top has scrolled up into the lower half of the
+// viewport, i.e. the user has genuinely arrived at it.
 let revealUpPending = Array.from(document.querySelectorAll('.reveal-up'));
 function checkRevealUp() {
   if (!revealUpPending.length) return;
   revealUpPending = revealUpPending.filter((el) => {
     const rect = el.getBoundingClientRect();
-    if (rect.height <= 0) return true;
-    const visible = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
-    const ratio = Math.max(visible, 0) / rect.height;
-    if (ratio >= 0.25) {
+    if (rect.top <= window.innerHeight * 0.6) {
       el.classList.add('in-view');
       return false;
     }
