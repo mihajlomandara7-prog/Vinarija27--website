@@ -40,6 +40,26 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver.observe(el));
 
+/* ---------------- Statement photo/text split (one-shot, no pin) ---------------- */
+(function statementSplit() {
+  const wrapper = document.getElementById('statementPinWrapper');
+  const box = document.getElementById('statementBox');
+  const text = document.getElementById('statementText');
+  if (!wrapper || !box || !text) return;
+
+  const splitObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        box.classList.add('is-split');
+        text.classList.add('is-split');
+        splitObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  splitObserver.observe(wrapper);
+})();
+
 /* ---------------- Bottom-to-top heading/CTA reveal ---------------- */
 document.querySelectorAll(
   '#discover-band .statement-heading, ' +
