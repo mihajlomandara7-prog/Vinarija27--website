@@ -218,32 +218,233 @@
 <main>
 
   <section id="about">
-    <div class="container about-grid">
-      <div class="about-copy">
-        <p class="section-label">O vinariji</p>
-        <h2>Priča ispisana u vinogradu</h2>
-        <p class="lead">Vinarija 27 je porodična srpska vinarija koja neguje vinogradarsku tradiciju i nudi vrhunska vina, udobne apartmane za odmor i prelep prostor za privatne proslave — sve na jednom mestu, okruženo vinogradima.</p>
-        <div class="about-stats">
-          <div class="stat-card" data-tilt>
-            <span class="stat-number">5.0</span>
-            <span class="stat-label">prosečna ocena</span>
-          </div>
-          <div class="stat-card" data-tilt>
-            <span class="stat-number">22</span>
-            <span class="stat-label">Google recenzija</span>
-          </div>
-          <div class="stat-card" data-tilt>
-            <span class="stat-number">27</span>
-            <span class="stat-label">godina posvećenosti</span>
-          </div>
-        </div>
-      </div>
-      <div class="about-visual">
-        <div class="bottle-frame" data-tilt>
-          <canvas id="bottle-canvas"></canvas>
-        </div>
-      </div>
+    <div class="container testimonials-head">
+      <p class="section-label center">Recenzije</p>
+      <h2 class="center testimonials-title">Testimonials</h2>
+      <p class="testimonials-sub center">Preko 50+ recenzija na Google-u od naših gostiju</p>
+      <p class="testimonials-rating center">4.8 / 5.0 <span class="stars" aria-hidden="true">★★★★★</span></p>
     </div>
+    <div class="testimonials-carousel">
+      <button class="testimonials-arrow testimonials-arrow-prev" id="testimonialsPrev" aria-label="Prethodna recenzija">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="testimonials-track" id="testimonialsTrack">
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--forest-800)">A</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Andrey Kukhtin</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+              <p class="testimonial-text">"Visited the Winery with my wife for an event and had a wonderful experience. Stunning views over the valley and vineyards, with modern architecture adding a stylish touch. Andrea's sparkling wine Shumante made it truly special. A memorable place we would gladly return to."</p>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--wine-600)">S</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Svetlana Vrzic Petronijevic</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+              <p class="testimonial-text">"Magic 👌🍷😍"</p>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--gold-400); color:var(--forest-950)">T</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Tomislav Petkovic</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+              <p class="testimonial-text">"Vamooos B!"</p>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--forest-950)">P</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Payton Moormier</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+              <p class="testimonial-text">"We attended a corporate gathering at the winery and had a truly wonderful afternoon. The atmosphere was elegant yet relaxed, with beautiful views, great ambiance, and an incredible selection of wines. Everything was thoughtfully organized."</p>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--wine-800)">P</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Pedja Vuckovic</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+              <p class="testimonial-text">"I don't know if the wines are good, but the ambiance and vineyards deserve to be visited!"</p>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--forest-900)">M</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Mića</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+              <p class="testimonial-text">"Beautiful ambiance in the heart of Šumadija, every wine speaks for itself! A must visit!!"</p>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--forest-800)">I</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Iva Brankovic</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+              <p class="testimonial-text">"Beautiful, peaceful and luxuriously decorated place with soul. Highly recommended!"</p>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--wine-600)">B</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">B. M.</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+              <p class="testimonial-text">"A place with a magical view and warmth. Good wines. I would recommend Šumante to everyone."</p>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--gold-400); color:var(--forest-950)">D</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Dušan Savković</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+              <p class="testimonial-text">"Fantastic place. Not just an ordinary winery, but a place for complete, true enjoyment."</p>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--forest-950)">B</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Branislav Veljkovic</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--wine-800)">M</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Marko Isailovic</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+              <p class="testimonial-text">"Worth seeing and visiting too."</p>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--forest-900)">A</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Anne Rodionova</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--forest-800)">L</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Ljubomir</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--wine-600)">I</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Ivan Stojanovic</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+              <p class="testimonial-text">"Beautiful place."</p>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--gold-400); color:var(--forest-950)">M</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Milan B.</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+              <p class="testimonial-text">"Price per person RSD 4,500–5,000."</p>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--forest-950)">N</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Nemanja Knezevic</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--wine-800)">D</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Dragana Popovic</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--forest-900)">S</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Stefan Pesic</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--forest-800)">М</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Марко Минић</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--wine-600)">A</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Aleksandar</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--gold-400); color:var(--forest-950)">N</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Novak Kostic</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--forest-950)">M</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Marko Milutinovic</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+            </blockquote>
+      </div>
+      <button class="testimonials-arrow testimonials-arrow-next" id="testimonialsNext" aria-label="Sledeća recenzija">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <p class="testimonials-footer center"><a href="https://www.google.com/maps/search/?api=1&query=Vinarija+27+Ovsi%C5%A1te+bb+34000" target="_blank" rel="noopener">Pročitaj više na Google-u →</a></p>
   </section>
 
   <section id="offerings">
@@ -343,7 +544,6 @@
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
