@@ -31,16 +31,13 @@ document.querySelectorAll(
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in-view');
-      revealObserver.unobserve(entry.target);
-    }
+    entry.target.classList.toggle('in-view', entry.isIntersecting);
   });
 }, { threshold: 0.15 });
 
 document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver.observe(el));
 
-/* ---------------- Statement photo/text split (one-shot, no pin) ---------------- */
+/* ---------------- Statement photo/text split (repeatable, no pin) ---------------- */
 (function statementSplit() {
   const wrapper = document.getElementById('statementPinWrapper');
   const box = document.getElementById('statementBox');
@@ -49,11 +46,8 @@ document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver
 
   const splitObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        box.classList.add('is-split');
-        text.classList.add('is-split');
-        splitObserver.unobserve(entry.target);
-      }
+      box.classList.toggle('is-split', entry.isIntersecting);
+      text.classList.toggle('is-split', entry.isIntersecting);
     });
   }, { threshold: 0.3 });
 
@@ -82,22 +76,14 @@ document.querySelectorAll(
 // section peeking in — firing (and finishing) the reveal well before
 // the user has actually scrolled to it. Trigger on position instead:
 // once the element's top has scrolled up into the lower half of the
-// viewport, i.e. the user has genuinely arrived at it.
-let revealUpPending = Array.from(document.querySelectorAll('.reveal-up'));
+// viewport, i.e. the user has genuinely arrived at it. Toggled (not
+// one-shot) so scrolling back to the top and back down replays it.
+const revealUpEls = document.querySelectorAll('.reveal-up');
 function checkRevealUp() {
-  if (!revealUpPending.length) return;
-  revealUpPending = revealUpPending.filter((el) => {
+  revealUpEls.forEach((el) => {
     const rect = el.getBoundingClientRect();
-    if (rect.top <= window.innerHeight * 0.6) {
-      el.classList.add('in-view');
-      return false;
-    }
-    return true;
+    el.classList.toggle('in-view', rect.top <= window.innerHeight * 0.6);
   });
-  if (!revealUpPending.length) {
-    window.removeEventListener('scroll', checkRevealUp);
-    window.removeEventListener('resize', checkRevealUp);
-  }
 }
 window.addEventListener('scroll', checkRevealUp, { passive: true });
 window.addEventListener('resize', checkRevealUp);
