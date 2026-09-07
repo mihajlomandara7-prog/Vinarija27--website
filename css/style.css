@@ -663,8 +663,6 @@ h2 {
   font-weight: 300;
   max-width: 620px;
 }
-#contact .lead { margin-left: auto; margin-right: auto; }
-
 /* ---------- Wine Showcase (alternating bottle rows) ---------- */
 #wine-showcase { overflow: hidden; padding: 0; }
 .bottle-row {
@@ -981,20 +979,17 @@ h2 {
 }
 .location-map iframe { width: 100%; height: 100%; border: 0; filter: saturate(0.85) contrast(1.05); }
 
-/* Contact */
-#contact {
+/* Contact (now a full-bleed sign-image banner) */
+#contact.sign-banner {
+  padding: 0;
   background: var(--forest-900);
-  color: var(--gold-200);
-  text-align: center;
 }
-#contact .section-label { color: var(--gold-400); }
-#contact h2 { color: var(--cream); }
-.contact-actions {
-  margin-top: 36px;
-  display: flex;
-  gap: 18px;
-  justify-content: center;
-  flex-wrap: wrap;
+.sign-banner-image {
+  width: 100%;
+  height: 70vh;
+  min-height: 420px;
+  background-size: cover;
+  background-position: center;
 }
 
 /* Footer */
