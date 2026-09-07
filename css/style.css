@@ -828,8 +828,34 @@ h2 {
 
 /* Testimonials */
 #about { background: var(--cream); }
-.testimonials-head { max-width: 640px; margin: 0 auto 56px; }
-.testimonials-title { margin-bottom: 6px; }
+.testimonials-layout {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 56px;
+}
+.testimonials-left { flex: 0 0 300px; padding-top: 10px; }
+.reviews-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(40px, 4vw, 60px);
+  line-height: 1.05;
+  color: var(--forest-800);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-bottom: 20px;
+}
+.testimonials-left .testimonials-sub {
+  font-size: 16px;
+  color: var(--ink-soft);
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+.testimonials-left .testimonials-rating { margin-bottom: 30px; }
+.reviews-viewall { margin-top: 0; background: var(--forest-800); color: var(--cream); }
+.reviews-viewall:hover { background: var(--forest-950); }
 .testimonials-sub {
   font-size: 17px;
   color: var(--ink-soft);
@@ -849,9 +875,8 @@ h2 {
   display: flex;
   align-items: center;
   gap: 14px;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 24px;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 .testimonials-track {
   display: flex;
@@ -922,19 +947,12 @@ h2 {
 .testimonials-arrow svg { width: 18px; height: 18px; }
 .testimonials-arrow:hover { background: var(--wine-600); color: #fff; border-color: var(--wine-600); }
 
-.testimonials-footer { margin-top: 34px; }
-.testimonials-footer a {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--wine-600);
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 2px;
+@media (max-width: 900px) {
+  .testimonials-layout { flex-direction: column; gap: 32px; padding: 0 24px; }
+  .testimonials-left { flex-basis: auto; width: 100%; padding-top: 0; }
 }
-.testimonials-footer a:hover { color: var(--forest-950); }
-
 @media (max-width: 640px) {
+  .testimonials-layout { padding: 0 8px; }
   .testimonials-carousel { padding: 0 8px; gap: 8px; }
   .testimonials-arrow { display: none; }
   .testimonial-card { flex-basis: 260px; }

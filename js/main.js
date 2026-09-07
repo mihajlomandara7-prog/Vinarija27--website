@@ -60,12 +60,13 @@ document.querySelectorAll(
   '#estatesHeading, ' +
   '#offerings .section-label, #offerings h2, ' +
   '#food-experience .food-heading, #food-experience .section-label, #food-experience .food-subheading, ' +
+  '#about .reviews-heading, #about .testimonials-sub, #about .testimonials-rating, ' +
   '#location .section-label, #location h2, ' +
   '#contact .section-label, #contact h2'
 ).forEach(el => el.classList.add('reveal-up'));
 
 document.querySelectorAll(
-  '#discover-band .btn-rect, #food-experience .food-copy .btn-rect, #contact .contact-actions'
+  '#discover-band .btn-rect, #food-experience .food-copy .btn-rect, #about .reviews-viewall, #contact .contact-actions'
 ).forEach(el => el.classList.add('reveal-up', 'reveal-up-delay'));
 
 // Not IntersectionObserver: clip-path on the observed element itself
