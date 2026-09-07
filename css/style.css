@@ -1016,7 +1016,7 @@ footer {
   align-items: center;
   gap: 14px;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 17px;
+  font-size: 19px;
 }
 .footer-contact-item .info-icon {
   flex-shrink: 0;
@@ -1032,11 +1032,11 @@ footer {
 .footer-contact-item a { color: var(--cream); }
 .footer-contact-item a:hover { color: var(--gold-300); }
 .footer-links { display: flex; flex-direction: column; gap: 36px; }
-.footer-links .logo { font-size: 24px; }
+.footer-links .logo { font-size: 27px; }
 .footer-columns { display: flex; gap: 70px; flex-wrap: wrap; }
 .footer-col h4 {
   font-family: 'Bodoni Moda', serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1048,7 +1048,7 @@ footer {
 .footer-col a {
   display: block;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
+  font-size: 18px;
   color: var(--cream);
   opacity: 0.8;
   margin-bottom: 10px;
@@ -1060,7 +1060,7 @@ footer {
   padding-top: 22px;
   text-align: center;
   opacity: 0.55;
-  font-size: 12px;
+  font-size: 13px;
 }
 @media (max-width: 700px) {
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
