@@ -59,12 +59,11 @@ document.querySelectorAll(
   '#discover-band .statement-heading, ' +
   '#estatesHeading, ' +
   '#food-experience .food-heading, ' +
-  '#location .section-label, #location h2, ' +
-  '#contact .section-label, #contact h2'
+  '#location .section-label, #location h2'
 ).forEach(el => el.classList.add('reveal-up'));
 
 document.querySelectorAll(
-  '#discover-band .btn-rect, #contact .contact-actions'
+  '#discover-band .btn-rect'
 ).forEach(el => el.classList.add('reveal-up', 'reveal-up-delay'));
 
 // Food Experience: the label/subheading/lead text/OTKRIJ button sit well
