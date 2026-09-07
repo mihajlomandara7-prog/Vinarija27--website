@@ -833,12 +833,18 @@ h2 {
   margin: 0 auto;
   padding: 0 32px;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 56px;
 }
-.testimonials-left { flex: 0 0 300px; padding-top: 10px; }
+.testimonials-left {
+  flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.testimonials-left-card { flex: 0 0 auto; }
 .reviews-heading {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Bodoni Moda', serif;
   font-weight: 600;
   font-size: clamp(40px, 4vw, 60px);
   line-height: 1.05;
@@ -949,7 +955,8 @@ h2 {
 
 @media (max-width: 900px) {
   .testimonials-layout { flex-direction: column; gap: 32px; padding: 0 24px; }
-  .testimonials-left { flex-basis: auto; width: 100%; padding-top: 0; }
+  .testimonials-left { flex-basis: auto; width: 100%; justify-content: flex-start; }
+  .testimonials-left-card { display: none; }
 }
 @media (max-width: 640px) {
   .testimonials-layout { padding: 0 8px; }
