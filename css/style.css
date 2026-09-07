@@ -886,8 +886,7 @@ h2 {
   background: #fff;
   border-radius: var(--radius);
   padding: 28px 26px;
-  box-shadow: 0 25px 50px -35px rgba(74, 15, 28, 0.3);
-  border: 1px solid rgba(107, 22, 38, 0.08);
+  border: 1px solid rgba(28, 18, 16, 0.14);
 }
 .testimonial-top { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
 .testimonial-avatar {
