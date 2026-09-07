@@ -1038,6 +1038,24 @@ footer {
   .reveal-up { transition: none; clip-path: inset(0 0 0 0); }
 }
 
+/* Divider line drawing in left-to-right, e.g. under the Food Experience
+   heading — same trigger mechanism as .reveal-up (see checkRevealUp),
+   but scaleX from the left edge instead of a clip-path reveal. */
+.reveal-line {
+  transform: scaleX(0);
+  transform-origin: left;
+  /* Longhand, not the transition shorthand: the shorthand resets
+     transition-delay to 0s for any sub-property it doesn't mention,
+     which would silently override .reveal-up-delay's stagger. */
+  transition-property: transform;
+  transition-duration: 0.7s;
+  transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+}
+.reveal-line.in-view { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal-line { transition: none; transform: scaleX(1); }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {
   .nav-split .nav-links { display: none; }

@@ -90,6 +90,14 @@ document.querySelectorAll('#food-experience .food-copy .btn-rect').forEach(el =>
   el.dataset.revealTrigger = foodHeadingSelector;
 });
 
+// Divider under the heading: draws in left-to-right (scaleX), triggered
+// off the same heading position, starting shortly after the heading
+// itself begins its own bottom-to-top reveal.
+document.querySelectorAll('#food-experience .food-divider').forEach(el => {
+  el.classList.add('reveal-line', 'reveal-up-delay');
+  el.dataset.revealTrigger = foodHeadingSelector;
+});
+
 // REVIEWS heading/button: same reveal, triggered a bit earlier (see
 // reveal-up-early in checkRevealUp below) so it doesn't feel like it
 // lags at the bottom edge of the viewport.
@@ -111,7 +119,7 @@ document.querySelectorAll('#about .reviews-viewall').forEach(el =>
 // once the element's top has scrolled up into the lower half of the
 // viewport, i.e. the user has genuinely arrived at it. Toggled (not
 // one-shot) so scrolling back to the top and back down replays it.
-const revealUpEls = document.querySelectorAll('.reveal-up');
+const revealUpEls = document.querySelectorAll('.reveal-up, .reveal-line');
 function checkRevealUp() {
   revealUpEls.forEach((el) => {
     // data-reveal-trigger lets an element watch another element's
