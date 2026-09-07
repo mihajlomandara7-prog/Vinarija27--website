@@ -58,14 +58,37 @@ document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver
 document.querySelectorAll(
   '#discover-band .statement-heading, ' +
   '#estatesHeading, ' +
-  '#food-experience .food-heading, #food-experience .section-label, #food-experience .food-subheading, ' +
+  '#food-experience .food-heading, ' +
   '#location .section-label, #location h2, ' +
   '#contact .section-label, #contact h2'
 ).forEach(el => el.classList.add('reveal-up'));
 
 document.querySelectorAll(
-  '#discover-band .btn-rect, #food-experience .food-copy .btn-rect, #contact .contact-actions'
+  '#discover-band .btn-rect, #contact .contact-actions'
 ).forEach(el => el.classList.add('reveal-up', 'reveal-up-delay'));
+
+// Food Experience: the label/subheading/lead text/OTKRIJ button sit well
+// below the "Food Experience" heading (a divider and photo grid come
+// between them), so checking each one's own scroll position independently
+// makes them trigger long after the heading already has. They instead
+// all watch the heading's own position via data-reveal-trigger, so the
+// whole block reveals off one shared moment, with only a hair of stagger
+// (0.05s / 0.1s) between them for a "together, right after each other" feel.
+const foodHeadingSelector = '#food-experience .food-heading';
+document.querySelectorAll(
+  '#food-experience .section-label, #food-experience .food-subheading'
+).forEach(el => {
+  el.classList.add('reveal-up');
+  el.dataset.revealTrigger = foodHeadingSelector;
+});
+document.querySelectorAll('#food-experience .lead').forEach(el => {
+  el.classList.add('reveal-up', 'reveal-up-stagger-1');
+  el.dataset.revealTrigger = foodHeadingSelector;
+});
+document.querySelectorAll('#food-experience .food-copy .btn-rect').forEach(el => {
+  el.classList.add('reveal-up', 'reveal-up-stagger-2');
+  el.dataset.revealTrigger = foodHeadingSelector;
+});
 
 // REVIEWS heading/button: same reveal, triggered a bit earlier (see
 // reveal-up-early in checkRevealUp below) so it doesn't feel like it
@@ -91,7 +114,13 @@ document.querySelectorAll('#about .reviews-viewall').forEach(el =>
 const revealUpEls = document.querySelectorAll('.reveal-up');
 function checkRevealUp() {
   revealUpEls.forEach((el) => {
-    const rect = el.getBoundingClientRect();
+    // data-reveal-trigger lets an element watch another element's
+    // position instead of its own — used where a block sits well below
+    // its heading in the layout, so it can still fire off the heading's
+    // own trigger moment rather than lagging behind it.
+    const triggerSelector = el.dataset.revealTrigger;
+    const triggerEl = (triggerSelector && document.querySelector(triggerSelector)) || el;
+    const rect = triggerEl.getBoundingClientRect();
     const triggerRatio = el.classList.contains('reveal-up-early') ? 0.75 : 0.6;
     el.classList.toggle('in-view', rect.top <= window.innerHeight * triggerRatio);
   });
