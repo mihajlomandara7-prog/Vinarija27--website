@@ -11,10 +11,10 @@
   --cream: #f7f1e6;
   --ink: #1c1210;
   --ink-soft: #4a3c38;
-  --forest-950: #0c2118;
-  --forest-900: #14301f;
-  --forest-800: #1c4028;
-  --sage-100: #eaf3e6;
+  --forest-950: #1a0505;
+  --forest-900: #2b0a0a;
+  --forest-800: #3d1212;
+  --sage-100: #f3e2c2;
   --radius: 18px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -575,7 +575,7 @@ header#home { position: relative; }
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
   font-size: 156px;
-  fill: #d6ddcc;
+  fill: #e6d4c2;
 }
 .estates-panels {
   display: flex;
