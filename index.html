@@ -218,30 +218,27 @@
 <main>
 
   <section id="about">
-    <div class="testimonials-layout">
-      <div class="testimonials-left">
-        <div class="testimonials-left-top">
-          <h2 class="reviews-heading">REVIEWS</h2>
-          <p class="testimonials-sub">Preko 50+ recenzija na Google-u od naših gostiju</p>
-          <p class="testimonials-rating">4.8 / 5.0 <span class="stars" aria-hidden="true">★★★★★</span></p>
-          <a href="https://www.google.com/maps/search/?api=1&query=Vinarija+27+Ovsi%C5%A1te+bb+34000" target="_blank" rel="noopener" class="btn-rect reviews-viewall">VIEW ALL</a>
-        </div>
-        <blockquote class="testimonial-card testimonials-left-card">
-          <div class="testimonial-top">
-            <span class="testimonial-avatar" style="background:var(--wine-600)">I</span>
-            <div class="testimonial-who">
-              <p class="testimonial-name">Ivan Stojanovic</p>
-              <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
-            </div>
-          </div>
-          <p class="testimonial-text">"Beautiful place."</p>
-        </blockquote>
-      </div>
-      <div class="testimonials-carousel">
+    <div class="container testimonials-head">
+      <h2 class="reviews-heading">REVIEWS</h2>
+      <p class="testimonials-sub">Preko 50+ recenzija na Google-u od naših gostiju</p>
+      <p class="testimonials-rating">4.8 / 5.0 <span class="stars" aria-hidden="true">★★★★★</span></p>
+      <a href="https://www.google.com/maps/search/?api=1&query=Vinarija+27+Ovsi%C5%A1te+bb+34000" target="_blank" rel="noopener" class="btn-rect reviews-viewall">VIEW ALL</a>
+    </div>
+    <div class="testimonials-carousel">
       <button class="testimonials-arrow testimonials-arrow-prev" id="testimonialsPrev" aria-label="Prethodna recenzija">
         <svg viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <div class="testimonials-track" id="testimonialsTrack">
+            <blockquote class="testimonial-card">
+              <div class="testimonial-top">
+                <span class="testimonial-avatar" style="background:var(--wine-600)">I</span>
+                <div class="testimonial-who">
+                  <p class="testimonial-name">Ivan Stojanovic</p>
+                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+                </div>
+              </div>
+              <p class="testimonial-text">"Beautiful place."</p>
+            </blockquote>
             <blockquote class="testimonial-card">
               <div class="testimonial-top">
                 <span class="testimonial-avatar" style="background:var(--forest-800)">A</span>
@@ -371,16 +368,6 @@
             </blockquote>
             <blockquote class="testimonial-card">
               <div class="testimonial-top">
-                <span class="testimonial-avatar" style="background:var(--wine-600)">I</span>
-                <div class="testimonial-who">
-                  <p class="testimonial-name">Ivan Stojanovic</p>
-                  <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
-                </div>
-              </div>
-              <p class="testimonial-text">"Beautiful place."</p>
-            </blockquote>
-            <blockquote class="testimonial-card">
-              <div class="testimonial-top">
                 <span class="testimonial-avatar" style="background:var(--gold-400); color:var(--forest-950)">M</span>
                 <div class="testimonial-who">
                   <p class="testimonial-name">Milan B.</p>
@@ -456,7 +443,6 @@
       <button class="testimonials-arrow testimonials-arrow-next" id="testimonialsNext" aria-label="Sledeća recenzija">
         <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      </div>
     </div>
   </section>
 

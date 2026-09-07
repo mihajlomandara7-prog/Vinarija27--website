@@ -828,21 +828,7 @@ h2 {
 
 /* Testimonials */
 #about { background: var(--cream); }
-.testimonials-layout {
-  max-width: 1500px;
-  margin: 0 auto;
-  padding: 0 32px;
-  display: flex;
-  align-items: stretch;
-  gap: 56px;
-}
-.testimonials-left {
-  flex: 0 0 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.testimonials-left-card { flex: 0 0 auto; }
+.testimonials-head { max-width: 560px; margin-bottom: 56px; }
 .reviews-heading {
   font-family: 'Bodoni Moda', serif;
   font-weight: 600;
@@ -853,13 +839,6 @@ h2 {
   letter-spacing: 0.01em;
   margin-bottom: 20px;
 }
-.testimonials-left .testimonials-sub {
-  font-size: 16px;
-  color: var(--ink-soft);
-  font-weight: 300;
-  margin-bottom: 8px;
-}
-.testimonials-left .testimonials-rating { margin-bottom: 30px; }
 .reviews-viewall { margin-top: 0; background: var(--forest-800); color: var(--cream); }
 .reviews-viewall:hover { background: var(--forest-950); }
 .testimonials-sub {
@@ -874,6 +853,7 @@ h2 {
   font-weight: 600;
   color: var(--ink);
   letter-spacing: 0.02em;
+  margin-bottom: 30px;
 }
 .testimonials-rating .stars { margin-left: 8px; font-size: 14px; }
 
@@ -881,8 +861,9 @@ h2 {
   display: flex;
   align-items: center;
   gap: 14px;
-  flex: 1 1 auto;
-  min-width: 0;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 32px;
 }
 .testimonials-track {
   display: flex;
@@ -954,12 +935,9 @@ h2 {
 .testimonials-arrow:hover { background: var(--wine-600); color: #fff; border-color: var(--wine-600); }
 
 @media (max-width: 900px) {
-  .testimonials-layout { flex-direction: column; gap: 32px; padding: 0 24px; }
-  .testimonials-left { flex-basis: auto; width: 100%; justify-content: flex-start; }
-  .testimonials-left-card { display: none; }
+  .testimonials-carousel { padding: 0 24px; }
 }
 @media (max-width: 640px) {
-  .testimonials-layout { padding: 0 8px; }
   .testimonials-carousel { padding: 0 8px; gap: 8px; }
   .testimonials-arrow { display: none; }
   .testimonial-card { flex-basis: 260px; }
