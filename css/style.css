@@ -275,7 +275,7 @@ header#home { position: relative; }
 }
 #heroLayer1 {
   z-index: 1;
-  background-position: center 15%;
+  background-position: center 8%;
   background-color: #2b241f; /* fallback tone until images/hero-1.jpg is added */
 }
 #heroLayer2 {

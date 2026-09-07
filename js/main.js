@@ -180,7 +180,7 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 
     const l1p = Math.min(progress / 0.65, 1);
     layer1.style.opacity = String(1 - l1p);
-    layer1.style.transform = `scale(${(1 + l1p * 0.16).toFixed(3)})`;
+    layer1.style.transform = `scale(${(1.08 + l1p * 0.16).toFixed(3)})`;
 
     const l2p = Math.min(Math.max((progress - 0.2) / 0.7, 0), 1);
     layer2.style.opacity = String(l2p);
