@@ -244,6 +244,25 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
     track.appendChild(clone);
   });
 
+  // Card width is normally a CSS calc() against the track's own
+  // percentage width, but nested percentage flex-basis (a flex item
+  // sized by percentage, inside a flex item that's ALSO percentage/flex
+  // sized) resolves inconsistently across viewport sizes in testing —
+  // it can get stuck referencing a stale intrinsic width instead of the
+  // track's actual final size. Compute the width in JS instead and pin
+  // it as a plain pixel custom property, so exactly 4 cards fit with no
+  // ambiguity. Skipped below the mobile breakpoint, where CSS fixes
+  // cards at 260px regardless.
+  function updateCardWidthVar() {
+    if (window.innerWidth <= 640) return;
+    const trackStyles = getComputedStyle(track);
+    const gap = parseFloat(trackStyles.columnGap) || 0;
+    const paddingX = parseFloat(trackStyles.paddingLeft) + parseFloat(trackStyles.paddingRight);
+    const contentWidth = track.clientWidth - paddingX;
+    const cardWidth = (contentWidth - gap * 3) / 4;
+    if (cardWidth > 0) track.style.setProperty('--tcard-w', cardWidth + 'px');
+  }
+
   function cardStep() {
     const card = track.querySelector('.testimonial-card');
     if (!card) return 0;
@@ -251,6 +270,7 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
     return card.offsetWidth + gap;
   }
 
+  updateCardWidthVar();
   let step = cardStep();
   // Position index within the tripled strip: 0..realCount-1 = leading
   // clones, realCount..2*realCount-1 = real cards, rest = trailing clones.
@@ -281,6 +301,7 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
   }, { passive: true });
 
   window.addEventListener('resize', () => {
+    updateCardWidthVar();
     step = cardStep();
     track.scrollLeft = step * index;
   });

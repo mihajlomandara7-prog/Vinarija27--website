@@ -878,10 +878,19 @@ h2 {
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding: 10px 4px 26px;
+  flex: 1 1 0%;
+  min-width: 0;
 }
 .testimonials-track::-webkit-scrollbar { display: none; }
 .testimonial-card {
-  flex: 0 0 300px;
+  /* --tcard-w is computed in JS from the track's real rendered width
+     so exactly 4 cards fill it on desktop with no partial 5th card
+     peeking in at the edge. Falls back to 300px pre-JS/no-JS.
+     min-width:0 overrides the flex default of min-width:auto, which
+     otherwise floors the card at its content's min-content width (the
+     nowrap name text) and silently ignores a smaller flex-basis. */
+  flex: 0 0 var(--tcard-w, 300px);
+  min-width: 0;
   scroll-snap-align: start;
   background: #fff;
   border-radius: var(--radius);
