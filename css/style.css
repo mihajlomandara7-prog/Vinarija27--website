@@ -828,15 +828,7 @@ h2 {
 
 /* Testimonials */
 #about { background: var(--cream); padding: 48px 0 130px; }
-.testimonials-layout {
-  max-width: 1500px;
-  margin: 0 auto;
-  padding: 0 32px;
-  display: flex;
-  align-items: flex-start;
-  gap: 40px;
-}
-.testimonials-left { flex: 0 0 280px; }
+.testimonials-head { max-width: 500px; margin-bottom: 44px; }
 .reviews-heading {
   font-family: 'Bodoni Moda', serif;
   font-weight: 600;
@@ -869,8 +861,9 @@ h2 {
   display: flex;
   align-items: center;
   gap: 14px;
-  flex: 1 1 auto;
-  min-width: 0;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 32px;
 }
 .testimonials-track {
   display: flex;
@@ -942,13 +935,10 @@ h2 {
 .testimonials-arrow:hover { background: var(--wine-600); color: #fff; border-color: var(--wine-600); }
 
 @media (max-width: 900px) {
-  .testimonials-layout { flex-direction: column; gap: 28px; padding: 0 24px; }
-  .testimonials-left { flex-basis: auto; width: 100%; }
-  .testimonials-carousel { padding: 0; }
+  .testimonials-carousel { padding: 0 24px; }
 }
 @media (max-width: 640px) {
-  .testimonials-layout { padding: 0 8px; }
-  .testimonials-carousel { gap: 8px; }
+  .testimonials-carousel { padding: 0 8px; gap: 8px; }
   .testimonials-arrow { display: none; }
   .testimonial-card { flex-basis: 260px; }
 }
