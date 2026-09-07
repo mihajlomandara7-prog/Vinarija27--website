@@ -796,6 +796,7 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   padding: 0 8px;
 }
 #food-experience .section-label { color: var(--ink-soft); }
@@ -822,7 +823,7 @@ h2 {
   .food-photo-left { min-height: 320px; }
   .food-photo-right { min-height: 240px; }
   .food-photo-below { display: none; }
-  .food-copy { padding: 0; text-align: center; }
+  .food-copy { padding: 0; text-align: center; align-items: center; }
   #food-experience .lead { margin-left: auto; margin-right: auto; }
 }
 
