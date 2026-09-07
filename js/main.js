@@ -212,22 +212,82 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
   });
 })();
 
-/* ---------------- Testimonials carousel ---------------- */
+/* ---------------- Testimonials carousel (infinite loop) ---------------- */
 (function testimonialsCarousel() {
   const track = document.getElementById('testimonialsTrack');
   const prevBtn = document.getElementById('testimonialsPrev');
   const nextBtn = document.getElementById('testimonialsNext');
   if (!track) return;
 
-  function scrollByCard(dir) {
+  // Duplicate the whole set of cards before and after the real ones.
+  // A browser clamps scrollLeft at its true content boundary, so it
+  // can't scroll the last couple of cards flush to the left edge —
+  // there just isn't enough trailing content to make room. With only
+  // one clone card that clamp kicks in exactly where the loop needs to
+  // land, snapping to the wrong card. Wrapping through a full spare
+  // copy on each side means a "next" past the last real card only ever
+  // steps one card into that copy (nowhere near the far end of the
+  // whole strip), then silently re-centers by exactly one set's width —
+  // always well inside safely scrollable territory.
+  const realCards = Array.from(track.children);
+  const realCount = realCards.length;
+  if (realCount < 2) return;
+
+  const firstReal = realCards[0];
+  realCards.forEach((card) => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    track.insertBefore(clone, firstReal);
+  });
+  realCards.forEach((card) => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    track.appendChild(clone);
+  });
+
+  function cardStep() {
     const card = track.querySelector('.testimonial-card');
-    if (!card) return;
+    if (!card) return 0;
     const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-    track.scrollBy({ left: (card.offsetWidth + gap) * dir, behavior: 'smooth' });
+    return card.offsetWidth + gap;
   }
 
-  if (prevBtn) prevBtn.addEventListener('click', () => scrollByCard(-1));
-  if (nextBtn) nextBtn.addEventListener('click', () => scrollByCard(1));
+  let step = cardStep();
+  // Position index within the tripled strip: 0..realCount-1 = leading
+  // clones, realCount..2*realCount-1 = real cards, rest = trailing clones.
+  let index = realCount;
+  track.scrollLeft = step * index;
+
+  function jumpTo(i, smooth) {
+    track.scrollTo({ left: step * i, behavior: smooth ? 'smooth' : 'auto' });
+  }
+
+  function settle() {
+    const raw = Math.round(track.scrollLeft / step);
+    if (raw >= realCount * 2) {
+      index = raw - realCount;
+      jumpTo(index, false);
+    } else if (raw < realCount) {
+      index = raw + realCount;
+      jumpTo(index, false);
+    } else {
+      index = raw;
+    }
+  }
+
+  let settleTimer;
+  track.addEventListener('scroll', () => {
+    clearTimeout(settleTimer);
+    settleTimer = setTimeout(settle, 120);
+  }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    step = cardStep();
+    track.scrollLeft = step * index;
+  });
+
+  if (prevBtn) prevBtn.addEventListener('click', () => { index--; jumpTo(index, true); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { index++; jumpTo(index, true); });
 })();
 
 /* =====================================================
