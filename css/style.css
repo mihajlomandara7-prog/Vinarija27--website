@@ -663,7 +663,7 @@ h2 {
   font-weight: 300;
   max-width: 620px;
 }
-#offerings .lead, #contact .lead { margin-left: auto; margin-right: auto; }
+#contact .lead { margin-left: auto; margin-right: auto; }
 
 /* ---------- Wine Showcase (alternating bottle rows) ---------- */
 #wine-showcase { overflow: hidden; padding: 0; }
@@ -949,44 +949,6 @@ h2 {
   .testimonial-card { flex-basis: 260px; }
 }
 
-/* Offerings */
-#offerings { background: linear-gradient(180deg, #fff, var(--cream)); }
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-top: 60px;
-}
-.offer-card {
-  background: #fff;
-  border-radius: var(--radius);
-  padding: 40px 30px;
-  border: 1px solid rgba(107, 22, 38, 0.08);
-  box-shadow: 0 25px 50px -35px rgba(74, 15, 28, 0.35);
-  transform-style: preserve-3d;
-  transition: transform 0.15s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-.offer-card:hover { border-color: rgba(217, 178, 106, 0.5); }
-.offer-icon {
-  width: 58px;
-  height: 58px;
-  color: var(--wine-600);
-  margin-bottom: 22px;
-}
-.offer-card h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
-  color: var(--wine-900);
-  margin-bottom: 12px;
-  font-weight: 600;
-}
-.offer-card p {
-  color: var(--ink-soft);
-  font-size: 15px;
-  line-height: 1.7;
-  font-weight: 300;
-}
-
 /* Location */
 #location { background: var(--cream); }
 .location-grid {
@@ -1070,7 +1032,6 @@ footer {
 }
 @media (max-width: 900px) {
   .location-grid { grid-template-columns: 1fr; }
-  .cards-grid { grid-template-columns: 1fr; }
   section { padding: 90px 0; }
   #estates { padding: 16px 0 30px; }
   .estates-panels { height: 380px; gap: 14px; padding: 0 14px; }

@@ -26,7 +26,7 @@ mobileMenu.querySelectorAll('a').forEach(a =>
 
 /* ---------------- Scroll reveal ---------------- */
 document.querySelectorAll(
-  '#about, #offerings .offer-card, #location, #contact'
+  '#about, #location, #contact'
 ).forEach(el => el.classList.add('reveal'));
 
 const revealObserver = new IntersectionObserver((entries) => {
@@ -58,7 +58,6 @@ document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver
 document.querySelectorAll(
   '#discover-band .statement-heading, ' +
   '#estatesHeading, ' +
-  '#offerings .section-label, #offerings h2, ' +
   '#food-experience .food-heading, #food-experience .section-label, #food-experience .food-subheading, ' +
   '#location .section-label, #location h2, ' +
   '#contact .section-label, #contact h2'
