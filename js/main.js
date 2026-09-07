@@ -60,14 +60,24 @@ document.querySelectorAll(
   '#estatesHeading, ' +
   '#offerings .section-label, #offerings h2, ' +
   '#food-experience .food-heading, #food-experience .section-label, #food-experience .food-subheading, ' +
-  '#about .reviews-heading, #about .testimonials-sub, #about .testimonials-rating, ' +
   '#location .section-label, #location h2, ' +
   '#contact .section-label, #contact h2'
 ).forEach(el => el.classList.add('reveal-up'));
 
 document.querySelectorAll(
-  '#discover-band .btn-rect, #food-experience .food-copy .btn-rect, #about .reviews-viewall, #contact .contact-actions'
+  '#discover-band .btn-rect, #food-experience .food-copy .btn-rect, #contact .contact-actions'
 ).forEach(el => el.classList.add('reveal-up', 'reveal-up-delay'));
+
+// REVIEWS heading/button: same reveal, triggered a bit earlier (see
+// reveal-up-early in checkRevealUp below) so it doesn't feel like it
+// lags at the bottom edge of the viewport.
+document.querySelectorAll(
+  '#about .reviews-heading, #about .testimonials-sub, #about .testimonials-rating'
+).forEach(el => el.classList.add('reveal-up', 'reveal-up-early'));
+
+document.querySelectorAll('#about .reviews-viewall').forEach(el =>
+  el.classList.add('reveal-up', 'reveal-up-delay', 'reveal-up-early')
+);
 
 // Not IntersectionObserver: clip-path on the observed element itself
 // makes Chromium report intersectionRatio stuck at 0, so visibility is
@@ -83,7 +93,8 @@ const revealUpEls = document.querySelectorAll('.reveal-up');
 function checkRevealUp() {
   revealUpEls.forEach((el) => {
     const rect = el.getBoundingClientRect();
-    el.classList.toggle('in-view', rect.top <= window.innerHeight * 0.6);
+    const triggerRatio = el.classList.contains('reveal-up-early') ? 0.75 : 0.6;
+    el.classList.toggle('in-view', rect.top <= window.innerHeight * triggerRatio);
   });
 }
 window.addEventListener('scroll', checkRevealUp, { passive: true });
