@@ -44,49 +44,82 @@ img { max-width: 100%; display: block; }
 
 a { text-decoration: none; color: inherit; }
 
-/* ---------- Loader ---------- */
-#loader {
+/* ---------- Intro sequence (plays once per page load) ----------
+   1. Full bordo flash-in.
+   2. A small boxed copy of the hero image fades/scales in, centered.
+   3. That box grows to fill the viewport, landing exactly over the
+      real hero image already sitting behind it (same image, same
+      crop), so the handoff back to the page reads as one continuous
+      shot rather than a swap.
+   4. The overlay fades out fast (the box already matches what's
+      underneath) and JS adds .intro-reveal to the hero title/
+      subtitle/actions to run their own fade-up-in.
+   Durations are ~20% shorter on mobile (see the max-width query) —
+   JS mirrors the same breakpoint/multiplier for its setTimeout
+   schedule so the text reveal still lands on cue. */
+#introOverlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: var(--wine-950);
+  background: var(--forest-900);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-  transition: opacity 0.8s var(--ease), visibility 0.8s var(--ease);
+  opacity: 0;
+  animation: introFlash 0.3s ease forwards;
 }
-#loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-.loader-glass {
-  width: 46px;
-  height: 70px;
-  border: 2px solid var(--gold-300);
-  border-top: none;
-  border-radius: 0 0 20px 20px;
-  position: relative;
-  overflow: hidden;
+#introOverlay.intro-done {
+  transition: opacity 0.25s ease;
+  opacity: 0;
+  pointer-events: none;
 }
-.loader-liquid {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 0%;
-  background: linear-gradient(180deg, var(--wine-500), var(--wine-800));
-  animation: fill 1.6s ease-in-out infinite;
+@keyframes introFlash { to { opacity: 1; } }
+.intro-box {
+  width: 340px;
+  height: 220px;
+  max-width: 82vw;
+  background-size: cover;
+  background-position: center 8%;
+  border-radius: 10px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transform: scale(0.8);
+  animation:
+    introBoxIn 0.5s ease 0.3s forwards,
+    introBoxExpand 0.6s cubic-bezier(0.65, 0, 0.35, 1) 0.8s forwards;
 }
-@keyframes fill {
-  0% { height: 0%; }
-  50% { height: 85%; }
-  100% { height: 0%; }
+@keyframes introBoxIn { to { opacity: 1; transform: scale(1); } }
+@keyframes introBoxExpand { to { width: 100vw; height: 100vh; border-radius: 0; box-shadow: none; } }
+
+.hero-title .word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(24px);
 }
-#loader p {
-  color: var(--gold-200);
-  font-family: 'Cormorant Garamond', serif;
-  letter-spacing: 0.3em;
-  font-size: 14px;
-  text-transform: uppercase;
+#heroTitle.intro-reveal .word {
+  animation: introWordIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--i) * 0.05s);
+}
+@keyframes introWordIn { to { opacity: 1; transform: translateY(0); } }
+
+#heroSubtitle, #heroActions {
+  opacity: 0;
+  transform: translateY(20px);
+}
+#heroSubtitle.intro-reveal, #heroActions.intro-reveal {
+  animation: introWordIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (max-width: 640px) {
+  #introOverlay { animation-duration: 0.24s; }
+  .intro-box {
+    animation-duration: 0.4s, 0.48s;
+    animation-delay: 0.24s, 0.64s;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #introOverlay, .intro-box { animation: none; opacity: 0; pointer-events: none; }
+  .hero-title .word, #heroSubtitle, #heroActions { opacity: 1; transform: none; animation: none; }
 }
 
 /* ---------- Navbar ---------- */
