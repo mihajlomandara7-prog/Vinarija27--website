@@ -543,7 +543,7 @@ header#home { position: relative; }
   line-height: 0.98;
   letter-spacing: 0;
 }
-#statement .btn-rect { background: transparent; color: var(--forest-800); border: 1.5px solid var(--forest-800); }
+#statement .btn-rect { background: var(--forest-800); color: var(--cream); border: 1.5px solid transparent; }
 .btn-rect {
   display: inline-block;
   margin-top: 34px;
@@ -1117,14 +1117,15 @@ footer {
    transition shorthand, so it only overrides the delay (see the note
    on .reveal-line below for why that distinction matters). */
 #statementText .reveal-down-sync { transition-delay: 1.05s; }
-/* DISCOVER MORE (.reveal-up-sync) is a framed/outlined button on the
-   light cream side of the split (transparent fill, dark bordo border
-   and text) that fills solid bordo with cream text on hover — same
-   invert pattern as .estate-panel .btn-rect, just light-on-dark
-   instead of dark-on-light. That hover must transition faster (0.3s)
-   than the button's reveal-up-sync clip-path animation (0.75s,
-   delayed 1.15s to wait for the image split). Both live on the same
-   element, so this fully spells out transition-property/-duration/
+/* DISCOVER MORE (.reveal-up-sync) has a bordo fill at rest, sitting
+   on the LIGHT cream side of the split — so on hover it fades to
+   transparent with a DARK bordo border/text (not the white/cream
+   version used for bordo buttons on dark sections, see ABOUT US
+   below), staying readable against the light backdrop showing
+   through. That hover must transition faster (0.3s) than the
+   button's reveal-up-sync clip-path animation (0.75s, delayed 1.15s
+   to wait for the image split). Both live on the same element, so
+   this fully spells out transition-property/-duration/
    -timing-function/-delay as parallel comma lists (one entry per
    property, in order) instead of the shorthand — using the shorthand
    here would collapse the two very different timings into one. */
@@ -1135,9 +1136,9 @@ footer {
   transition-delay: 1.15s, 0s, 0s, 0s;
 }
 #statementText .btn-rect.reveal-up-sync:hover {
-  background: var(--forest-800);
+  background: transparent;
   border-color: var(--forest-800);
-  color: var(--cream);
+  color: var(--forest-800);
 }
 
 /* Food Experience copy: a slower reveal-up (1.5s instead of the
@@ -1147,11 +1148,14 @@ footer {
    whole group finishes settling (delay = the group's duration + a
    hair of buffer) rather than everything firing at once. */
 #food-experience .reveal-up { transition-duration: 1.5s; }
-/* Same reasoning as #statementText .btn-rect.reveal-up-sync above: the
-   VIEW button's bordo hover (0.3s) and its reveal-up clip-path
-   animation (1.5s, delayed 1.55s) need different timings on the same
-   element, so both are spelled out as parallel comma lists rather
-   than the transition shorthand. */
+/* VIEW sits on the LIGHT #food-experience section, so like DISCOVER
+   MORE its hover fades to transparent with a DARK bordo border/text
+   (not white/cream — that's only for bordo buttons on dark sections,
+   see ABOUT US below). Same reasoning as #statementText
+   .btn-rect.reveal-up-sync above: the hover (0.3s) and this button's
+   reveal-up clip-path animation (1.5s, delayed 1.55s) need different
+   timings on the same element, so both are spelled out as parallel
+   comma lists rather than the transition shorthand. */
 #food-experience .food-copy .btn-rect {
   transition-property: clip-path, background-color, border-color, color;
   transition-duration: 1.5s, 0.3s, 0.3s, 0.3s;
@@ -1160,17 +1164,18 @@ footer {
 }
 #food-experience .food-copy .btn-rect:hover {
   background: transparent;
-  border-color: var(--cream);
-  color: var(--cream);
+  border-color: var(--forest-800);
+  color: var(--forest-800);
 }
 
-/* VIEW ALL (.reviews-viewall) is also .reveal-up/.reveal-up-delay
-   (0.75s clip-path, 0.12s delay) plus this bordo hover (0.3s). Same
-   reasoning as the two blocks above: both timings spelled out as
-   parallel comma lists so the shorthand doesn't collapse them into
-   one. .btn-rect.reviews-viewall (two classes) outranks the
-   single-class .reveal-up/.reveal-up-delay rules regardless of
-   source order. */
+/* VIEW ALL sits on the LIGHT #about section, so like DISCOVER MORE
+   and VIEW its hover fades to transparent with a DARK bordo
+   border/text. Also .reveal-up/.reveal-up-delay (0.75s clip-path,
+   0.12s delay) — same reasoning as the two blocks above, both
+   timings spelled out as parallel comma lists so the shorthand
+   doesn't collapse them into one. .btn-rect.reviews-viewall (two
+   classes) outranks the single-class .reveal-up/.reveal-up-delay
+   rules regardless of source order. */
 .btn-rect.reviews-viewall {
   transition-property: clip-path, background-color, border-color, color;
   transition-duration: 0.75s, 0.3s, 0.3s, 0.3s;
@@ -1179,8 +1184,8 @@ footer {
 }
 .btn-rect.reviews-viewall:hover {
   background: transparent;
-  border-color: var(--cream);
-  color: var(--cream);
+  border-color: var(--forest-800);
+  color: var(--forest-800);
 }
 
 /* ABOUT US (#discover-band .btn-rect) sits on the dark #discover-band
