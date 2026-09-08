@@ -5,8 +5,7 @@ Dodajte ovde fajlove sa tačno ovim imenima — kod ih automatski prepoznaje, ni
 - `hero-1.jpg` — hero, prva (pinovana) fotografija: fasada Vinarije 27 ✅ dodato
 - `hero-2.jpg` — hero, druga fotografija koja se pojavljuje pri skrolovanju: vinograd iz vazduha ✅ dodato
 - `pool.jpg` — prvi slajd u karuselu (statement sekcija, "DISCOVER naš svet vina"): bazen ✅ dodato
-- `facade-dusk.jpg` — drugi slajd u istom karuselu: fasada vinarije uveče, staza sa lampicama ✅ dodato
-- `terrace-lounge.jpg` — treći slajd u istom karuselu: terasa sa lounge nameštajem i natpisom vinarije ✅ dodato
+- `garden-1.jpg` — drugi slajd u istom karuselu: dvorište/bašta sa vinogradom u pozadini ✅ dodato
 - `estate-1.jpg` — "Wine Estates" sekcija, prvi panel ("Vinogradi"): društvo za stolom u vinogradu ✅ dodato
 - `estate-2.jpg` — "Wine Estates" sekcija, drugi panel ("Apartmani"): terasa/lounge iz ptičje perspektive ✅ dodato
 - `estate-3.jpg` — "Wine Estates" sekcija, treći panel ("Proslave"): flaša penušavca i čaše na stolu ✅ dodato
