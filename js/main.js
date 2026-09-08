@@ -88,13 +88,17 @@ document.querySelectorAll(
   '#discover-band .btn-rect'
 ).forEach(el => el.classList.add('reveal-up', 'reveal-up-delay'));
 
-// Food Experience: the label/subheading/lead text/OTKRIJ button sit well
+// Food Experience: the label/subheading/lead text/VIEW button sit well
 // below the "Food Experience" heading (a divider and photo grid come
 // between them), so checking each one's own scroll position independently
 // makes them trigger long after the heading already has. They instead
 // all watch the heading's own position via data-reveal-trigger, so the
-// whole block reveals off one shared moment, with only a hair of stagger
-// (0.05s / 0.1s) between them for a "together, right after each other" feel.
+// whole block's in-view flips at one shared moment. The visible cascade
+// (heading settles, then label/subheading/lead, then the button) comes
+// entirely from transition-delay, scoped in style.css under
+// #food-experience: each stage's delay is set to just past the previous
+// stage's delay + duration, so nothing starts moving until the one
+// before it has fully finished.
 const foodHeadingSelector = '#food-experience .food-heading';
 document.querySelectorAll(
   '#food-experience .section-label, #food-experience .food-subheading'
@@ -103,11 +107,11 @@ document.querySelectorAll(
   el.dataset.revealTrigger = foodHeadingSelector;
 });
 document.querySelectorAll('#food-experience .lead').forEach(el => {
-  el.classList.add('reveal-up', 'reveal-up-stagger-1');
+  el.classList.add('reveal-up');
   el.dataset.revealTrigger = foodHeadingSelector;
 });
 document.querySelectorAll('#food-experience .food-copy .btn-rect').forEach(el => {
-  el.classList.add('reveal-up', 'reveal-up-stagger-2');
+  el.classList.add('reveal-up');
   el.dataset.revealTrigger = foodHeadingSelector;
 });
 
