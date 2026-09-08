@@ -1,34 +1,10 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* ---------------- Intro sequence (plays once per page load) ----------
-   The CSS keyframes (see #introOverlay/.intro-box in style.css) drive
-   the flash + box-grows-to-fullscreen part on their own timing; this
-   just schedules when the hero title/subtitle/actions start their own
-   fade-up reveal, and when to fade the overlay out — both timed to
-   land right as the box finishes expanding. Mobile runs ~20% faster
-   to match the shorter CSS animation-durations set in the same
-   max-width: 640px query, so the JS and CSS stay in sync. */
-(function introSequence() {
-  const overlay = document.getElementById('introOverlay');
-  const heroTitle = document.getElementById('heroTitle');
-  const heroSubtitle = document.getElementById('heroSubtitle');
-  const heroActions = document.getElementById('heroActions');
-  if (!overlay) return;
-
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    overlay.remove();
-    return;
-  }
-
-  const isMobile = window.matchMedia('(max-width: 640px)').matches;
-  const t = isMobile ? 0.8 : 1; // ~20% faster on mobile, mirrors the CSS query
-
-  setTimeout(() => overlay.classList.add('intro-done'), 1400 * t);
-  setTimeout(() => overlay.remove(), 1400 * t + 300);
-  setTimeout(() => heroTitle && heroTitle.classList.add('intro-reveal'), 1400 * t);
-  setTimeout(() => heroSubtitle && heroSubtitle.classList.add('intro-reveal'), 2000 * t);
-  setTimeout(() => heroActions && heroActions.classList.add('intro-reveal'), 2150 * t);
-})();
+/* ---------------- Loader ---------------- */
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loader');
+  setTimeout(() => loader.classList.add('hidden'), 500);
+});
 
 /* ---------------- Navbar ---------------- */
 const navbar = document.getElementById('navbar');
