@@ -402,6 +402,7 @@ header#home { position: relative; }
   background: var(--forest-950);
   text-align: center;
 }
+#discover-band .btn-rect { border: 1.5px solid transparent; }
 .discover-band-inner {
   display: flex;
   flex-direction: column;
@@ -1175,6 +1176,26 @@ footer {
   transition-delay: 0.12s, 0s, 0s, 0s;
 }
 .btn-rect.reviews-viewall:hover {
+  background: transparent;
+  border-color: var(--cream);
+  color: var(--cream);
+}
+
+/* ABOUT US (#discover-band .btn-rect) sits on the dark #discover-band
+   section, so even though its own rest-state fill is cream (not
+   bordo), its hover should read the same way as the bordo buttons
+   above: fade to transparent (revealing the dark section behind it)
+   with a cream border and cream text, instead of the base .btn-rect
+   hover's plain white fill. Also .reveal-up/.reveal-up-delay (0.75s
+   clip-path, 0.12s delay) — same reasoning as the blocks above, both
+   timings spelled out as parallel comma lists. */
+#discover-band .btn-rect.reveal-up {
+  transition-property: clip-path, background-color, border-color, color;
+  transition-duration: 0.75s, 0.3s, 0.3s, 0.3s;
+  transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1), ease, ease, ease;
+  transition-delay: 0.12s, 0s, 0s, 0s;
+}
+#discover-band .btn-rect.reveal-up:hover {
   background: transparent;
   border-color: var(--cream);
   color: var(--cream);
