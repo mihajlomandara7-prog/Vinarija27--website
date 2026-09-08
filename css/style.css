@@ -1121,20 +1121,14 @@ footer {
 #statementText .reveal-down-sync { transition-delay: 1.05s; }
 #statementText .reveal-up-sync { transition-delay: 1.15s; }
 
-/* Food Experience copy: a slightly slower reveal-up (0.9s instead of the
-   sitewide 0.75s), staged as a real cascade rather than the earlier
-   near-simultaneous stagger — the "Food Experience" heading settles
-   first, then the label/subheading/lead text, then the VIEW button
-   last, each delay set to just past the previous stage's delay +
-   duration so nothing starts moving before the stage before it is
-   fully done. */
-#food-experience .reveal-up { transition-duration: 0.9s; }
-#food-experience .food-copy .section-label,
-#food-experience .food-copy .food-subheading,
-#food-experience .food-copy .lead {
-  transition-delay: 0.95s;
-}
-#food-experience .food-copy .btn-rect { transition-delay: 1.9s; }
+/* Food Experience copy: a slightly slower reveal-up (1s instead of the
+   sitewide 0.75s). The heading and the label/subheading/lead text all
+   reveal together as one synchronized group (same trigger, no extra
+   delay on the text), and the VIEW button follows right after that
+   whole group finishes settling (delay = the group's duration + a
+   hair of buffer) rather than everything firing at once. */
+#food-experience .reveal-up { transition-duration: 1s; }
+#food-experience .food-copy .btn-rect { transition-delay: 1.05s; }
 
 /* Divider line drawing in left-to-right, e.g. under the Food Experience
    heading — same trigger mechanism as .reveal-up (see checkRevealUp),

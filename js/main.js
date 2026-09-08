@@ -93,12 +93,11 @@ document.querySelectorAll(
 // between them), so checking each one's own scroll position independently
 // makes them trigger long after the heading already has. They instead
 // all watch the heading's own position via data-reveal-trigger, so the
-// whole block's in-view flips at one shared moment. The visible cascade
-// (heading settles, then label/subheading/lead, then the button) comes
-// entirely from transition-delay, scoped in style.css under
-// #food-experience: each stage's delay is set to just past the previous
-// stage's delay + duration, so nothing starts moving until the one
-// before it has fully finished.
+// whole block's in-view flips at one shared moment. The heading and the
+// label/subheading/lead text reveal together (no extra delay between
+// them), and the VIEW button follows right after that group finishes —
+// timing is entirely transition-delay/duration, scoped in style.css
+// under #food-experience.
 const foodHeadingSelector = '#food-experience .food-heading';
 document.querySelectorAll(
   '#food-experience .section-label, #food-experience .food-subheading'
