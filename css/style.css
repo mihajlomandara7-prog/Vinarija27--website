@@ -256,7 +256,7 @@ header#home { position: relative; }
 
 #heroPinWrapper {
   position: relative;
-  height: 320vh;
+  height: 240vh;
 }
 #heroPinSticky {
   position: sticky;
@@ -313,34 +313,6 @@ header#home { position: relative; }
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-.hero-watermark {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 24px;
-  opacity: 0;
-  pointer-events: none;
-  will-change: opacity, transform;
-}
-.hero-watermark-stack {
-  position: relative;
-  width: min(860px, 90vw);
-  -webkit-font-smoothing: antialiased;
-}
-.hero-watermark-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.hero-watermark-fill {
-  position: absolute;
-  inset: 0;
-  clip-path: inset(100% 0 0 0);
-  will-change: clip-path;
 }
 .stars { color: var(--gold-400); letter-spacing: 2px; }
 
