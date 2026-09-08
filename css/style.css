@@ -1097,6 +1097,21 @@ footer {
   .reveal-up, .reveal-up-sync { transition: none; clip-path: inset(0 0 0 0); }
 }
 
+/* Slow, gentle top-to-bottom settle: content drifts down from just
+   above its resting spot and eases to a stop, no bounce/overshoot.
+   Used only for the "Vinarija 27 Resort" heading, synced to the same
+   observer as the image split (see statementSplit in main.js) — the
+   image/button/heading all trigger together, each with its own motion. */
+.reveal-down-sync {
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: opacity 1.15s cubic-bezier(0.33, 1, 0.68, 1), transform 1.15s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.reveal-down-sync.in-view { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal-down-sync { transition: none; opacity: 1; transform: none; }
+}
+
 /* Divider line drawing in left-to-right, e.g. under the Food Experience
    heading — same trigger mechanism as .reveal-up (see checkRevealUp),
    but scaleX from the left edge instead of a clip-path reveal. */

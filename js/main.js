@@ -44,17 +44,19 @@ document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver
   const text = document.getElementById('statementText');
   if (!wrapper || !box || !text) return;
 
-  // Same bottom-to-top reveal-up animation used on Wine Estates / Food
-  // Experience, but synced to THIS section's own image-split
+  // Heading/button reveal synced to THIS section's own image-split
   // IntersectionObserver (below) instead of the generic scroll-position
-  // checkRevealUp mechanism, so the heading/button animate in at the
-  // exact same moment the photo starts dividing into two squares.
-  // A distinct .reveal-up-sync class (identical CSS to .reveal-up) keeps
-  // these out of the shared '.reveal-up, .reveal-line' NodeList so the
+  // checkRevealUp mechanism, so all three (image, heading, button)
+  // animate in at the exact same moment the photo starts dividing into
+  // two squares, each with its own motion: the heading drifts gently
+  // down into place (.reveal-down-sync), the button rises from below
+  // like the Wine Estates / Food Experience reveal-up (.reveal-up-sync).
+  // Distinct classes (identical-shaped CSS, different transform) keep
+  // both out of the shared '.reveal-up, .reveal-line' NodeList so the
   // two triggers never fight over the same elements.
   const heading = text.querySelector('.statement-heading');
   const cta = text.querySelector('.btn-rect');
-  if (heading) heading.classList.add('reveal-up-sync');
+  if (heading) heading.classList.add('reveal-down-sync');
   if (cta) cta.classList.add('reveal-up-sync', 'reveal-up-stagger-2');
   const syncedReveals = [heading, cta].filter(Boolean);
 
