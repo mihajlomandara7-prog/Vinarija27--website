@@ -256,7 +256,7 @@ header#home { position: relative; }
 
 #heroPinWrapper {
   position: relative;
-  height: 240vh;
+  height: 320vh;
 }
 #heroPinSticky {
   position: sticky;
@@ -326,10 +326,21 @@ header#home { position: relative; }
   pointer-events: none;
   will-change: opacity, transform;
 }
-.hero-watermark-img {
+.hero-watermark-stack {
+  position: relative;
   width: min(860px, 90vw);
+}
+.hero-watermark-img {
+  width: 100%;
   height: auto;
+  display: block;
   filter: drop-shadow(0 8px 40px rgba(0,0,0,0.45));
+}
+.hero-watermark-fill {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(100% 0 0 0);
+  will-change: clip-path;
 }
 .stars { color: var(--gold-400); letter-spacing: 2px; }
 

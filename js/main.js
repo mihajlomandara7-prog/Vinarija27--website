@@ -185,6 +185,7 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
   const layer1 = document.getElementById('heroLayer1');
   const layer2 = document.getElementById('heroLayer2');
   const watermark = document.getElementById('heroWatermark');
+  const watermarkFill = document.getElementById('heroWatermarkFill');
   const cue = document.querySelector('#home .scroll-cue');
   const video = document.getElementById('heroVideo');
   if (!wrapper || !layer1 || !layer2) return;
@@ -206,20 +207,40 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 
     if (reduceMotion) return;
 
+    // Watermark sequence: fade in as outline, hold while the extra scroll
+    // fills the letters solid white, hold at full fill, then fade out
+    // together with the video before the vineyard crossfade takes over.
+    const wmFadeInStart = 0.05, wmFadeInEnd = 0.2;
+    const fillStart = 0.2, fillEnd = 0.55;
+    const holdEnd = 0.62, wmFadeOutEnd = 0.78;
+    let wmP, fillP;
+    if (progress <= wmFadeInStart) {
+      wmP = 0; fillP = 0;
+    } else if (progress <= wmFadeInEnd) {
+      wmP = (progress - wmFadeInStart) / (wmFadeInEnd - wmFadeInStart);
+      fillP = 0;
+    } else if (progress <= fillEnd) {
+      wmP = 1;
+      fillP = (progress - fillStart) / (fillEnd - fillStart);
+    } else if (progress <= holdEnd) {
+      wmP = 1; fillP = 1;
+    } else if (progress <= wmFadeOutEnd) {
+      wmP = 1 - (progress - holdEnd) / (wmFadeOutEnd - holdEnd);
+      fillP = 1;
+    } else {
+      wmP = 0; fillP = 1;
+    }
+
     if (watermark) {
-      const wmIn = 0.04, wmHoldStart = 0.14, wmHoldEnd = 0.2, wmOut = 0.28;
-      let wmP;
-      if (progress <= wmIn) wmP = 0;
-      else if (progress <= wmHoldStart) wmP = (progress - wmIn) / (wmHoldStart - wmIn);
-      else if (progress <= wmHoldEnd) wmP = 1;
-      else if (progress <= wmOut) wmP = 1 - (progress - wmHoldEnd) / (wmOut - wmHoldEnd);
-      else wmP = 0;
       watermark.style.opacity = String(wmP);
       watermark.style.transform = `translateY(${((1 - wmP) * 30).toFixed(1)}px) scale(${(0.94 + wmP * 0.06).toFixed(3)})`;
     }
+    if (watermarkFill) {
+      watermarkFill.style.clipPath = `inset(${(100 - fillP * 100).toFixed(2)}% 0 0 0)`;
+    }
     if (cue) cue.style.opacity = String(1 - Math.min(progress / 0.12, 1));
 
-    const l1p = Math.min(progress / 0.65, 1);
+    const l1p = Math.min(Math.max((progress - 0.55) / 0.35, 0), 1);
     layer1.style.opacity = String(1 - l1p);
     layer1.style.transform = `scale(${(1.08 + l1p * 0.16).toFixed(3)})`;
 
@@ -231,7 +252,7 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
       }
     }
 
-    const l2p = Math.min(Math.max((progress - 0.2) / 0.7, 0), 1);
+    const l2p = Math.min(Math.max((progress - 0.62) / 0.38, 0), 1);
     layer2.style.opacity = String(l2p);
     layer2.style.transform = `scale(${(1.12 - l2p * 0.12).toFixed(3)})`;
   }
