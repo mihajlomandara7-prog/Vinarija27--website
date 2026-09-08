@@ -44,10 +44,25 @@ document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver
   const text = document.getElementById('statementText');
   if (!wrapper || !box || !text) return;
 
+  // Same bottom-to-top reveal-up animation used on Wine Estates / Food
+  // Experience, but synced to THIS section's own image-split
+  // IntersectionObserver (below) instead of the generic scroll-position
+  // checkRevealUp mechanism, so the heading/button animate in at the
+  // exact same moment the photo starts dividing into two squares.
+  // A distinct .reveal-up-sync class (identical CSS to .reveal-up) keeps
+  // these out of the shared '.reveal-up, .reveal-line' NodeList so the
+  // two triggers never fight over the same elements.
+  const heading = text.querySelector('.statement-heading');
+  const cta = text.querySelector('.btn-rect');
+  if (heading) heading.classList.add('reveal-up-sync');
+  if (cta) cta.classList.add('reveal-up-sync', 'reveal-up-stagger-2');
+  const syncedReveals = [heading, cta].filter(Boolean);
+
   const splitObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       box.classList.toggle('is-split', entry.isIntersecting);
       text.classList.toggle('is-split', entry.isIntersecting);
+      syncedReveals.forEach(el => el.classList.toggle('in-view', entry.isIntersecting));
     });
   }, { threshold: 0.3 });
 
