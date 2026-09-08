@@ -327,7 +327,7 @@ header#home { position: relative; }
   will-change: opacity, transform;
 }
 .hero-watermark-img {
-  width: min(720px, 82vw);
+  width: min(860px, 90vw);
   height: auto;
   filter: drop-shadow(0 8px 40px rgba(0,0,0,0.45));
 }
