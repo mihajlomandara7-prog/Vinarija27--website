@@ -542,8 +542,7 @@ header#home { position: relative; }
   line-height: 0.98;
   letter-spacing: 0;
 }
-#statement .btn-rect { background: var(--forest-800); color: var(--cream); }
-#statement .btn-rect:hover { background: var(--forest-950); }
+#statement .btn-rect { background: var(--forest-800); color: var(--cream); border: 1.5px solid transparent; }
 .btn-rect {
   display: inline-block;
   margin-top: 34px;
@@ -808,8 +807,7 @@ h2 {
   margin: 8px 0 18px;
 }
 #food-experience .lead { max-width: 460px; }
-#food-experience .btn-rect { background: var(--forest-800); color: var(--cream); }
-#food-experience .btn-rect:hover { background: var(--forest-950); }
+#food-experience .btn-rect { background: var(--forest-800); color: var(--cream); border: 1.5px solid transparent; }
 @media (max-width: 900px) {
   .food-grid {
     grid-template-columns: 1fr;
@@ -843,8 +841,7 @@ h2 {
   letter-spacing: 0.01em;
   margin-bottom: 12px;
 }
-.reviews-viewall { margin-top: 0; background: var(--forest-800); color: var(--cream); }
-.reviews-viewall:hover { background: var(--forest-950); }
+.reviews-viewall { margin-top: 0; background: var(--forest-800); color: var(--cream); border: 1.5px solid transparent; }
 .testimonials-sub {
   max-width: 500px;
   font-size: 15px;
@@ -1119,7 +1116,26 @@ footer {
    transition shorthand, so it only overrides the delay (see the note
    on .reveal-line below for why that distinction matters). */
 #statementText .reveal-down-sync { transition-delay: 1.05s; }
-#statementText .reveal-up-sync { transition-delay: 1.15s; }
+/* The DISCOVER MORE button (.reveal-up-sync) also has a bordo ->
+   transparent + cream-border hover effect (see the bordo-button hover
+   block near .btn-rect below) that must transition faster (0.3s) than
+   its reveal-up-sync clip-path animation (0.75s, delayed 1.15s to wait
+   for the image split). Both live on the same element, so this fully
+   spells out transition-property/-duration/-timing-function/-delay as
+   parallel comma lists (one entry per property, in order) instead of
+   the shorthand — using the shorthand here would collapse the two
+   very different timings into one. */
+#statementText .btn-rect.reveal-up-sync {
+  transition-property: clip-path, background-color, border-color, color;
+  transition-duration: 0.75s, 0.3s, 0.3s, 0.3s;
+  transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1), ease, ease, ease;
+  transition-delay: 1.15s, 0s, 0s, 0s;
+}
+#statementText .btn-rect.reveal-up-sync:hover {
+  background: transparent;
+  border-color: var(--cream);
+  color: var(--cream);
+}
 
 /* Food Experience copy: a slower reveal-up (1.5s instead of the
    sitewide 0.75s). The heading and the label/subheading/lead text all
@@ -1128,7 +1144,41 @@ footer {
    whole group finishes settling (delay = the group's duration + a
    hair of buffer) rather than everything firing at once. */
 #food-experience .reveal-up { transition-duration: 1.5s; }
-#food-experience .food-copy .btn-rect { transition-delay: 1.55s; }
+/* Same reasoning as #statementText .btn-rect.reveal-up-sync above: the
+   VIEW button's bordo hover (0.3s) and its reveal-up clip-path
+   animation (1.5s, delayed 1.55s) need different timings on the same
+   element, so both are spelled out as parallel comma lists rather
+   than the transition shorthand. */
+#food-experience .food-copy .btn-rect {
+  transition-property: clip-path, background-color, border-color, color;
+  transition-duration: 1.5s, 0.3s, 0.3s, 0.3s;
+  transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1), ease, ease, ease;
+  transition-delay: 1.55s, 0s, 0s, 0s;
+}
+#food-experience .food-copy .btn-rect:hover {
+  background: transparent;
+  border-color: var(--cream);
+  color: var(--cream);
+}
+
+/* VIEW ALL (.reviews-viewall) is also .reveal-up/.reveal-up-delay
+   (0.75s clip-path, 0.12s delay) plus this bordo hover (0.3s). Same
+   reasoning as the two blocks above: both timings spelled out as
+   parallel comma lists so the shorthand doesn't collapse them into
+   one. .btn-rect.reviews-viewall (two classes) outranks the
+   single-class .reveal-up/.reveal-up-delay rules regardless of
+   source order. */
+.btn-rect.reviews-viewall {
+  transition-property: clip-path, background-color, border-color, color;
+  transition-duration: 0.75s, 0.3s, 0.3s, 0.3s;
+  transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1), ease, ease, ease;
+  transition-delay: 0.12s, 0s, 0s, 0s;
+}
+.btn-rect.reviews-viewall:hover {
+  background: transparent;
+  border-color: var(--cream);
+  color: var(--cream);
+}
 
 /* Divider line drawing in left-to-right, e.g. under the Food Experience
    heading — same trigger mechanism as .reveal-up (see checkRevealUp),
