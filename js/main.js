@@ -184,7 +184,7 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
   const wrapper = document.getElementById('heroPinWrapper');
   const layer1 = document.getElementById('heroLayer1');
   const layer2 = document.getElementById('heroLayer2');
-  const text = document.getElementById('heroText');
+  const watermark = document.getElementById('heroWatermark');
   const cue = document.querySelector('#home .scroll-cue');
   const video = document.getElementById('heroVideo');
   if (!wrapper || !layer1 || !layer2) return;
@@ -206,9 +206,11 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 
     if (reduceMotion) return;
 
-    const textP = Math.min(progress / 0.28, 1);
-    text.style.opacity = String(1 - textP);
-    text.style.transform = `translateY(${(-textP * 50).toFixed(1)}px) scale(${(1 - textP * 0.04).toFixed(3)})`;
+    if (watermark) {
+      const wmP = Math.min(progress / 0.28, 1);
+      watermark.style.opacity = String(wmP);
+      watermark.style.transform = `translateY(${((1 - wmP) * 30).toFixed(1)}px) scale(${(0.94 + wmP * 0.06).toFixed(3)})`;
+    }
     if (cue) cue.style.opacity = String(1 - Math.min(progress / 0.12, 1));
 
     const l1p = Math.min(progress / 0.65, 1);
