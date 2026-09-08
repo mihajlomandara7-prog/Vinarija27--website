@@ -207,7 +207,13 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
     if (reduceMotion) return;
 
     if (watermark) {
-      const wmP = Math.min(progress / 0.28, 1);
+      const wmIn = 0.04, wmHoldStart = 0.14, wmHoldEnd = 0.2, wmOut = 0.28;
+      let wmP;
+      if (progress <= wmIn) wmP = 0;
+      else if (progress <= wmHoldStart) wmP = (progress - wmIn) / (wmHoldStart - wmIn);
+      else if (progress <= wmHoldEnd) wmP = 1;
+      else if (progress <= wmOut) wmP = 1 - (progress - wmHoldEnd) / (wmOut - wmHoldEnd);
+      else wmP = 0;
       watermark.style.opacity = String(wmP);
       watermark.style.transform = `translateY(${((1 - wmP) * 30).toFixed(1)}px) scale(${(0.94 + wmP * 0.06).toFixed(3)})`;
     }
