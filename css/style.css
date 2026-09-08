@@ -543,7 +543,7 @@ header#home { position: relative; }
   line-height: 0.98;
   letter-spacing: 0;
 }
-#statement .btn-rect { background: var(--forest-800); color: var(--cream); border: 1.5px solid transparent; }
+#statement .btn-rect { background: transparent; color: var(--forest-800); border: 1.5px solid var(--forest-800); }
 .btn-rect {
   display: inline-block;
   margin-top: 34px;
@@ -1117,15 +1117,17 @@ footer {
    transition shorthand, so it only overrides the delay (see the note
    on .reveal-line below for why that distinction matters). */
 #statementText .reveal-down-sync { transition-delay: 1.05s; }
-/* The DISCOVER MORE button (.reveal-up-sync) also has a bordo ->
-   transparent + cream-border hover effect (see the bordo-button hover
-   block near .btn-rect below) that must transition faster (0.3s) than
-   its reveal-up-sync clip-path animation (0.75s, delayed 1.15s to wait
-   for the image split). Both live on the same element, so this fully
-   spells out transition-property/-duration/-timing-function/-delay as
-   parallel comma lists (one entry per property, in order) instead of
-   the shorthand — using the shorthand here would collapse the two
-   very different timings into one. */
+/* DISCOVER MORE (.reveal-up-sync) is a framed/outlined button on the
+   light cream side of the split (transparent fill, dark bordo border
+   and text) that fills solid bordo with cream text on hover — same
+   invert pattern as .estate-panel .btn-rect, just light-on-dark
+   instead of dark-on-light. That hover must transition faster (0.3s)
+   than the button's reveal-up-sync clip-path animation (0.75s,
+   delayed 1.15s to wait for the image split). Both live on the same
+   element, so this fully spells out transition-property/-duration/
+   -timing-function/-delay as parallel comma lists (one entry per
+   property, in order) instead of the shorthand — using the shorthand
+   here would collapse the two very different timings into one. */
 #statementText .btn-rect.reveal-up-sync {
   transition-property: clip-path, background-color, border-color, color;
   transition-duration: 0.75s, 0.3s, 0.3s, 0.3s;
@@ -1133,8 +1135,8 @@ footer {
   transition-delay: 1.15s, 0s, 0s, 0s;
 }
 #statementText .btn-rect.reveal-up-sync:hover {
-  background: transparent;
-  border-color: var(--cream);
+  background: var(--forest-800);
+  border-color: var(--forest-800);
   color: var(--cream);
 }
 
