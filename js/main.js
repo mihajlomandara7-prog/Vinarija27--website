@@ -46,18 +46,23 @@ document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver
 
   // Heading/button reveal synced to THIS section's own image-split
   // IntersectionObserver (below) instead of the generic scroll-position
-  // checkRevealUp mechanism, so all three (image, heading, button)
-  // animate in at the exact same moment the photo starts dividing into
-  // two squares, each with its own motion: the heading drifts gently
-  // down into place (.reveal-down-sync), the button rises from below
-  // like the Wine Estates / Food Experience reveal-up (.reveal-up-sync).
-  // Distinct classes (identical-shaped CSS, different transform) keep
-  // both out of the shared '.reveal-up, .reveal-line' NodeList so the
-  // two triggers never fight over the same elements.
+  // checkRevealUp mechanism, so all three share one trigger — but the
+  // sequence is strictly image-first: the heading/button's in-view
+  // class flips at the same instant as is-split, yet their CSS
+  // transition-delay (set in style.css, scoped to #statementText) is
+  // tuned to just past the 1s it takes .statement-box/.statement-text
+  // to finish their width/opacity animation, so the text only starts
+  // moving once the photo has fully settled into its two-square
+  // layout. The heading drifts gently down into place
+  // (.reveal-down-sync), the button rises from below like the Wine
+  // Estates / Food Experience reveal-up (.reveal-up-sync). Distinct
+  // classes (identical-shaped CSS, different transform) keep both out
+  // of the shared '.reveal-up, .reveal-line' NodeList so the two
+  // triggers never fight over the same elements.
   const heading = text.querySelector('.statement-heading');
   const cta = text.querySelector('.btn-rect');
   if (heading) heading.classList.add('reveal-down-sync');
-  if (cta) cta.classList.add('reveal-up-sync', 'reveal-up-stagger-2');
+  if (cta) cta.classList.add('reveal-up-sync');
   const syncedReveals = [heading, cta].filter(Boolean);
 
   const splitObserver = new IntersectionObserver((entries) => {

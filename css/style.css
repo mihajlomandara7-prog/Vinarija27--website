@@ -1100,8 +1100,7 @@ footer {
 /* Slow, gentle top-to-bottom settle: content drifts down from just
    above its resting spot and eases to a stop, no bounce/overshoot.
    Used only for the "Vinarija 27 Resort" heading, synced to the same
-   observer as the image split (see statementSplit in main.js) — the
-   image/button/heading all trigger together, each with its own motion. */
+   observer as the image split (see statementSplit in main.js). */
 .reveal-down-sync {
   opacity: 0;
   transform: translateY(-50px);
@@ -1111,6 +1110,16 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .reveal-down-sync { transition: none; opacity: 1; transform: none; }
 }
+/* The image/text split (.statement-box/.statement-text width/opacity)
+   takes 1s to fully settle. The heading and button share that same
+   IntersectionObserver trigger but must wait for the photo to finish
+   moving before they start, so their transition-delay is set to just
+   past that 1s — a strictly sequential "image settles, then text
+   appears" instead of everything animating at once. Longhand, not the
+   transition shorthand, so it only overrides the delay (see the note
+   on .reveal-line below for why that distinction matters). */
+#statementText .reveal-down-sync { transition-delay: 1.05s; }
+#statementText .reveal-up-sync { transition-delay: 1.15s; }
 
 /* Divider line drawing in left-to-right, e.g. under the Food Experience
    heading — same trigger mechanism as .reveal-up (see checkRevealUp),
