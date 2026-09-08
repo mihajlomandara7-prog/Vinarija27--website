@@ -278,6 +278,15 @@ header#home { position: relative; }
   background-position: center 8%;
   background-color: #2b241f; /* fallback tone until images/hero-1.jpg is added */
 }
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 8%;
+  background-color: transparent;
+}
 #heroLayer2 {
   z-index: 0;
   opacity: 0;

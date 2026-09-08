@@ -186,9 +186,17 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
   const layer2 = document.getElementById('heroLayer2');
   const text = document.getElementById('heroText');
   const cue = document.querySelector('#home .scroll-cue');
+  const video = document.getElementById('heroVideo');
   if (!wrapper || !layer1 || !layer2) return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (video) {
+    video.addEventListener('error', () => { video.style.display = 'none'; });
+    if (reduceMotion) {
+      video.pause();
+    }
+  }
 
   function update() {
     const rect = wrapper.getBoundingClientRect();
@@ -206,6 +214,14 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
     const l1p = Math.min(progress / 0.65, 1);
     layer1.style.opacity = String(1 - l1p);
     layer1.style.transform = `scale(${(1.08 + l1p * 0.16).toFixed(3)})`;
+
+    if (video && !reduceMotion) {
+      if (progress > 0.02) {
+        if (!video.paused) video.pause();
+      } else if (video.paused) {
+        video.play().catch(() => {});
+      }
+    }
 
     const l2p = Math.min(Math.max((progress - 0.2) / 0.7, 0), 1);
     layer2.style.opacity = String(l2p);
