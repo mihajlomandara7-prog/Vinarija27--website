@@ -15,7 +15,6 @@
   --forest-900: #2b0a0a;
   --forest-800: #3d1212;
   --sage-100: #f3e2c2;
-  --violet-700: #4a1a68;
   --radius: 18px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -88,22 +87,6 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: 0.3em;
   font-size: 14px;
   text-transform: uppercase;
-}
-
-/* ---------- Page transition (wipe overlay) ---------- */
-#pageTransition {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: var(--violet-700);
-  transform: translateX(-100%);
-  pointer-events: none;
-}
-#pageTransition.pt-animate { transition: transform 0.65s cubic-bezier(0.65, 0, 0.35, 1); }
-#pageTransition.pt-cover { transform: translateX(0); }
-#pageTransition.pt-reveal { transform: translateX(100%); }
-@media (prefers-reduced-motion: reduce) {
-  #pageTransition.pt-animate { transition: none; }
 }
 
 /* ---------- Navbar ---------- */
