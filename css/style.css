@@ -957,11 +957,24 @@ footer {
   padding: 80px 0 30px;
   text-align: left;
 }
+.footer-columns-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding-bottom: 50px;
+}
+.footer-brand-mark { display: flex; align-items: center; }
+.footer-brand-mark-img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  opacity: 0.85;
+}
 .footer-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 60px;
-  padding-bottom: 50px;
 }
 .footer-contact {
   display: flex;
@@ -1020,6 +1033,8 @@ footer {
   font-size: 13px;
 }
 @media (max-width: 700px) {
+  .footer-columns-wrap { grid-template-columns: 1fr; gap: 30px; padding-bottom: 30px; }
+  .footer-brand-mark-img { max-width: 280px; }
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
   .footer-columns { gap: 40px; }
 }
