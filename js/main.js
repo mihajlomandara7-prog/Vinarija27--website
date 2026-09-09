@@ -6,6 +6,44 @@ window.addEventListener('load', () => {
   setTimeout(() => loader.classList.add('hidden'), 500);
 });
 
+/* ---------------- Page transition (two-panel wipe on internal nav) ---------------- */
+(function pageTransitions() {
+  const el = document.getElementById('pageTransition');
+  if (!el) return;
+  let running = false;
+
+  function runTransition(target) {
+    if (running) return;
+    running = true;
+    el.classList.add('pt-animate');
+    requestAnimationFrame(() => el.classList.add('pt-cover'));
+    el.addEventListener('transitionend', function coverDone(e) {
+      if (e.propertyName !== 'transform') return;
+      el.removeEventListener('transitionend', coverDone);
+      target.scrollIntoView({ behavior: 'instant', block: 'start' });
+      el.classList.remove('pt-cover');
+      el.classList.add('pt-reveal');
+      el.addEventListener('transitionend', function revealDone(e2) {
+        if (e2.propertyName !== 'transform') return;
+        el.removeEventListener('transitionend', revealDone);
+        el.classList.remove('pt-animate', 'pt-reveal');
+        running = false;
+      }, { once: true });
+    }, { once: true });
+  }
+
+  document.querySelectorAll('a[href^="#"]:not([target="_blank"])').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const targetId = a.getAttribute('href');
+      const target = targetId && document.querySelector(targetId);
+      if (!target) return;
+      e.preventDefault();
+      runTransition(target);
+    });
+  });
+})();
+
 /* ---------------- Navbar ---------------- */
 const navbar = document.getElementById('navbar');
 const heroWrapperForNav = document.getElementById('heroPinWrapper');
