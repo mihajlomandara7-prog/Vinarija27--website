@@ -6,7 +6,6 @@
   --wine-600: #8f1f34;
   --wine-500: #b32a45;
   --wine-muted: #6b3737;
-  --wine-muted-dark: #4a2424;
   --gold-400: #d9b26a;
   --gold-300: #e8caa0;
   --gold-200: #f3e2c2;
@@ -99,7 +98,7 @@ a { text-decoration: none; color: inherit; }
   pointer-events: none;
   transform: translateX(-100%);
   background: linear-gradient(to right,
-    var(--wine-muted-dark) 0%, var(--wine-muted-dark) 82%,
+    var(--forest-900) 0%, var(--forest-900) 82%,
     var(--wine-muted) 82%, var(--wine-muted) 100%);
 }
 #pageTransition.pt-animate { transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1); }
