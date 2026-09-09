@@ -42,6 +42,28 @@ window.addEventListener('load', () => {
       runTransition(target);
     });
   });
+
+  function coverAndNavigate(url) {
+    if (running) return;
+    running = true;
+    el.classList.add('pt-animate');
+    requestAnimationFrame(() => el.classList.add('pt-cover'));
+    el.addEventListener('transitionend', function coverDone(e) {
+      if (e.propertyName !== 'transform') return;
+      el.removeEventListener('transitionend', coverDone);
+      window.location.href = url;
+    }, { once: true });
+  }
+
+  document.querySelectorAll('a.page-transition-link:not([target="_blank"])').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const url = a.getAttribute('href');
+      if (!url) return;
+      e.preventDefault();
+      coverAndNavigate(url);
+    });
+  });
 })();
 
 /* ---------------- Navbar ---------------- */
