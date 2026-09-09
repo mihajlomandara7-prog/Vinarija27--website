@@ -112,6 +112,19 @@ a { text-decoration: none; color: inherit; }
 body.placeholder-page {
   background: var(--cream);
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.placeholder-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(28px, 5vw, 56px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--forest-900);
+  text-align: center;
+  padding: 0 24px;
 }
 .back-arrow {
   position: fixed;
