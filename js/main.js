@@ -26,7 +26,7 @@ mobileMenu.querySelectorAll('a').forEach(a =>
 
 /* ---------------- Scroll reveal ---------------- */
 document.querySelectorAll(
-  '#about, #location, #contact'
+  '#about, #location'
 ).forEach(el => el.classList.add('reveal'));
 
 const revealObserver = new IntersectionObserver((entries) => {
