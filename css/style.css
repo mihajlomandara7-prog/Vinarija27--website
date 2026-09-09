@@ -218,6 +218,52 @@ body.detail-page { background: var(--cream); }
   .detail-hero { height: 56svh; min-height: 340px; padding-bottom: 40px; }
   .detail-intro { padding: 60px 24px 44px; }
 }
+.detail-feature-row {
+  display: flex;
+  align-items: stretch;
+  min-height: 480px;
+}
+.detail-feature-row.reverse { flex-direction: row-reverse; }
+.detail-feature-media {
+  flex: 1 1 50%;
+  min-width: 0;
+  display: flex;
+  gap: 4px;
+}
+.detail-feature-media img {
+  flex: 1 1 0%;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.detail-feature-text {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 90px;
+}
+.detail-feature-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(26px, 2.6vw, 38px);
+  color: var(--forest-950);
+  margin-bottom: 16px;
+}
+.detail-feature-text p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  max-width: 440px;
+}
+@media (max-width: 900px) {
+  .detail-feature-row, .detail-feature-row.reverse { flex-direction: column; min-height: auto; }
+  .detail-feature-media { height: 320px; }
+  .detail-feature-text { padding: 44px 24px; }
+  .detail-feature-text p { max-width: none; }
+}
 
 /* ---------- Navbar ---------- */
 #navbar {
