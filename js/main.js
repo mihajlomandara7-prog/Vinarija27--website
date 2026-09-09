@@ -19,10 +19,19 @@ window.addEventListener('scroll', () => {
 
 const navToggle = document.getElementById('navToggle');
 const mobileMenu = document.getElementById('mobileMenu');
-navToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+const menuClose = document.getElementById('menuClose');
+function setMenuOpen(open) {
+  mobileMenu.classList.toggle('open', open);
+  document.body.classList.toggle('menu-open', open);
+}
+navToggle.addEventListener('click', () => setMenuOpen(!mobileMenu.classList.contains('open')));
+menuClose.addEventListener('click', () => setMenuOpen(false));
 mobileMenu.querySelectorAll('a').forEach(a =>
-  a.addEventListener('click', () => mobileMenu.classList.remove('open'))
+  a.addEventListener('click', () => setMenuOpen(false))
 );
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') setMenuOpen(false);
+});
 
 /* ---------------- Scroll reveal ---------------- */
 document.querySelectorAll(
