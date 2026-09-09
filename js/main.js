@@ -184,53 +184,14 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
   });
 });
 
-/* =====================================================
-   HERO — pinned scroll image sequence
-   Layer 1 stays put while the page scrolls through it,
-   fading/zooming out as layer 2 rises in behind it.
-===================================================== */
-(function heroPin() {
-  const wrapper = document.getElementById('heroPinWrapper');
-  const layer1 = document.getElementById('heroLayer1');
-  const cue = document.querySelector('#home .scroll-cue');
+/* ---------------- Hero video ---------------- */
+(function heroVideoSetup() {
   const video = document.getElementById('heroVideo');
-  if (!wrapper || !layer1) return;
-
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (video) {
-    video.addEventListener('error', () => { video.style.display = 'none'; });
-    if (reduceMotion) {
-      video.pause();
-    }
+  if (!video) return;
+  video.addEventListener('error', () => { video.style.display = 'none'; });
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    video.pause();
   }
-
-  function update() {
-    const rect = wrapper.getBoundingClientRect();
-    const total = Math.max(wrapper.offsetHeight - window.innerHeight, 1);
-    const scrolled = Math.min(Math.max(-rect.top, 0), total);
-    const progress = scrolled / total;
-
-    if (reduceMotion) return;
-
-    if (cue) cue.style.opacity = String(1 - Math.min(progress / 0.12, 1));
-
-    const l1p = Math.min(progress / 0.65, 1);
-    layer1.style.opacity = String(1 - l1p);
-    layer1.style.transform = `scale(${(1.08 + l1p * 0.16).toFixed(3)})`;
-
-    if (video && !reduceMotion) {
-      if (progress > 0.02) {
-        if (!video.paused) video.pause();
-      } else if (video.paused) {
-        video.play().catch(() => {});
-      }
-    }
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
-  update();
 })();
 
 /* ---------------- Statement image slider (pool / garden) ---------------- */

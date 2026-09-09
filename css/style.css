@@ -422,16 +422,11 @@ body.menu-open #navbar { opacity: 0; pointer-events: none; }
   .menu-footer-links { padding: 16px 20px 24px; gap: 30px; }
 }
 
-/* ---------- Hero (scroll-pinned image sequence) ---------- */
+/* ---------- Hero ---------- */
 header#home { position: relative; }
 
 #heroPinWrapper {
   position: relative;
-  height: 170vh;
-}
-#heroPinSticky {
-  position: sticky;
-  top: 0;
   height: 100svh;
   min-height: 640px;
   overflow: hidden;
@@ -442,7 +437,6 @@ header#home { position: relative; }
   inset: 0;
   background-size: cover;
   background-position: center;
-  will-change: opacity, transform;
 }
 #heroLayer1 {
   z-index: 1;
