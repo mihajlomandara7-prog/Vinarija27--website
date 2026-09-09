@@ -427,7 +427,7 @@ header#home { position: relative; }
 
 #heroPinWrapper {
   position: relative;
-  height: 240vh;
+  height: 170vh;
 }
 #heroPinSticky {
   position: sticky;
@@ -457,11 +457,6 @@ header#home { position: relative; }
   object-fit: cover;
   object-position: center 8%;
   background-color: transparent;
-}
-#heroLayer2 {
-  z-index: 0;
-  opacity: 0;
-  background-color: #101b1c; /* fallback tone until images/hero-2.jpg is added */
 }
 .hero-gradient {
   position: absolute;

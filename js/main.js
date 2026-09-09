@@ -192,10 +192,9 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 (function heroPin() {
   const wrapper = document.getElementById('heroPinWrapper');
   const layer1 = document.getElementById('heroLayer1');
-  const layer2 = document.getElementById('heroLayer2');
   const cue = document.querySelector('#home .scroll-cue');
   const video = document.getElementById('heroVideo');
-  if (!wrapper || !layer1 || !layer2) return;
+  if (!wrapper || !layer1) return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -227,10 +226,6 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
         video.play().catch(() => {});
       }
     }
-
-    const l2p = Math.min(Math.max((progress - 0.2) / 0.7, 0), 1);
-    layer2.style.opacity = String(l2p);
-    layer2.style.transform = `scale(${(1.12 - l2p * 0.12).toFixed(3)})`;
   }
 
   window.addEventListener('scroll', update, { passive: true });
