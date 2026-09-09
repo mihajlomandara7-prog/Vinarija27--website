@@ -684,7 +684,7 @@ header#home { position: relative; }
 .statement-desc {
   font-family: 'Cormorant Garamond', serif;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.7;
   color: var(--ink-soft);
   max-width: 460px;
