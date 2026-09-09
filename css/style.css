@@ -5,6 +5,7 @@
   --wine-700: #6b1626;
   --wine-600: #8f1f34;
   --wine-500: #b32a45;
+  --wine-muted: #8f1f1f;
   --gold-400: #d9b26a;
   --gold-300: #e8caa0;
   --gold-200: #f3e2c2;
@@ -95,14 +96,14 @@ a { text-decoration: none; color: inherit; }
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  transform: translateX(100%);
+  transform: translateX(-100%);
   background: linear-gradient(to right,
     var(--forest-900) 0%, var(--forest-900) 82%,
-    var(--wine-600) 82%, var(--wine-600) 100%);
+    var(--wine-muted) 82%, var(--wine-muted) 100%);
 }
 #pageTransition.pt-animate { transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1); }
 #pageTransition.pt-cover { transform: translateX(0); }
-#pageTransition.pt-reveal { transform: translateX(-100%); }
+#pageTransition.pt-reveal { transform: translateX(100%); }
 @media (prefers-reduced-motion: reduce) {
   #pageTransition.pt-animate { transition: none; }
 }
