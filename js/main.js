@@ -38,6 +38,10 @@ document.querySelectorAll(
   '#about, #location'
 ).forEach(el => el.classList.add('reveal'));
 
+document.querySelector('footer .footer-brand-mark')?.classList.add('reveal');
+document.querySelector('footer .footer-links')?.classList.add('reveal', 'reveal-stagger-1');
+document.querySelector('footer .footer-contact')?.classList.add('reveal', 'reveal-stagger-2');
+
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     entry.target.classList.toggle('in-view', entry.isIntersecting);
