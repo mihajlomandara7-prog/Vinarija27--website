@@ -1,7 +1,23 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+/* ---------------- Restore scroll position after returning from a
+   placeholder page (see coverAndNavigate below). The browser's own
+   scroll restoration is disabled so it can't fight this, and the
+   actual scroll happens on 'load' once layout has settled. ---------------- */
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+const pendingScrollY = sessionStorage.getItem('vinarija27-scrollY');
+if (pendingScrollY !== null) sessionStorage.removeItem('vinarija27-scrollY');
+
 /* ---------------- Loader ---------------- */
 window.addEventListener('load', () => {
+  if (pendingScrollY !== null) {
+    const y = parseInt(pendingScrollY, 10);
+    window.scrollTo({ top: y, behavior: 'instant' });
+    /* Some sections (e.g. the pinned statement/resort slider) still
+       settle their layout height right after load, which can nudge
+       this off by a bit — reapply once that's had time to happen. */
+    setTimeout(() => window.scrollTo({ top: y, behavior: 'instant' }), 150);
+  }
   const loader = document.getElementById('loader');
   setTimeout(() => loader.classList.add('hidden'), 500);
 });
@@ -46,6 +62,7 @@ window.addEventListener('load', () => {
   function coverAndNavigate(url) {
     if (running) return;
     running = true;
+    sessionStorage.setItem('vinarija27-scrollY', String(window.scrollY));
     el.classList.add('pt-animate');
     requestAnimationFrame(() => el.classList.add('pt-cover'));
     el.addEventListener('transitionend', function coverDone(e) {
