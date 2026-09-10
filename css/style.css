@@ -1683,3 +1683,18 @@ footer {
   .mobile-cta-book { background: var(--gold-300); color: var(--forest-900); }
   footer { padding-bottom: 88px; }
 }
+
+/* ---------- Mobile navbar language toggle (left side, mirrors the hamburger on the right) ---------- */
+.mobile-nav-lang { display: none; }
+@media (max-width: 1080px) {
+  .mobile-nav-lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    position: absolute;
+    left: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+}

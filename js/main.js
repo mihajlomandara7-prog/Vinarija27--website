@@ -89,6 +89,21 @@ window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 10);
 });
 
+const mobileNavLang = document.getElementById('mobileNavLang');
+if (mobileNavLang) {
+  const langLabel = mobileNavLang.querySelector('.nav-lang-label');
+  const toggleLang = () => {
+    langLabel.textContent = langLabel.textContent === 'EN' ? 'SR' : 'EN';
+  };
+  mobileNavLang.addEventListener('click', toggleLang);
+  mobileNavLang.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleLang();
+    }
+  });
+}
+
 const navToggle = document.getElementById('navToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 const menuClose = document.getElementById('menuClose');
