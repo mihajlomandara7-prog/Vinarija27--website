@@ -1649,3 +1649,14 @@ footer {
     line-height: 1.05;
   }
 }
+
+/* ---------- Reviews: centered head, visible arrows, smaller cards on mobile ---------- */
+@media (max-width: 700px) {
+  .testimonials-head { text-align: center; }
+  .testimonials-rating { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .testimonials-rating .stars { margin-left: 0; }
+  .testimonials-arrow { display: flex; width: 36px; height: 36px; }
+  .testimonials-arrow svg { width: 15px; height: 15px; }
+  .testimonial-card { flex-basis: 220px; padding: 20px 18px; }
+  .testimonial-text { font-size: 14.5px; }
+}
