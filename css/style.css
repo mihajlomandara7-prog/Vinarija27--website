@@ -1114,6 +1114,7 @@ h2 {
   line-height: 1;
   margin: 0 0 28px;
 }
+.food-heading-mobile { display: none; }
 .food-divider {
   border: none;
   border-top: 1px solid var(--forest-950);
@@ -1636,4 +1637,15 @@ footer {
   .estate-panel.active, .estate-panel.shrink { flex: none; }
   .estate-panel-content { opacity: 1; transform: none; }
   .estate-panel-title { font-size: 30px; letter-spacing: 0.12em; }
+}
+
+/* ---------- Food Experience: two-line heading on mobile ---------- */
+@media (max-width: 700px) {
+  .food-heading { white-space: normal; }
+  .food-heading-desktop { display: none; }
+  .food-heading-mobile {
+    display: block;
+    font-size: clamp(34px, calc((100vw - 80px) / 6.48), 90px);
+    line-height: 1.05;
+  }
 }
