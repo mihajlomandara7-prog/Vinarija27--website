@@ -207,6 +207,15 @@ document.querySelectorAll('#food-experience .food-divider').forEach(el => {
   el.dataset.revealTrigger = foodHeadingSelector;
 });
 
+// Food photos: each one triggers off its own position (not the shared
+// foodHeadingSelector above), so the left/right pair — which sit at
+// roughly the same height — drop down together as they scroll into
+// view, and the lower "below" photo naturally follows a bit after,
+// once the user has scrolled further and it reaches that same point.
+document.querySelectorAll('#food-experience .food-photo').forEach(el => {
+  el.classList.add('reveal-up');
+});
+
 // REVIEWS heading/button: same reveal, triggered a bit earlier (see
 // reveal-up-early in checkRevealUp below) so it doesn't feel like it
 // lags at the bottom edge of the viewport.

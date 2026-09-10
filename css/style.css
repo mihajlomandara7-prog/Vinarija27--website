@@ -942,14 +942,9 @@ header#home { position: relative; }
   justify-content: center;
   text-align: center;
   padding: 0 20px;
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
-}
-.estate-panel.active .estate-panel-content,
-.estate-panel:hover .estate-panel-content {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
 }
 .estate-panel-title {
   font-family: 'Cormorant Garamond', serif;
@@ -1653,3 +1648,9 @@ footer {
 /* ---------- Navbar: only the logo mark once scrolled (no wordmark) ---------- */
 #navbar.scrolled .logo-word { display: none; }
 #navbar.scrolled .nav-split .logo-block { gap: 0; }
+
+/* Food Experience photos: same reveal mechanism as .reveal-up elsewhere,
+   but flipped to drop down from the top instead of wiping up from the
+   bottom (top stays fixed, the clipped region shrinks from the bottom). */
+.food-photo.reveal-up { clip-path: inset(0 0 100% 0); }
+.food-photo.reveal-up.in-view { clip-path: inset(0 0 0% 0); }
