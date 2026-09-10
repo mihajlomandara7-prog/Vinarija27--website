@@ -299,16 +299,23 @@ body.detail-page { background: var(--cream); }
 .logo span { color: #fff; transition: color 0.4s var(--ease); }
 #navbar.scrolled .logo { color: var(--forest-900); }
 #navbar.scrolled .logo span { color: var(--wine-500); }
-.logo-tagline {
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.28em;
+.logo-mark {
+  height: 42px;
+  width: auto;
+  display: block;
+  transition: filter 0.4s var(--ease);
+}
+#navbar.scrolled .logo-mark { filter: brightness(0); }
+.logo-word {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
   color: #fff;
-  opacity: 0.8;
-  transition: color 0.4s var(--ease), opacity 0.4s var(--ease);
+  transition: color 0.4s var(--ease);
 }
-#navbar.scrolled .logo-tagline { color: var(--forest-800); opacity: 0.65; }
+#navbar.scrolled .logo-word { color: var(--forest-900); }
 
 .nav-links { display: flex; align-items: center; gap: 30px; }
 .nav-logo-icon {
@@ -448,13 +455,14 @@ body.menu-open #navbar { opacity: 0; pointer-events: none; }
 }
 .menu-logo-block .logo { font-size: 26px; font-weight: 600; color: var(--cream); letter-spacing: 0.04em; }
 .menu-logo-block .logo span { color: var(--gold-300); }
-.menu-logo-block .logo-tagline {
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.28em;
+.menu-logo-mark { height: 38px; }
+.menu-logo-word {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--cream);
-  opacity: 0.65;
 }
 .menu-topbar-right { display: flex; align-items: center; gap: 24px; margin-left: auto; }
 .menu-book-btn {
