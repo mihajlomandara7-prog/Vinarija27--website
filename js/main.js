@@ -228,15 +228,19 @@ document.querySelectorAll('#about .reviews-viewall').forEach(el =>
 );
 
 // Wine Estates panels: same rise-up reveal as the "WINE ESTATES" heading
-// above them, with a small stagger so the three panels settle in one
-// after another rather than all at once. Applied to the photo AND its
-// dark overlay together (so no bare overlay rectangle is visible before
-// the photo arrives) — not the whole .estate-panel — so the title/
-// DISCOVER button in .estate-panel-content stay visible throughout.
+// above them, triggered off the heading's own position (like the Food
+// Experience block above) so the panels start rising the moment the
+// heading itself starts, rather than lagging behind since they sit lower
+// on the page. A small stagger still spaces the three panels apart.
+// Applied to the photo AND its dark overlay together (so no bare overlay
+// rectangle is visible before the photo arrives) — not the whole
+// .estate-panel — so the title/DISCOVER button in .estate-panel-content
+// stay visible throughout.
 document.querySelectorAll('#estatesPanels .estate-panel').forEach((panel, i) => {
   const staggerClass = i === 1 ? 'reveal-up-stagger-1' : i === 2 ? 'reveal-up-stagger-2' : null;
   panel.querySelectorAll('.estate-panel-image, .estate-panel-overlay').forEach((el) => {
     el.classList.add('reveal-up');
+    el.dataset.revealTrigger = '#estatesHeading';
     if (staggerClass) el.classList.add(staggerClass);
   });
 });
