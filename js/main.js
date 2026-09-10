@@ -229,13 +229,16 @@ document.querySelectorAll('#about .reviews-viewall').forEach(el =>
 
 // Wine Estates panels: same rise-up reveal as the "WINE ESTATES" heading
 // above them, with a small stagger so the three panels settle in one
-// after another rather than all at once. Applied to the photo itself
-// (not the whole .estate-panel), so the title/DISCOVER button in
-// .estate-panel-content stay visible throughout, unaffected.
-document.querySelectorAll('#estatesPanels .estate-panel-image').forEach((el, i) => {
-  el.classList.add('reveal-up');
-  if (i === 1) el.classList.add('reveal-up-stagger-1');
-  if (i === 2) el.classList.add('reveal-up-stagger-2');
+// after another rather than all at once. Applied to the photo AND its
+// dark overlay together (so no bare overlay rectangle is visible before
+// the photo arrives) — not the whole .estate-panel — so the title/
+// DISCOVER button in .estate-panel-content stay visible throughout.
+document.querySelectorAll('#estatesPanels .estate-panel').forEach((panel, i) => {
+  const staggerClass = i === 1 ? 'reveal-up-stagger-1' : i === 2 ? 'reveal-up-stagger-2' : null;
+  panel.querySelectorAll('.estate-panel-image, .estate-panel-overlay').forEach((el) => {
+    el.classList.add('reveal-up');
+    if (staggerClass) el.classList.add(staggerClass);
+  });
 });
 
 // Not IntersectionObserver: clip-path on the observed element itself
