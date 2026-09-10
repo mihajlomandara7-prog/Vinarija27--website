@@ -1653,3 +1653,13 @@ footer {
 /* ---------- Navbar: only the logo mark once scrolled (no wordmark) ---------- */
 #navbar.scrolled .logo-word { display: none; }
 #navbar.scrolled .nav-split .logo-block { gap: 0; }
+
+/* Wine Estates panels: add the clip-path reveal-up transition alongside
+   the panel's own flex transition (hover accordion) instead of letting
+   .reveal-up's transition shorthand overwrite it. Longhand, one entry
+   per property, same reasoning as the other reveal-up combos above. */
+.estate-panel.reveal-up {
+  transition-property: flex, clip-path;
+  transition-duration: 0.7s, 0.75s;
+  transition-timing-function: var(--ease), cubic-bezier(0.33, 1, 0.68, 1);
+}

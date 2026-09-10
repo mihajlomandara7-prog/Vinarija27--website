@@ -218,6 +218,15 @@ document.querySelectorAll('#about .reviews-viewall').forEach(el =>
   el.classList.add('reveal-up', 'reveal-up-delay', 'reveal-up-early')
 );
 
+// Wine Estates panels: same reveal as the "WINE ESTATES" heading above
+// them, with a small stagger so the three panels settle in one after
+// another rather than all at once.
+document.querySelectorAll('#estatesPanels .estate-panel').forEach((el, i) => {
+  el.classList.add('reveal-up');
+  if (i === 1) el.classList.add('reveal-up-stagger-1');
+  if (i === 2) el.classList.add('reveal-up-stagger-2');
+});
+
 // Not IntersectionObserver: clip-path on the observed element itself
 // makes Chromium report intersectionRatio stuck at 0, so visibility is
 // computed manually here instead. A short section (like the discover
