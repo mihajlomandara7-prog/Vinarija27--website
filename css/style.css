@@ -1660,3 +1660,9 @@ footer {
   .testimonial-card { flex-basis: 220px; padding: 20px 18px; }
   .testimonial-text { font-size: 14.5px; }
 }
+
+/* ---------- Resort: bigger heading, slightly smaller button on mobile ---------- */
+@media (max-width: 700px) {
+  #statement .statement-heading { font-size: 44px; }
+  #statementText .btn-rect { font-size: 11px; padding: 14px 34px; }
+}
