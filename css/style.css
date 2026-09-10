@@ -1654,3 +1654,32 @@ footer {
    bottom (top stays fixed, the clipped region shrinks from the bottom). */
 .food-photo.reveal-up { clip-path: inset(0 0 100% 0); }
 .food-photo.reveal-up.in-view { clip-path: inset(0 0 0% 0); }
+
+/* ---------- Mobile sticky Call Us / Book Now bar ---------- */
+#mobileCtaBar { display: none; }
+@media (max-width: 700px) {
+  #mobileCtaBar {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 470;
+    height: 58px;
+  }
+  .mobile-cta-btn {
+    flex: 1 1 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .mobile-cta-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .mobile-cta-call { background: var(--cream); color: var(--forest-900); }
+  .mobile-cta-book { background: var(--gold-300); color: var(--forest-900); }
+  footer { padding-bottom: 88px; }
+}
