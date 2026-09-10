@@ -31,7 +31,7 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, .logo {
+h1, h2, h3 {
   font-family: 'Cormorant Garamond', serif;
 }
 
@@ -289,16 +289,6 @@ body.detail-page { background: var(--cream); }
   align-items: center;
   gap: 4px;
 }
-.logo {
-  font-size: 26px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 0.04em;
-  transition: color 0.4s var(--ease);
-}
-.logo span { color: #fff; transition: color 0.4s var(--ease); }
-#navbar.scrolled .logo { color: var(--forest-900); }
-#navbar.scrolled .logo span { color: var(--wine-500); }
 .logo-mark {
   height: 42px;
   width: auto;
@@ -444,8 +434,6 @@ body.menu-open #navbar { opacity: 0; pointer-events: none; }
   align-items: center;
   gap: 4px;
 }
-.menu-logo-block .logo { font-size: 26px; font-weight: 600; color: var(--cream); letter-spacing: 0.04em; }
-.menu-logo-block .logo span { color: var(--gold-300); }
 .menu-logo-mark { height: 38px; }
 .menu-logo-word {
   font-family: 'Cormorant Garamond', serif;
@@ -1352,9 +1340,10 @@ footer {
   align-items: center;
   gap: 14px;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 19px;
+  font-size: 18px;
   white-space: nowrap;
 }
+.footer-contact-item > :not(.info-icon) { opacity: 0.8; }
 .footer-contact-item .info-icon {
   flex-shrink: 0;
   width: 36px;
@@ -1368,8 +1357,7 @@ footer {
 }
 .footer-contact-item a { color: var(--cream); }
 .footer-contact-item a:hover { color: var(--gold-300); }
-.footer-links { display: flex; flex-direction: column; gap: 36px; }
-.footer-links .logo { font-size: 27px; }
+.footer-links { display: flex; flex-direction: column; }
 .footer-columns { display: flex; gap: 70px; flex-wrap: wrap; }
 .footer-col h4 {
   font-family: 'Bodoni Moda', serif;
