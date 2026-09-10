@@ -451,13 +451,14 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
   }
 
   const hoverCapable = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const stackedOnMobile = window.matchMedia('(max-width: 700px)').matches;
 
   if (hoverCapable) {
     panels.forEach((panel) => {
       panel.addEventListener('pointerenter', () => setActive(panel));
     });
     container.addEventListener('pointerleave', reset);
-  } else {
+  } else if (!stackedOnMobile) {
     panels.forEach((panel) => {
       panel.addEventListener('click', (e) => {
         if (!panel.classList.contains('active')) {

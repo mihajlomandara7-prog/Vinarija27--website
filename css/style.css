@@ -1602,3 +1602,38 @@ footer {
   .estate-panel-title { font-size: 18px; letter-spacing: 0.08em; }
   .estate-panel .btn-rect { padding: 12px 28px; margin-top: 14px; }
 }
+
+/* ---------- Wine Estates: stacked full-bleed panels on mobile ---------- */
+.estates-heading-mobile { display: none; }
+@media (max-width: 700px) {
+  #estates { padding: 0; }
+  .estates-inner { padding: 0; }
+  .estates-heading { margin: 0; }
+  .estates-heading-svg { display: none; }
+  .estates-heading-mobile {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(46px, 13vw, 68px);
+    line-height: 1.05;
+    color: #e6d4c2;
+    text-align: center;
+    padding: 64px 20px;
+  }
+  .estates-panels {
+    flex-direction: column;
+    height: auto;
+    gap: 0;
+    padding: 0;
+    overflow: visible;
+  }
+  .estate-panel {
+    flex: none;
+    width: 100%;
+    height: 78vh;
+    min-height: 480px;
+  }
+  .estate-panel.active, .estate-panel.shrink { flex: none; }
+  .estate-panel-content { opacity: 1; transform: none; }
+  .estate-panel-title { font-size: 30px; letter-spacing: 0.12em; }
+}
