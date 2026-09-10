@@ -1662,8 +1662,6 @@ footer {
   .footer-contact { align-items: center; text-align: center; }
 }
 
-/* ---------- Navbar: only the logo mark once scrolled on mobile (no wordmark) ---------- */
-@media (max-width: 700px) {
-  #navbar.scrolled .logo-word { display: none; }
-  #navbar.scrolled .nav-split .logo-block { gap: 0; }
-}
+/* ---------- Navbar: only the logo mark once scrolled (no wordmark) ---------- */
+#navbar.scrolled .logo-word { display: none; }
+#navbar.scrolled .nav-split .logo-block { gap: 0; }
