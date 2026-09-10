@@ -318,15 +318,6 @@ body.detail-page { background: var(--cream); }
 #navbar.scrolled .logo-word { color: var(--forest-900); }
 
 .nav-links { display: flex; align-items: center; gap: 30px; }
-.nav-logo-icon {
-  height: 34px;
-  width: auto;
-  display: block;
-  margin-left: -16px;
-  margin-right: 16px;
-  transition: filter 0.4s var(--ease);
-}
-#navbar.scrolled .nav-logo-icon { filter: brightness(0); }
 .nav-links a {
   color: #fff;
   font-size: 13px;
