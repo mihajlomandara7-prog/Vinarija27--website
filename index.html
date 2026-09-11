@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,10 +30,10 @@
 
 <nav id="navbar">
   <div class="nav-inner nav-split">
-    <span class="nav-lang mobile-nav-lang" id="mobileNavLang" role="button" tabindex="0"><span class="nav-lang-label">EN</span> <i>▾</i></span>
+    <span class="nav-lang mobile-nav-lang" id="navLangMobile" role="button" tabindex="0"><span class="nav-lang-label">EN</span> <i>▾</i></span>
     <div class="nav-links nav-left">
-      <span class="nav-lang">SR <i>▾</i></span>
-      <button class="nav-icon-btn" aria-label="Pretraga">
+      <span class="nav-lang" id="navLangDesktop" role="button" tabindex="0"><span class="nav-lang-label">EN</span> <i>▾</i></span>
+      <button class="nav-icon-btn" aria-label="Pretraga" data-en-aria="Search">
         <svg viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6.2" stroke="currentColor" stroke-width="1.6"/><path d="M17 17l-3.6-3.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       </button>
       <span class="nav-divider"></span>
@@ -46,10 +46,10 @@
     </a>
     <div class="nav-right-group">
       <div class="nav-links nav-right">
-        <a href="#wine-showcase">Vina</a>
-        <a href="#location">Lokacija</a>
+        <a href="#wine-showcase" data-en="Wines">Vina</a>
+        <a href="#location" data-en="Location">Lokacija</a>
       </div>
-      <button id="navToggle" aria-label="Meni">
+      <button id="navToggle" aria-label="Meni" data-en-aria="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -65,7 +65,7 @@
     </a>
     <div class="menu-topbar-right">
       <a href="#contact" class="menu-book-btn">Book a Tasting</a>
-      <button id="menuClose" aria-label="Zatvori meni">
+      <button id="menuClose" aria-label="Zatvori meni" data-en-aria="Close menu">
         <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       </button>
     </div>
@@ -74,28 +74,28 @@
     <a href="#home" class="menu-item">
       <span class="menu-item-num">01</span>
       <span class="menu-item-text">
-        <span class="menu-item-word">Početna</span>
+        <span class="menu-item-word" data-en="Home">Početna</span>
         <span class="menu-item-thumb"><img src="images/vinogradi-hero.jpg" alt=""></span>
       </span>
     </a>
     <a href="#about" class="menu-item">
       <span class="menu-item-num">02</span>
       <span class="menu-item-text">
-        <span class="menu-item-word">O nama</span>
+        <span class="menu-item-word" data-en="About Us">O nama</span>
         <span class="menu-item-thumb"><img src="images/proslave-photo-2.jpg" alt=""></span>
       </span>
     </a>
     <a href="#wine-showcase" class="menu-item">
       <span class="menu-item-num">03</span>
       <span class="menu-item-text">
-        <span class="menu-item-word">Vina i ponuda</span>
+        <span class="menu-item-word" data-en="Wine &amp; Offer">Vina i ponuda</span>
         <span class="menu-item-thumb"><img src="images/wine-family.jpg" alt=""></span>
       </span>
     </a>
     <a href="#location" class="menu-item">
       <span class="menu-item-num">04</span>
       <span class="menu-item-text">
-        <span class="menu-item-word">Lokacija</span>
+        <span class="menu-item-word" data-en="Location">Lokacija</span>
         <span class="menu-item-thumb"><img src="images/estate-1.jpg" alt=""></span>
       </span>
     </a>
@@ -126,11 +126,11 @@
     </div>
     <div class="hero-gradient"></div>
 
-    <h1 class="visually-hidden">Dobrodošli u Vinariju 27</h1>
+    <h1 class="visually-hidden" data-en="Welcome to Vinarija 27">Dobrodošli u Vinariju 27</h1>
 
     <div class="scroll-cue">
       <span></span>
-      <p>Skrolujte</p>
+      <p data-en="Scroll">Skrolujte</p>
     </div>
   </div>
 </header>
@@ -150,16 +150,16 @@
         <div class="statement-slide active" style="background-image:url('images/pool.jpg')"></div>
         <div class="statement-slide" style="background-image:url('images/bottling-hall.jpg')"></div>
         <div class="statement-slide" style="background-image:url('images/interior-view.jpg')"></div>
-        <button class="slider-arrow slider-arrow-prev" id="statementPrev" aria-label="Prethodna slika">
+        <button class="slider-arrow slider-arrow-prev" id="statementPrev" aria-label="Prethodna slika" data-en-aria="Previous image">
           <svg viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <button class="slider-arrow slider-arrow-next" id="statementNext" aria-label="Sledeća slika">
+        <button class="slider-arrow slider-arrow-next" id="statementNext" aria-label="Sledeća slika" data-en-aria="Next image">
           <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="statement-slider-dots" id="statementSliderDots">
-          <button class="slider-dot active" data-index="0" aria-label="Slika 1: bazen"></button>
-          <button class="slider-dot" data-index="1" aria-label="Slika 2: sala za flaširanje vina"></button>
-          <button class="slider-dot" data-index="2" aria-label="Slika 3: enterijer sa pogledom na vinograde"></button>
+          <button class="slider-dot active" data-index="0" aria-label="Slika 1: bazen" data-en-aria="Image 1: pool"></button>
+          <button class="slider-dot" data-index="1" aria-label="Slika 2: sala za flaširanje vina" data-en-aria="Image 2: bottling hall"></button>
+          <button class="slider-dot" data-index="2" aria-label="Slika 3: enterijer sa pogledom na vinograde" data-en-aria="Image 3: interior with vineyard view"></button>
         </div>
       </div>
       <div class="statement-text" id="statementText">
@@ -184,7 +184,7 @@
         <div class="estate-panel-image" style="background-image:url('images/estate-1.jpg')"></div>
         <div class="estate-panel-overlay"></div>
         <div class="estate-panel-content">
-          <h3 class="estate-panel-title">Vinogradi</h3>
+          <h3 class="estate-panel-title" data-en="Vineyards">Vinogradi</h3>
           <a href="vinogradi.html" class="btn-rect page-transition-link">DISCOVER</a>
         </div>
       </div>
@@ -192,7 +192,7 @@
         <div class="estate-panel-image" style="background-image:url('images/estate-2.jpg')"></div>
         <div class="estate-panel-overlay"></div>
         <div class="estate-panel-content">
-          <h3 class="estate-panel-title">Apartmani</h3>
+          <h3 class="estate-panel-title" data-en="Apartments">Apartmani</h3>
           <a href="apartmani.html" class="btn-rect page-transition-link">DISCOVER</a>
         </div>
       </div>
@@ -200,7 +200,7 @@
         <div class="estate-panel-image" style="background-image:url('images/estate-3.jpg')"></div>
         <div class="estate-panel-overlay"></div>
         <div class="estate-panel-content">
-          <h3 class="estate-panel-title">Proslave</h3>
+          <h3 class="estate-panel-title" data-en="Celebrations">Proslave</h3>
           <a href="proslave.html" class="btn-rect page-transition-link">DISCOVER</a>
         </div>
       </div>
@@ -215,8 +215,8 @@
     </div>
     <div class="bottle-copy">
       <h3 class="bottle-name">Merlot</h3>
-      <p class="bottle-desc">Baršunast i puninog tela, sa notama zrele šljive, crne trešnje i blage vanile. Odležava u hrastovim buradima, otkrivajući slojevitost i eleganciju sa svakim gutljajem.</p>
-      <a href="#contact" class="btn-outline-gold">KUPI SADA</a>
+      <p class="bottle-desc" data-en="Velvety and full-bodied, with notes of ripe plum, black cherry and gentle vanilla. Aged in oak barrels, revealing depth and elegance with every sip.">Baršunast i puninog tela, sa notama zrele šljive, crne trešnje i blage vanile. Odležava u hrastovim buradima, otkrivajući slojevitost i eleganciju sa svakim gutljajem.</p>
+      <a href="#contact" class="btn-outline-gold" data-en="BUY NOW">KUPI SADA</a>
     </div>
   </div>
   <div class="bottle-row bottle-row-right" data-side="right">
@@ -225,8 +225,8 @@
     </div>
     <div class="bottle-copy">
       <h3 class="bottle-name">Chardonnay</h3>
-      <p class="bottle-desc">Sveže i elegantno belo vino sa notama zelene jabuke, citrusa i belog cveta. Blaga mineralnost i dugačak, čist završetak čine ga savršenim izborom za svaku priliku.</p>
-      <a href="#contact" class="btn-outline-gold">KUPI SADA</a>
+      <p class="bottle-desc" data-en="A fresh and elegant white wine with notes of green apple, citrus and white flowers. A subtle minerality and a long, clean finish make it a perfect choice for any occasion.">Sveže i elegantno belo vino sa notama zelene jabuke, citrusa i belog cveta. Blaga mineralnost i dugačak, čist završetak čine ga savršenim izborom za svaku priliku.</p>
+      <a href="#contact" class="btn-outline-gold" data-en="BUY NOW">KUPI SADA</a>
     </div>
   </div>
   <div class="bottle-row" data-side="left">
@@ -235,8 +235,8 @@
     </div>
     <div class="bottle-copy">
       <h3 class="bottle-name">Shumante 27</h3>
-      <p class="bottle-desc">Naš penušavac pun životne radosti — fine mehuriće, arome zrele voćke i cvetnu svežinu. Idealan izbor za proslave i trenutke koji zaslužuju čašicu više.</p>
-      <a href="#contact" class="btn-outline-gold">KUPI SADA</a>
+      <p class="bottle-desc" data-en="Our sparkling wine, full of joie de vivre — fine bubbles, aromas of ripe fruit and floral freshness. An ideal choice for celebrations and moments that deserve one more glass.">Naš penušavac pun životne radosti — fine mehuriće, arome zrele voćke i cvetnu svežinu. Idealan izbor za proslave i trenutke koji zaslužuju čašicu više.</p>
+      <a href="#contact" class="btn-outline-gold" data-en="BUY NOW">KUPI SADA</a>
     </div>
   </div>
   <div class="bottle-row bottle-row-right" data-side="right">
@@ -245,8 +245,8 @@
     </div>
     <div class="bottle-copy">
       <h3 class="bottle-name">Shumante Rosé</h3>
-      <p class="bottle-desc">Nežno roze vino svilenkaste teksture, sa notama divlje jagode, ružinih latica i blagom mineralnošću. Osvežavajuće i elegantno, savršeno za tople letnje večeri.</p>
-      <a href="#contact" class="btn-outline-gold">KUPI SADA</a>
+      <p class="bottle-desc" data-en="A delicate rosé with a silky texture, notes of wild strawberry, rose petals and a gentle minerality. Refreshing and elegant, perfect for warm summer evenings.">Nežno roze vino svilenkaste teksture, sa notama divlje jagode, ružinih latica i blagom mineralnošću. Osvežavajuće i elegantno, savršeno za tople letnje večeri.</p>
+      <a href="#contact" class="btn-outline-gold" data-en="BUY NOW">KUPI SADA</a>
     </div>
   </div>
 </section>
@@ -260,19 +260,19 @@
     <hr class="food-divider">
     <div class="food-grid">
       <div class="food-photo food-photo-left">
-        <img src="images/food-terrace.jpg" alt="Terasa restorana Vinarije 27">
+        <img src="images/food-terrace.jpg" alt="Terasa restorana Vinarije 27" data-en-alt="Terrace of the Vinarija 27 restaurant">
       </div>
       <div class="food-copy">
-        <span class="section-label">Restoran</span>
-        <h3 class="food-subheading">Posvećenost u svakom detalju</h3>
-        <p class="lead">Naša vinarija nudi jedinstveno gastronomsko iskustvo, gde se tradicionalni ukusi Šumadije spajaju sa modernim pristupom kulinarstvu. Uživajte u pažljivo pripremljenim jelima uz čašu našeg vina.</p>
+        <span class="section-label" data-en="Restaurant">Restoran</span>
+        <h3 class="food-subheading" data-en="Dedication in every detail">Posvećenost u svakom detalju</h3>
+        <p class="lead" data-en="Our winery offers a unique gastronomic experience, where the traditional flavors of Šumadija meet a modern approach to cuisine. Enjoy carefully prepared dishes alongside a glass of our wine.">Naša vinarija nudi jedinstveno gastronomsko iskustvo, gde se tradicionalni ukusi Šumadije spajaju sa modernim pristupom kulinarstvu. Uživajte u pažljivo pripremljenim jelima uz čašu našeg vina.</p>
         <a href="restoran.html" class="btn-rect page-transition-link">VIEW</a>
       </div>
       <div class="food-photo food-photo-right">
-        <img src="images/food-plate.jpg" alt="Jelo iz ponude restorana">
+        <img src="images/food-plate.jpg" alt="Jelo iz ponude restorana" data-en-alt="A dish from the restaurant's menu">
       </div>
       <div class="food-photo food-photo-below">
-        <img src="images/food-plating.jpg" alt="Finalno plasiranje jela na tanjir">
+        <img src="images/food-plating.jpg" alt="Finalno plasiranje jela na tanjir" data-en-alt="Final plating of a dish">
       </div>
     </div>
   </div>
@@ -283,12 +283,12 @@
   <section id="about">
     <div class="testimonials-head">
       <h2 class="reviews-heading">REVIEWS</h2>
-      <p class="testimonials-sub">Preko 50+ recenzija na Google-u od naših gostiju</p>
+      <p class="testimonials-sub" data-en="Over 50+ reviews on Google from our guests">Preko 50+ recenzija na Google-u od naših gostiju</p>
       <p class="testimonials-rating">4.8 / 5.0 <span class="stars" aria-hidden="true">★★★★★</span></p>
       <a href="https://www.google.com/maps/search/?api=1&query=Vinarija+27+Ovsi%C5%A1te+bb+34310" target="_blank" rel="noopener" class="btn-rect reviews-viewall">VIEW ALL</a>
     </div>
     <div class="testimonials-carousel">
-      <button class="testimonials-arrow testimonials-arrow-prev" id="testimonialsPrev" aria-label="Prethodna recenzija">
+      <button class="testimonials-arrow testimonials-arrow-prev" id="testimonialsPrev" aria-label="Prethodna recenzija" data-en-aria="Previous review">
         <svg viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <div class="testimonials-track" id="testimonialsTrack">
@@ -503,7 +503,7 @@
               </div>
             </blockquote>
       </div>
-      <button class="testimonials-arrow testimonials-arrow-next" id="testimonialsNext" aria-label="Sledeća recenzija">
+      <button class="testimonials-arrow testimonials-arrow-next" id="testimonialsNext" aria-label="Sledeća recenzija" data-en-aria="Next review">
         <svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
     </div>
@@ -512,36 +512,36 @@
   <section id="location">
     <div class="container location-grid">
       <div class="location-info">
-        <p class="section-label">Posetite nas</p>
-        <h2>Pronađite Vinariju 27</h2>
+        <p class="section-label" data-en="Visit Us">Posetite nas</p>
+        <h2 data-en="Find Vinarija 27">Pronađite Vinariju 27</h2>
         <ul class="info-list">
           <li>
             <span class="info-icon">📍</span>
             <div>
-              <strong>Adresa</strong>
+              <strong data-en="Address">Adresa</strong>
               <p>Ovsište bb, 34310</p>
             </div>
           </li>
           <li>
             <span class="info-icon">📞</span>
             <div>
-              <strong>Telefon</strong>
+              <strong data-en="Phone">Telefon</strong>
               <p><a href="tel:+381637336236">063 733 6236</a></p>
             </div>
           </li>
           <li>
             <span class="info-icon">🕔</span>
             <div>
-              <strong>Radno vreme</strong>
-              <p>Danas otvoreno &middot; zatvara se u 17:00</p>
+              <strong data-en="Working Hours">Radno vreme</strong>
+              <p data-en="Open today &middot; closes at 5:00 PM">Danas otvoreno &middot; zatvara se u 17:00</p>
             </div>
           </li>
         </ul>
-        <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Vinarija+27+Ovsi%C5%A1te+bb+34310" target="_blank" rel="noopener">Otvorite u Google Mapama</a>
+        <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Vinarija+27+Ovsi%C5%A1te+bb+34310" target="_blank" rel="noopener" data-en="Open in Google Maps">Otvorite u Google Mapama</a>
       </div>
       <div class="location-map">
         <iframe
-          title="Mapa — Vinarija 27"
+          title="Mapa — Vinarija 27" data-en-title="Map — Vinarija 27"
           src="https://www.google.com/maps?q=Vinarija+27,+Ovsi%C5%A1te+bb,+34310+Ovsi%C5%A1te,+Srbija&output=embed"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade">
@@ -563,11 +563,11 @@
         <div class="footer-links">
           <div class="footer-columns">
             <div class="footer-col">
-              <h4>Navigacija</h4>
-              <a href="#home">Početna</a>
-              <a href="#about">O nama</a>
-              <a href="#wine-showcase">Vina</a>
-              <a href="#location">Lokacija</a>
+              <h4 data-en="Navigation">Navigacija</h4>
+              <a href="#home" data-en="Home">Početna</a>
+              <a href="#about" data-en="About Us">O nama</a>
+              <a href="#wine-showcase" data-en="Wines">Vina</a>
+              <a href="#location" data-en="Location">Lokacija</a>
             </div>
             <div class="footer-col">
               <h4>Info</h4>
@@ -588,7 +588,7 @@
         </div>
       </div>
     </div>
-    <p class="footer-note">&copy; <span id="year"></span> Vinarija 27. Sva prava zadržana.</p>
+    <p class="footer-note">&copy; <span id="year"></span> Vinarija 27. <span data-en="All rights reserved.">Sva prava zadržana.</span></p>
   </div>
 </footer>
 

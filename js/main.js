@@ -89,20 +89,65 @@ window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 10);
 });
 
-const mobileNavLang = document.getElementById('mobileNavLang');
-if (mobileNavLang) {
-  const langLabel = mobileNavLang.querySelector('.nav-lang-label');
-  const toggleLang = () => {
-    langLabel.textContent = langLabel.textContent === 'EN' ? 'SR' : 'EN';
-  };
-  mobileNavLang.addEventListener('click', toggleLang);
-  mobileNavLang.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleLang();
-    }
+/* ---------------- Language toggle (EN default, SR the alternate) ----------------
+   Every translatable element carries its English text in a data-en* attribute
+   and its original Serbian text right there in the DOM. On first run we cache
+   that original Serbian into a matching data-sr* attribute, then swap to
+   English. Toggling just swaps between the two cached values, so the content
+   itself is the source of truth for Serbian — no separate translation table
+   to keep in sync. */
+(function languageToggle() {
+  const STORAGE_KEY = 'vinarija27-lang';
+  const toggles = [document.getElementById('navLangDesktop'), document.getElementById('navLangMobile')].filter(Boolean);
+  if (!toggles.length) return;
+
+  // Each entry: which elements to select, how to read/write their translatable
+  // value, and the dataset key (camelCase of the data-en-* attribute) that
+  // holds the English text.
+  const TARGETS = [
+    { selector: '[data-en]', enKey: 'en', srKey: 'srCache', get: (el) => el.innerHTML, set: (el, v) => { el.innerHTML = v; } },
+    { selector: '[data-en-alt]', enKey: 'enAlt', srKey: 'srAlt', get: (el) => el.getAttribute('alt'), set: (el, v) => el.setAttribute('alt', v) },
+    { selector: '[data-en-aria]', enKey: 'enAria', srKey: 'srAria', get: (el) => el.getAttribute('aria-label'), set: (el, v) => el.setAttribute('aria-label', v) },
+    { selector: '[data-en-title]', enKey: 'enTitle', srKey: 'srTitle', get: (el) => el.getAttribute('title'), set: (el, v) => el.setAttribute('title', v) },
+  ];
+
+  function applyLanguage(lang) {
+    TARGETS.forEach(({ selector, enKey, srKey, get, set }) => {
+      document.querySelectorAll(selector).forEach((el) => {
+        if (el.dataset[srKey] === undefined) el.dataset[srKey] = get(el) || '';
+        set(el, lang === 'en' ? el.dataset[enKey] : el.dataset[srKey]);
+      });
+    });
+
+    toggles.forEach((t) => {
+      const label = t.querySelector('.nav-lang-label');
+      if (label) label.textContent = lang.toUpperCase();
+    });
+    document.documentElement.lang = lang;
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* localStorage unavailable */ }
+  }
+
+  let current = 'en';
+  try {
+    current = localStorage.getItem(STORAGE_KEY) || 'en';
+  } catch (e) { /* localStorage unavailable */ }
+
+  toggles.forEach((t) => {
+    t.addEventListener('click', () => {
+      current = current === 'en' ? 'sr' : 'en';
+      applyLanguage(current);
+    });
+    t.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        current = current === 'en' ? 'sr' : 'en';
+        applyLanguage(current);
+      }
+    });
   });
-}
+
+  applyLanguage(current);
+})();
 
 const navToggle = document.getElementById('navToggle');
 const mobileMenu = document.getElementById('mobileMenu');
